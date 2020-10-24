@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Broadcasters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Handle</th>
+      <th>Name</th>
+      <th>Logo</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @broadcasters.each do |broadcaster| %>
+      <tr>
+        <td><%= broadcaster.handle %></td>
+        <td><%= broadcaster.name %></td>
+        <td><%= broadcaster.logo %></td>
+        <td><%= broadcaster.description %></td>
+        <td><%= link_to 'Show', broadcaster %></td>
+        <td><%= link_to 'Edit', edit_broadcaster_path(broadcaster) %></td>
+        <td><%= link_to 'Destroy', broadcaster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Broadcaster', new_broadcaster_path %>
