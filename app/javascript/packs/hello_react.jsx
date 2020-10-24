@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import Button from '@material-ui/core/Button';
 require('./css/application.css')
 
 const Hello = props => {
@@ -16,7 +17,7 @@ const Hello = props => {
     setName(resp.data.hello);
   },[]);
 
-  return (<div>Hello {name}!</div>)
+  return (<div>Hello {name}!<Button>Do Stuff!</Button></div>)
 }
 
 Hello.defaultProps = {
