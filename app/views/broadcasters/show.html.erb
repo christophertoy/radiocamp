@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Handle:</strong>
+  <%= @broadcaster.handle %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @broadcaster.name %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @broadcaster.logo %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @broadcaster.description %>
+</p>
+
+<%= link_to 'Edit', edit_broadcaster_path(@broadcaster) %> |
+<%= link_to 'Back', broadcasters_path %>
