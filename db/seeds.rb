@@ -23,3 +23,10 @@ Show.create(name: 'Complete Herb', broadcaster_id: 2)
 Show.create(name: 'Rude Executive', broadcaster_id: 3)
 Show.create(name: 'Negative Bank', broadcaster_id: 3)
 Show.create(name: 'Coming Occasion', broadcaster_id: 3)
+
+Episode.create( title: 'The Modern Campfire', 
+                description: 'Examining isolation and connection in the age of Zoom parties',
+                episode_url: 'http://www.example.com',
+                release_date: Time.now.to_datetime,
+                show_id: 1
+              )
