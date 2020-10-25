@@ -10,6 +10,7 @@ require('./css/application.css')
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Aloha name="React" />,
-    document.body.appendChild(document.createElement('div')),
+    document.getElementById("root")
+    // document.body.appendChild(document.createElement('div')),
   )
 })
