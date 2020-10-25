@@ -12,3 +12,10 @@ ActiveRecord::Base.connection.reset_pk_sequence!('broadcasters')
 Broadcaster.create(handle: 'purple-finch', name: 'Purple Finch Podcasts', description: 'Just a gang of pals with stories to tell')
 Broadcaster.create(handle: 'wxfr', name: 'WXFR', description: 'WXFR Community Radio, broadcasting out of the offices of Yoyodyne industries')
 Broadcaster.create(handle: 'radio70k', name: 'Radio 70000', description: 'Independent radio')
+
+Episode.create( title: 'The Modern Campfire', 
+                description: 'Examining isolation and connection in the age of Zoom parties',
+                episode_url: 'http://www.example.com',
+                release_date: Time.now.to_datetime,
+                show_id: 1
+              )
