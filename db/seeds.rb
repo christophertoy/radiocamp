@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Episode.destroy_all
 Show.destroy_all
 Broadcaster.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('broadcasters')
 ActiveRecord::Base.connection.reset_pk_sequence!('shows')
+ActiveRecord::Base.connection.reset_pk_sequence!('episodes')
 
 Broadcaster.create(handle: 'purple-finch', name: 'Purple Finch Podcasts', description: 'Just a gang of pals with stories to tell')
 Broadcaster.create(handle: 'wxfr', name: 'WXFR', description: 'WXFR Community Radio, broadcasting out of the offices of Yoyodyne industries')
