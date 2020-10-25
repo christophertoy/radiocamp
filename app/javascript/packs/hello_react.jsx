@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
+import Aloha from './components/Aloha';
 require('./css/application.css')
 
 const Hello = props => {
@@ -17,7 +18,11 @@ const Hello = props => {
     setName(resp.data.title);
   },[]);
 
-  return (<div>Hello {name}!<Button>Do Stuff!</Button></div>)
+  return (<div>
+    Hello {name}!
+    <Button>Do Stuff!</Button>
+    <Aloha />
+  </div>)
 }
 
 Hello.defaultProps = {
