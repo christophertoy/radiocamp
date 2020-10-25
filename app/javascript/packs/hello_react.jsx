@@ -12,9 +12,9 @@ require('./css/application.css')
 const Hello = props => {
   const [name, setName] = useState('')
   useEffect(async ()=> {
-    const resp = await axios.get('/test.json')
+    const resp = await axios.get('/episodes/1.json')
     console.log(resp.data);
-    setName(resp.data.hello);
+    setName(resp.data.title);
   },[]);
 
   return (<div>Hello {name}!<Button>Do Stuff!</Button></div>)
