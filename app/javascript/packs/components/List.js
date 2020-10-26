@@ -14,20 +14,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function showList(props) {
   const classes = useStyles();
-  const [state, setState] = useState("");
+  const [state, setState] = useState([]);
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
-    console.log(resp.data);
-    setState(resp.data[0]);
+    setState(resp.data);
   }, []);
-  // map over array of props and pass them down to ShowListItem
+  
   return (
     <div className={classes.root}>
       <Typography variant="h4">Shows</Typography>
-      <ShowListItem
-        name={state.name}
-        description={state.description}
-      ></ShowListItem>
+      {state.map((show) => {
+        return (
+          <ShowListItem
+            key={show.id}
+            name={show.name}
+            description={show.description}
+          />
+        );
+      })}
     </div>
   );
 }
