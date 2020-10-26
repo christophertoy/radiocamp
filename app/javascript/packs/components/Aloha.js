@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
-import ShowListItem from './ShowListItem';
+import List from './List';
 
 export default function Aloha(props) {
   const [name, setName] = useState('')
@@ -15,7 +15,7 @@ export default function Aloha(props) {
   return (<div>
     Hello {name}!
   <Button>{props.handle}</Button>
-    <ShowListItem></ShowListItem>
+    <List></List>
   </div>
   )
 }

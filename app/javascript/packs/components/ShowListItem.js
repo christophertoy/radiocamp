@@ -25,7 +25,7 @@ export default function ShowListItem(props) {
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
-          <ListItemText primary="Modern Expansion" secondary="Description" />
+          <ListItemText primary={props.name} secondary={props.description} />
       </ListItem>
     </div>
   );
