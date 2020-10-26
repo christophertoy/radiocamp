@@ -71,7 +71,7 @@ export default function NavBar(props) {
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h6" className={classes.title}>
-        RadioCamp
+        {props.title}
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
