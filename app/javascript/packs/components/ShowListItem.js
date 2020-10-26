@@ -13,19 +13,26 @@ import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
 }));
 
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
+
 export default function ShowListItem(props) {
   const classes = useStyles();
   return (
-    <ListItem button>
-      <ListItemAvatar>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      </ListItemAvatar>
-      <ListItemText primary="Modern Expansion" secondary="Description" />
-    </ListItem>
+    <div className={classes.root}>
+      <ListItem button>
+        <ListItemLink href="/episodes">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText primary="Modern Expansion" secondary="Description" />
+        </ListItemLink>
+      </ListItem>
+    </div>
   );
 }
