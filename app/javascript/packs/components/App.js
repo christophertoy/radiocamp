@@ -9,18 +9,20 @@ import Broadcaster from './Broadcaster';
 
 export default function App(props) {
   const [shows, setShows] = useState([])
-  useEffect(async ()=> {
-    const resp = await axios.get('/shows.json')
-    console.log(resp.data);
-    setShows(resp.data);
-  },[]);
+
+
+  // useEffect(async ()=> {
+  //   const resp = await axios.get('/shows.json')
+  //   console.log(resp.data);
+  //   setShows(resp.data);
+  // },[]);
 
   return (
     <div>
       <Switch>
-        <Route exact path ='/'> <NavBar/> </Route>
+        <Route exact path ='/'> <NavBar title="RadioCamp"/> </Route>
         <Route path = '/:broadcasterHandle/' render = { (props) => {
-          return <Broadcaster handle={props.match.params.broadcasterHandle}/>
+          return <Broadcaster handle={props.match.params.broadcasterHandle} />
         } }/>
         {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
           return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )

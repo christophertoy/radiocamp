@@ -13,11 +13,17 @@ export default function Broadcaster(props) {
   //   console.log(resp.data);
   //   setShows(resp.data);
   // },[]);
+  const [name, setName] = useState('')
+
+  useEffect(async ()=> {
+    const resp = await axios.get('/broadcasters.json')
+    console.log(resp.data);
+    setName(resp.data.find( x => x.handle === props.handle ).name);
+  },[]);
 
   return (
     <div>
-      <NavBar/>
-      {props.handle}
+      <NavBar title={name}/>
         {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
           return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
         } }/> */}
