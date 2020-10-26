@@ -17,21 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 export default function ShowListItem(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <ListItem button>
-        <ListItemLink href="/episodes">
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText primary="Modern Expansion" secondary="Description" />
-        </ListItemLink>
       </ListItem>
     </div>
   );
