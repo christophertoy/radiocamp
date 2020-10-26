@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import ShowListItem from './ShowListItem';
 
 export default function Aloha(props) {
@@ -14,7 +16,8 @@ export default function Aloha(props) {
 
   return (<div>
     Hello {name}!
-  <Button>{props.handle}</Button>
+    {/* <Link href="/react/turtles" onClick={preventDefault}>{props.handle}</Link> */}
+    <Link to="turtles" component={RouterLink} >Link</Link>
     <ShowListItem></ShowListItem>
   </div>
   )
