@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
+import List from './List';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import ShowListItem from './ShowListItem';
 
 export default function Aloha(props) {
   const [name, setName] = useState('')
@@ -16,9 +16,8 @@ export default function Aloha(props) {
 
   return (<div>
     Hello {name}!
-    {/* <Link href="/react/turtles" onClick={preventDefault}>{props.handle}</Link> */}
-    <Link to="turtles" component={RouterLink} >Link</Link>
-    <ShowListItem></ShowListItem>
+  <Button>{props.handle}</Button>
+    <List></List>
   </div>
   )
 }
