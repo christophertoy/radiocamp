@@ -8,12 +8,15 @@ import Aloha from './components/Aloha';
 import NavBar from './components/NavBar';
 import BroadcasterForm from './components/BroadcasterForm';
 import App from './components/App';
+import {BrowserRouter} from 'react-router-dom';
 require('./css/application.css')
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     // <BroadcasterForm name="React" />,
-    <App />,
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
     document.getElementById("root")
     // document.body.appendChild(document.createElement('div')),
   )
