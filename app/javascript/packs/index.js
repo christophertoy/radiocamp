@@ -6,12 +6,12 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import Aloha from './components/Aloha';
 import NavBar from './components/NavBar';
+import BroadcasterForm from './components/BroadcasterForm';
 require('./css/application.css')
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    // <Aloha name="React" />,
-    <NavBar />,
+    <BroadcasterForm name="React" />,
     document.getElementById("root")
     // document.body.appendChild(document.createElement('div')),
   )
