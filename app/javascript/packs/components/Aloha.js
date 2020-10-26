@@ -14,7 +14,7 @@ export default function Aloha(props) {
 
   return (<div>
     Hello {name}!
-    <Button>Do Stuff!</Button>
+  <Button>{props.handle}</Button>
     <ShowListItem></ShowListItem>
   </div>
   )

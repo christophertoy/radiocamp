@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :broadcasters
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
-  get '/test', to: "pages#test"
+  get '*path', to: 'pages#home'
 end
