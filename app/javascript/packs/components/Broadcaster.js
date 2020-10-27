@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from './ShowListItem';
+import List from './List';
 
 export default function Broadcaster(props) {
   // const [shows, setShows] = useState([])
@@ -13,20 +14,20 @@ export default function Broadcaster(props) {
   //   console.log(resp.data);
   //   setShows(resp.data);
   // },[]);
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+  const [broadcasterId, setBroadcasterId] = useState(0);
 
   useEffect(async ()=> {
     const resp = await axios.get('/broadcasters.json')
-    console.log(resp.data);
-    setName(resp.data.find( x => x.handle === props.handle ).name);
+    const thisBroadcaster = resp.data.find( x => x.handle === props.handle );
+    setName(thisBroadcaster.name);
+    setBroadcasterId(thisBroadcaster.id);
   },[]);
 
   return (
     <div>
       <NavBar title={name}/>
-        {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
-          return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
-        } }/> */}
+      <List broadcasterId={broadcasterId}/>
     </div>
   )
 }
