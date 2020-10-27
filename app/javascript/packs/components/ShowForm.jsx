@@ -32,7 +32,7 @@ export default function ShowForm(props) {
       description,
       image: logo,
       genre: null,
-      broadcaster_id: props.broadcasterId
+      broadcaster_id: props.broadcasterId,
     };
 
     axios
