@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from "@storybook/react";
-import List from '../app/javascript/packs/components/List';
+import ShowList from '../app/javascript/packs/components/ShowList';
 
 // export default {
 //   title: 'Aloha',
 //   component: Aloha
 // };
 
-storiesOf("showList", module)
-  .add("Normal", () => <List/>);
+storiesOf("ShowList", module)
+  .add("Normal", () => <ShowList />);
