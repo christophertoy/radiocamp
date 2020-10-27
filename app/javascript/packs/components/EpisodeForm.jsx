@@ -1,15 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, 
-  TextField, 
-  makeStyles,   
-  Select, 
+import React, { useState } from 'react';
+import {
+  Grid,
+  TextField,
+  makeStyles,
+  Select,
   FormControl,
   InputLabel,
   MenuItem,
-  Button
- } from "@material-ui/core";
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "@material-ui/core";
 
- const jsonShows = [
+// junk data - remove once API calls are in place
+
+const jsonShows = [
   {
     id: 1,
     name: "Modern Expansion",
@@ -54,7 +62,7 @@ import { Grid,
     updated_at: "2020-10-25T20:36:31.152Z",
     url: "http://localhost:3000/shows/1.json"
   }
- ];
+];
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -66,14 +74,13 @@ const useStyle = makeStyles(theme => ({
   }
 }));
 
-// dummy placeholder function
+// dummy placeholder function returns a simplified show object
+// there will need to be a call to API here
 const getShows = () => {
-  // there will need to be a call to API here to stage show data
-
-  return jsonShows.map(show => show.name);
-}
-  
-
+  return jsonShows.map(show => {
+    return { id: show.id, name: show.name }
+  });
+};
 
 const initialValues = {
   id: null,
@@ -86,77 +93,108 @@ const initialValues = {
 
 export default function EpisodeForm() {
 
-  const [values, setValues] = useState(initialValues);
+  const [shows, setShows] = useState(initialValues);
+  const [open, setOpen] = useState(false);
   const classes = useStyle();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setValues({
-      ...values,
-      [name]:value
+    setShows({
+      ...shows,
+      [name]: value
     })
   }
 
   return (
-    <form className = {classes.root}>
-      <Grid container>
-        
-        <Grid item xs={6}>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">Show</InputLabel>
-              <Select
-                variant="outlined"
-                name="showName"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={values.showName}
-                onChange={handleInputChange}
-                // options={getShows()}
-              >
-                <MenuItem value="Choose a Show"></MenuItem>
-                {
-                  getShows().map(show => 
-                  <MenuItem value={show}>{show}</MenuItem>)
-                }
-              </Select>
-          </FormControl>
-        
-          <TextField
-            variant="outlined"
-            label="Title"
-            name="title"
-            value={values.title}
-            onChange={handleInputChange}
-          />          
-          <TextField
-            variant="outlined"
-            label="Description"
-            multiline
-            rows={4}
-            name="description"
-            value={values.description}
-            onChange={handleInputChange}
-          />
-          <TextField
-            variant="outlined"
-            label="Episode URL"
-            name="episode_url"
-            value={values.episode_url}
-            onChange={handleInputChange}
-          />          
-          <TextField
-            variant="outlined"
-            label="Release Date"
-            name="release_date"
-            type="date"
-            value={values.release_date}
-            onChange={handleInputChange}
-          />
-          <Button>Upload Episode</Button>
-        </Grid>
-        <Grid item xs={6}></Grid>
-      </Grid>
+    <div>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add an episode
+      </Button>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add Episode</DialogTitle>
+        <DialogContent>
 
-    </form>
+          <form className={classes.root}>
+            <Grid container>
+
+              <Grid item s={3}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-label">Show</InputLabel>
+                  <Select
+                    variant="outlined"
+                    name="showName"
+                    label="Show"
+                    id="demo-simple-select"
+                    value={shows.showName}
+                    onChange={handleInputChange}
+                  >
+                    <MenuItem value="Choose a Show"></MenuItem>
+                    {
+                      getShows().map(show =>
+                        <MenuItem
+                          key={show.id}
+                          value={show.name}>
+                          {show.name}
+                        </MenuItem>)
+                    }
+                  </Select>
+                </FormControl>
+
+                <TextField
+                  variant="outlined"
+                  label="Title"
+                  name="title"
+                  value={shows.title}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Description"
+                  multiline
+                  rows={4}
+                  name="description"
+                  value={shows.description}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Episode URL"
+                  name="episode_url"
+                  value={shows.episode_url}
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Release Date"
+                  name="release_date"
+                  type="date"
+                  value={shows.release_date}
+                  onChange={handleInputChange}
+                />
+
+              </Grid>
+              <Grid item xs={6}></Grid>
+            </Grid>
+
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   )
-}
+};
