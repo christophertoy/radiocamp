@@ -10,7 +10,8 @@ const themePurpleYellow = createMuiTheme({
       main: amber[500],
       contrastText: deepPurple[900],
     },
-  },
+  }
+
 });
 
 themePurpleYellow.props = {
