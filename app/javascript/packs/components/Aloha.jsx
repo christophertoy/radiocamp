@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
-import showList from './ShowList';
+import ShowList from './ShowList';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
