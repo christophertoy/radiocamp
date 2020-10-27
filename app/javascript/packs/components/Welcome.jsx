@@ -8,6 +8,8 @@ import NavBar from './NavBar';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import showList from './ShowList';
+import BroadcasterForm from './BroadcasterForm';
+
 
 export default function Welcome(props) {
   // const [shows, setShows] = useState([])
@@ -33,7 +35,7 @@ export default function Welcome(props) {
         <Typography>
           <h1>Join RadioCamp you will be so happy!</h1>
         </Typography>
-        <Box><Button>Sign Up!</Button></Box>
+        <Box><BroadcasterForm /></Box>
       </Container>
     </div>
   )
