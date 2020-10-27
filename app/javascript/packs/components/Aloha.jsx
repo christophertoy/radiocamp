@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
-import List from './List';
+import showList from './ShowList';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ export default function Aloha(props) {
   return (<div>
     Hello {name}!
   <Button>{props.handle}</Button>
-    <List></List>
+    <ShowList />
   </div>
   )
 }

@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import NavBar from './NavBar';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import List from './List';
+import showList from './ShowList';
 
 export default function Welcome(props) {
   // const [shows, setShows] = useState([])
