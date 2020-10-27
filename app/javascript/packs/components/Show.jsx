@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Aloha from "./Aloha";
 import NavBar from "./NavBar";
+import EpisodeList from "./EpisodeList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from "./ShowListItem";
@@ -59,7 +60,7 @@ export default function Show(props) {
           </Typography>
         </CardContent>
       </Card>
-      {/* <List broadcasterId={props.broadcasterData.id} /> */}
+      <EpisodeList showId={showId}/>
     </div>
   );
 }

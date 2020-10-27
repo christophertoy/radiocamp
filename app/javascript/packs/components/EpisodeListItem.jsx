@@ -26,13 +26,10 @@ export default function EpisodeListItem(props) {
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary="Episode Name"
-          secondary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Etiam sit amet nisl purus in mollis. Ornare lectus sit amet est placerat 
-          in egestas erat."
+          primary={props.title}
+          secondary={props.description}
         />
-        <ListItemText primary="Release Date: 2000" />
+        <ListItemText primary={props.date} />
       </ListItem>
     </div>
   );
