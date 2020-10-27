@@ -15,10 +15,12 @@ const useStyles = makeStyles((theme) => ({
 export default function showList(props) {
   const classes = useStyles();
   const [state, setState] = useState([]);
+
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
-    setState(resp.data);
-  }, []);
+    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterId); 
+    setState(filteredData);
+  }, [props.broadcasterId]);
   
   return (
     <div className={classes.root}>
