@@ -20,12 +20,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import ShowForm from "./ShowForm";
 
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
   },
 });
+
 
 export default function Site(props) {
   const classes = useStyles();
@@ -57,6 +59,7 @@ export default function Site(props) {
           </Button>
         </CardActions>
       </Card>
+      <ShowForm broadcasterId={props.broadcasterData.id} />
       <ShowList broadcasterId={props.broadcasterData.id} />
     </div>
   );
