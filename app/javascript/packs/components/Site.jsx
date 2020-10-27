@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Broadcaster(props) {
+export default function Site(props) {
   const classes = useStyles();
   // const [shows, setShows] = useState([])
   // useEffect(async ()=> {
