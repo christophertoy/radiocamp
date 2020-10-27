@@ -15,30 +15,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function episodeList(props) {
   const classes = useStyles();
-  // const [state, setState] = useState([]);
+  const [state, setState] = useState([]);
 
-  // useEffect(async () => {
-  //   const resp = await axios.get("/episodes.json");
-  //   const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterId); 
-  //   setState(filteredData);
-  // }, [props.broadcasterId]);
+  useEffect(async () => {
+    const resp = await axios.get("/episodes.json");
+    const filteredData = resp.data.filter(x => x.show_id == props.showId); 
+    console.log(filteredData);
+    setState(filteredData);
+  }, [props.broadcasterId]);
   
   return (
     <div className={classes.root}>
       <Typography variant="h4">Episodes</Typography>
-      {/* {state.map((episode) => {
+      {state.map((episode) => {
         return (
           <EpisodeListItem
             key={episode.id}
-
+            title={episode.title}
+            description={episode.description}
+            date={episode.date}
           />
         );
-      })} */}
+      })}
+      {/* <EpisodeListItem />
       <EpisodeListItem />
       <EpisodeListItem />
       <EpisodeListItem />
-      <EpisodeListItem />
-      <EpisodeListItem />
+      <EpisodeListItem /> */}
     </div>
   );
 }

@@ -46,8 +46,6 @@ export default function Site(props) {
     setBroadcasterData(thisBroadcaster);
   }, []);
 
-  console.log(match);
-
   return (
     <div>
       <NavBar title={name} />
