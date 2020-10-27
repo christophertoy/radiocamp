@@ -50,7 +50,6 @@ export default function Site(props) {
 
   return (
     <div>
-      <h3>Hello!</h3>
       <NavBar title={name} />
       <Switch>
         <Route exact path={match.path}>
