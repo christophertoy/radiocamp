@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import ShowListItem from "./ShowListItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -12,13 +14,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function showList(props) {
   const classes = useStyles();
-  // map over array of props and pass them down to ShowListItem
+  const [state, setState] = useState([]);
+  useEffect(async () => {
+    const resp = await axios.get("/shows.json");
+    setState(resp.data);
+  }, []);
+  
   return (
     <div className={classes.root}>
       <Typography variant="h4">Shows</Typography>
-      <ShowListItem></ShowListItem>
-      <ShowListItem></ShowListItem>
-      <ShowListItem></ShowListItem>
+      {state.map((show) => {
+        return (
+          <ShowListItem
+            key={show.id}
+            name={show.name}
+            description={show.description}
+          />
+        );
+      })}
     </div>
   );
 }
