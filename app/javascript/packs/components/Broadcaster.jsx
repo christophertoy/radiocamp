@@ -11,7 +11,7 @@ import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from "./ShowListItem";
-import List from "./List";
+import ShowList from "./ShowList";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -57,7 +57,7 @@ export default function Site(props) {
           </Button>
         </CardActions>
       </Card>
-      <List broadcasterId={props.broadcasterData.id} />
+      <ShowList broadcasterId={props.broadcasterData.id} />
     </div>
   );
 }
