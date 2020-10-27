@@ -31,6 +31,7 @@ export default function episodeList(props) {
         return (
           <EpisodeListItem
             key={episode.id}
+            id={episode.id}
             title={episode.title}
             description={episode.description}
             date={episode.date}

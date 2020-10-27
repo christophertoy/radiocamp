@@ -9,6 +9,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 // import DraftsIcon from "@material-ui/icons/Drafts";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import {
+  BrowserRouter,
+  Link,
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,18 +27,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EpisodeListItem(props) {
   const classes = useStyles();
+  let match = useRouteMatch();
+
   return (
     <div className={classes.root}>
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary={props.title}
-          secondary={props.description}
-        />
-        <ListItemText primary={props.date} />
-      </ListItem>
+      <Link to={`${match.url}/${props.id}`}>
+        <ListItem button>
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary={props.title}
+            secondary={props.description}
+          />
+          <ListItemText primary={props.date} />
+        </ListItem>
+      </Link>
     </div>
   );
 }
