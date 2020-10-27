@@ -19,21 +19,21 @@ export default function App(props) {
   // },[]);
 
   return (
-    <div>
-      <Switch>
-        <Route exact path ='/'> 
-          <Welcome /> 
-        </Route>
-        <Route path = "/:broadcasterHandle">
-          <Site />
-        {/* <Route path = '/:broadcasterHandle/' render = { (props) => {
-          return <Site handle={props.match.params.broadcasterHandle} />
-        } }/> */}
-        </Route>
-        {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
-          return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
-        } }/> */}
-      </Switch>
-    </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path ='/'> 
+            <Welcome /> 
+          </Route>
+          <Route path = "/:broadcasterHandle">
+            <Site />
+          {/* <Route path = '/:broadcasterHandle/' render = { (props) => {
+            return <Site handle={props.match.params.broadcasterHandle} />
+          } }/> */}
+          </Route>
+          {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
+            return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
+          } }/> */}
+        </Switch>
+      </BrowserRouter>
   )
 }

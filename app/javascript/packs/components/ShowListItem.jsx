@@ -27,13 +27,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ShowListItem(props) {
   const classes = useStyles();
-  let { path, url } = useRouteMatch();
-  console.log('useRouteMatch', path, url);
+  let match = useRouteMatch();
   let { broadcasterHandle } = useParams();
 
   return (
     <div className={classes.root}>
-      <Link to={`${url}/${props.showId}`}>
+      <Link to={`${match.url}/${props.showId}`}>
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

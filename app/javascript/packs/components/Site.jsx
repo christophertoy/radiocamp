@@ -32,29 +32,31 @@ const useStyles = makeStyles({
 export default function Site(props) {
   const classes = useStyles();
 
-  let { path, url } = useRouteMatch();
   let { broadcasterHandle } = useParams();
 
   const [name, setName] = useState("");
-  const [broadcasterId, setBroadcasterId] = useState(0);
   const [broadcasterData, setBroadcasterData] = useState({});
+
+  let match = useRouteMatch();
 
   useEffect(async () => {
     const resp = await axios.get("/broadcasters.json");
     const thisBroadcaster = resp.data.find((x) => x.handle === broadcasterHandle);
     setName(thisBroadcaster.name);
-    setBroadcasterId(thisBroadcaster.id);
     setBroadcasterData(thisBroadcaster);
   }, []);
 
+  console.log(match);
+
   return (
     <div>
+      <h3>Hello!</h3>
       <NavBar title={name} />
       <Switch>
-        <Route exact path={path}>
+        <Route exact path={match.path}>
           <Broadcaster broadcasterData={broadcasterData} />
         </Route>
-        <Route path={`${path}/:showId`}>
+        <Route path={`${match.path}/:showId`}>
           <Show />
         </Route>
       </Switch>

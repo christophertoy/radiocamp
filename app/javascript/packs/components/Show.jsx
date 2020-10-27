@@ -31,6 +31,7 @@ export default function Show(props) {
   const classes = useStyles();
 
   const [showData, setShowData] = useState({});
+  const match = useRouteMatch();
   let { showId } = useParams();
 
   useEffect(async () => {
