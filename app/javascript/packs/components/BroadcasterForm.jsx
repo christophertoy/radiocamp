@@ -31,7 +31,6 @@ export default function BroadcasterForm(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [logo, setLogo] = useState("");
-
   const [open, setOpen] = useState(false);
 
   const reset = () => {
@@ -52,11 +51,12 @@ export default function BroadcasterForm(props) {
     })
     .then(function (response) {
       console.log(response);
-      setOpen(false);
     })
     .catch(function (error) {
       console.log(error);
     });
+    reset();
+    handleClose();
   };
 
   const handleClickOpen = () => {
@@ -73,9 +73,11 @@ export default function BroadcasterForm(props) {
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
       Create my site
       </Button>
+
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Broadcaster Information</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="form-dialog-title">Broadcaster Information</DialogTitle>
+          <DialogContent>
+          
           <FormGroup>
             
             <FormControl>
