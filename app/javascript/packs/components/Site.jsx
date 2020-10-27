@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from "./ShowListItem";
 import ShowList from "./ShowList";
+import Episode from "./Episode";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -52,6 +53,9 @@ export default function Site(props) {
       <Switch>
         <Route exact path={match.path}>
           <Broadcaster broadcasterData={broadcasterData} />
+        </Route>
+        <Route path={`${match.path}/:showId/:episodeId`}>
+          <Episode />
         </Route>
         <Route path={`${match.path}/:showId`}>
           <Show />

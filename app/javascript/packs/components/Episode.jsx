@@ -10,7 +10,6 @@ import EpisodeList from "./EpisodeList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EpisodeListItem from "./EpisodeListItem";
-import EpisodeList from "./EpisodeList";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -34,12 +33,12 @@ export default function Episode(props) {
   let { episodeId } = useParams();
 
   useEffect(async () => {
-    const resp = await axios.get(`/episodes/${episodesId}.json`);
+    const resp = await axios.get(`/episodes/${episodeId}.json`);
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setEpisodeData(resp.data);
   }, []);
 
-  return (
+  return ( 
     <div>
       <Card className={classes.root}>
         <CardMedia
@@ -51,14 +50,13 @@ export default function Episode(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {episodeData.name}
+            {episodeData.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {/* {props.broadcasterData.description} */}
+            {episodeData.description}
           </Typography>
         </CardContent>
       </Card>
-      <EpisodeList episodeId={episodeId}/>
     </div>
   );
 }
