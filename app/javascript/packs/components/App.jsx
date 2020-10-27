@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from './ShowListItem';
-import Broadcaster from './Broadcaster';
+import Site from './Site';
 import Welcome from './Welcome';
 
 export default function App(props) {
@@ -23,7 +23,7 @@ export default function App(props) {
       <Switch>
         <Route exact path ='/'> <Welcome /> </Route>
         <Route path = '/:broadcasterHandle/' render = { (props) => {
-          return <Broadcaster handle={props.match.params.broadcasterHandle} />
+          return <Site handle={props.match.params.broadcasterHandle} />
         } }/>
         {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
           return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
