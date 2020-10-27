@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from './ShowListItem';
 import Broadcaster from './Broadcaster';
+import Welcome from './Welcome';
 
 export default function App(props) {
   const [shows, setShows] = useState([])
@@ -20,7 +21,7 @@ export default function App(props) {
   return (
     <div>
       <Switch>
-        <Route exact path ='/'> <NavBar title="RadioCamp"/> </Route>
+        <Route exact path ='/'> <Welcome /> </Route>
         <Route path = '/:broadcasterHandle/' render = { (props) => {
           return <Broadcaster handle={props.match.params.broadcasterHandle} />
         } }/>
