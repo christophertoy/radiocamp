@@ -28,6 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function Site(props) {
   const classes = useStyles();
 
@@ -58,7 +59,7 @@ export default function Site(props) {
           </Button>
         </CardActions>
       </Card>
-      <ShowForm />
+      <ShowForm broadcasterId={props.broadcasterData.id} />
       <ShowList broadcasterId={props.broadcasterData.id} />
     </div>
   );

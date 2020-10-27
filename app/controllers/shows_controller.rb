@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_show, only: [:show, :edit, :update, :destroy]
 
   # GET /shows

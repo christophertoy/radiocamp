@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import {
@@ -13,47 +13,51 @@ import {
 import { themePurpleYellow } from "./themes";
 // props will need to contain broadcaster ID
 
-
-
-
 export default function ShowForm(props) {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [logo, setLogo] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [logo, setLogo] = useState("");
 
   const reset = function () {
-    setName('');
-    setDescription('');
-    setLogo('');
-  }
-  
+    setName("");
+    setDescription("");
+    setLogo("");
+  };
+
   const handleSubmit = function (event) {
     event.preventDefault();
 
     const show = {
       name,
       description,
-      logo
-    }
+      image: logo,
+      genre: null,
+      broadcaster_id: props.broadcasterId
+    };
 
-    axios.post(`http://localhost:3000/shows`, { show })
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
-    console.log("name:", name, "description:", description, "logo:", logo )
+    axios
+      .post("/shows", { show })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // console.log("name:", name, "description:", description, "logo:", logo);
     reset();
-
-  }
+  };
 
   return (
     <ThemeProvider theme={themePurpleYellow}>
       <FormGroup>
         <FormControl>
           <InputLabel htmlFor="name">Name</InputLabel>
-          <Input id="name" aria-describedby="my-helper-text" 
-             value={name}
-             onChange={ (event) => setName(event.target.value)}
+          <Input
+            id="name"
+            aria-describedby="my-helper-text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
           />
           <FormHelperText id="my-helper-text">
             Enter the name of your show
@@ -62,9 +66,11 @@ export default function ShowForm(props) {
 
         <FormControl>
           <InputLabel htmlFor="description">Description</InputLabel>
-          <Input id="description" aria-describedby="my-helper-text" 
-              value={description}
-              onChange={ (event) => setDescription(event.target.value)}
+          <Input
+            id="description"
+            aria-describedby="my-helper-text"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
           />
           <FormHelperText id="my-helper-text">
             Enter a short summary that describes your show.
@@ -73,16 +79,18 @@ export default function ShowForm(props) {
 
         <FormControl>
           <InputLabel htmlFor="show-logo">Logo</InputLabel>
-          <Input id="show_logo" aria-describedby="my-helper-text" 
-              value={logo}
-              onChange={ (event) => setLogo(event.target.value)}
+          <Input
+            id="show_logo"
+            aria-describedby="my-helper-text"
+            value={logo}
+            onChange={(event) => setLogo(event.target.value)}
           />
           <FormHelperText id="my-helper-text">
             Enter a URL that points to your show's logo
           </FormHelperText>
         </FormControl>
 
-        <Button variant="contained" color="primary" onClick={ handleSubmit }>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Create Show
         </Button>
         <br />
