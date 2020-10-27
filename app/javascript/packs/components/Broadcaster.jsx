@@ -20,7 +20,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Broadcaster from "./Broadcaster";
 
 const useStyles = makeStyles({
   root: {
@@ -31,22 +30,34 @@ const useStyles = makeStyles({
 export default function Site(props) {
   const classes = useStyles();
 
-  const [name, setName] = useState("");
-  const [broadcasterId, setBroadcasterId] = useState(0);
-  const [broadcasterData, setBroadcasterData] = useState({});
-
-  useEffect(async () => {
-    const resp = await axios.get("/broadcasters.json");
-    const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
-    setName(thisBroadcaster.name);
-    setBroadcasterId(thisBroadcaster.id);
-    setBroadcasterData(thisBroadcaster);
-  }, []);
-
   return (
     <div>
-      <NavBar title={name} />
-      <Broadcaster broadcasterData={broadcasterData} />
+      <Card className={classes.root}>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height="250"
+          image="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_163052525-730x342.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {props.broadcasterData.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.broadcasterData.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Contact Me
+          </Button>
+        </CardActions>
+      </Card>
+      <List broadcasterId={props.broadcasterData.id} />
     </div>
   );
 }
