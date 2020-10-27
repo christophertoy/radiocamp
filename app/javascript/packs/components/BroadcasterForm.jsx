@@ -13,16 +13,58 @@ import {
   DialogTitle
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
+import axios from "axios";
+
+
+// const emptyBroadcaster = {
+//   handle: "",
+//   name: "",
+//   description: "",
+//   logo: ""
+// };
 
 export default function BroadcasterForm(props) {
+  // can the broadcaster state be contained in a single object instead of using state 5 times?
+  //const [broadcaster, setBroadcaster] = useState(emptyBroadcaster);
+
+  const [handle, setHandle] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [logo, setLogo] = useState("");
 
   const [open, setOpen] = useState(false);
+
+  const reset = () => {
+    setHandle("");
+    setName("");
+    setDescription("");
+    setLogo("");
+  };
+
+  const saveBroadcaster = (event) => {
+    event.preventDefault();
+    axios.post('/broadcasters', {
+      handle,
+      name,
+      description,
+      logo,
+      authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
+    })
+    .then(function (response) {
+      console.log(response);
+      setOpen(false);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    reset();
     setOpen(false);
   };
 
@@ -38,7 +80,14 @@ export default function BroadcasterForm(props) {
             
             <FormControl>
               <InputLabel htmlFor="handle">Handle</InputLabel>
-              <Input id="handle" aria-describedby="my-helper-text" />
+              <Input 
+                name="handle" 
+                id="handle" 
+                aria-describedby="my-helper-text" 
+                required={true}
+                value={handle}
+                onChange={(event) => setHandle(event.target.value)}
+              />
               <FormHelperText id="my-helper-text">
                 Enter your station's handle or call sign.
               </FormHelperText>
@@ -46,15 +95,29 @@ export default function BroadcasterForm(props) {
 
             <FormControl>
               <InputLabel htmlFor="name">Name</InputLabel>
-              <Input id="name" aria-describedby="my-helper-text" />
-              <FormHelperText id="my-helper-text">
+              <Input 
+                name="name"
+                id="name" 
+                aria-describedby="my-helper-text"
+                required={true}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />              
+            <FormHelperText id="my-helper-text">
                 Enter your station's name
               </FormHelperText>
             </FormControl>
 
             <FormControl>
               <InputLabel htmlFor="description">Description</InputLabel>
-              <Input id="description" aria-describedby="my-helper-text" />
+              <Input 
+                name="description" 
+                id="description" 
+                aria-describedby="my-helper-text"
+                required={true}
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
               <FormHelperText id="my-helper-text">
                 Enter a short summary that describes your station.
               </FormHelperText>
@@ -62,17 +125,23 @@ export default function BroadcasterForm(props) {
 
             <FormControl>
               <InputLabel htmlFor="station-logo">Logo</InputLabel>
-              <Input id="station_logo" aria-describedby="my-helper-text" />
+              <Input name="logo"
+                 id="station_logo" 
+                 aria-describedby="my-helper-text"
+                 required={true}
+                 value={logo}
+                 onChange={(event) => setLogo(event.target.value)}/>
               <FormHelperText id="my-helper-text">
                 Enter a URL that points to your station's logo
               </FormHelperText>
             </FormControl>
 
+
             <DialogActions>
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={handleClose} color="primary">
+              <Button onClick={saveBroadcaster} color="primary">
                 Save
               </Button>          
             </DialogActions>
