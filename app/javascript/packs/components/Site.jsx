@@ -21,6 +21,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Broadcaster from "./Broadcaster";
+import Show from "./Show";
 
 const useStyles = makeStyles({
   root: {
@@ -31,22 +32,33 @@ const useStyles = makeStyles({
 export default function Site(props) {
   const classes = useStyles();
 
+  let { broadcasterHandle } = useParams();
+
   const [name, setName] = useState("");
-  const [broadcasterId, setBroadcasterId] = useState(0);
   const [broadcasterData, setBroadcasterData] = useState({});
+
+  let match = useRouteMatch();
 
   useEffect(async () => {
     const resp = await axios.get("/broadcasters.json");
-    const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
+    const thisBroadcaster = resp.data.find((x) => x.handle === broadcasterHandle);
     setName(thisBroadcaster.name);
-    setBroadcasterId(thisBroadcaster.id);
     setBroadcasterData(thisBroadcaster);
   }, []);
+
+  console.log(match);
 
   return (
     <div>
       <NavBar title={name} />
-      <Broadcaster broadcasterData={broadcasterData} />
+      <Switch>
+        <Route exact path={match.path}>
+          <Broadcaster broadcasterData={broadcasterData} />
+        </Route>
+        <Route path={`${match.path}/:showId`}>
+          <Show />
+        </Route>
+      </Switch>
     </div>
   );
 }

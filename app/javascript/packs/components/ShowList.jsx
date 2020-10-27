@@ -29,6 +29,7 @@ export default function showList(props) {
         return (
           <ShowListItem
             key={show.id}
+            showId={show.id}
             name={show.name}
             description={show.description}
           />
