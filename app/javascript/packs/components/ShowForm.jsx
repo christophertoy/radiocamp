@@ -29,6 +29,18 @@ export default function ShowForm(props) {
   
   const handleSubmit = function (event) {
     event.preventDefault();
+
+    const show = {
+      name,
+      description,
+      logo
+    }
+
+    axios.post(`http://localhost:3000/shows`, { show })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
     console.log("name:", name, "description:", description, "logo:", logo )
     reset();
 
