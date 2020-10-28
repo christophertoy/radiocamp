@@ -79,7 +79,7 @@ export default function NavBar(props) {
   const history = useHistory();
 
   const doSearch = async function (queryString) {
-    history.push(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
+    history.push(`/${props.broadcasterData.handle}/search?query=${encodeURIComponent(queryString)}`);
     // console.log(queryString);
     // const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
     // setSearchResults(resp.data);
