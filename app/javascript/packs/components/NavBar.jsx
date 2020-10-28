@@ -13,6 +13,7 @@ import {
   Route,
   useParams,
   useRouteMatch,
+  useHistory
 } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -75,12 +76,14 @@ export default function NavBar(props) {
   const [searchResults, setSearchResults] = useState([]); 
   const [queryString, setQueryString] = useState(""); 
   const match = useRouteMatch();
+  const history = useHistory();
 
   const doSearch = async function (queryString) {
-    console.log(queryString);
-      const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
-      setSearchResults(resp.data);
-      console.log(resp.data);
+    history.push(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
+    // console.log(queryString);
+    // const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
+    // setSearchResults(resp.data);
+    // console.log(resp.data);
   }
 
   const classes = useStyles();
@@ -97,7 +100,6 @@ export default function NavBar(props) {
         </div>
           <form onSubmit={(e) => { e.preventDefault(); 
             doSearch(queryString);
-            console.log(e); 
             return null;
             }}>
             <InputBase
