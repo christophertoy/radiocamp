@@ -3,10 +3,21 @@ class BroadcastersController < ApplicationController
 
   # Search function
   def search
+    query = params[:query].downcase
     @shows = Show.where(broadcaster_id: Broadcaster.where('handle = ?', params[:broadcaster_handle]))
     @episodes = Episode.where(show_id: @shows)
+    @data = @shows + @episodes
+    @results = @data.select do |record|
+      # record.description && record.description.include?(query) || record.has_attribute? (:title) && record.title.include?(query) || record.name && record.name.include?(query)
+      # record.respond_to? :title && record.title != nil && record.title.include?(query)
+      description_matches = record.respond_to?(:description) && record.description != nil && record.description.downcase.include?(query)
+      title_matches = record.respond_to?(:title) && record.title != nil && record.title.downcase.include?(query)
+      name_matches = record.respond_to?(:name) && record.name != nil && record.name.downcase.include?(query)
 
-    render json: @shows + @episodes
+      description_matches || title_matches || name_matches
+    end
+
+    render json: @results
   end
 
   # GET /broadcasters
