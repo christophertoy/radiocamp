@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 // import IconButton from '@material-ui/core/IconButton';
@@ -6,6 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +72,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar(props) {
   // const classes = { menuButton: 'blank', title: 'blank' }
+  const [searchResults, setSearchResults] = useState([]); 
+  const [queryString, setQueryString] = useState(""); 
+  const match = useRouteMatch();
+
+  const doSearch = async function (queryString) {
+    console.log(queryString);
+      const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
+      setSearchResults(resp.data);
+      console.log(resp.data);
+  }
 
   const classes = useStyles();
 
@@ -77,14 +95,22 @@ export default function NavBar(props) {
         <div className={classes.searchIcon}>
           <SearchIcon />
         </div>
-          <InputBase
+          <form onSubmit={(e) => { e.preventDefault(); 
+            doSearch(queryString);
+            console.log(e); 
+            return null;
+            }}>
+            <InputBase
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              value={queryString}
+              onChange={(event) => setQueryString(event.target.value)}
             />
+        </form>
       </div>
       {/* <Button color="inherit">Login</Button> */}
     </Toolbar>
