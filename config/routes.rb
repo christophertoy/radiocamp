@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :broadcasters
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
-  get ':broadcaster_handle/search', to: 'broadcasters#search'
+  get ':broadcaster_handle/api/search', to: 'broadcasters#search'
   get '*path', to: 'pages#home'
 end

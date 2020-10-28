@@ -91,7 +91,7 @@ export default function EpisodeForm(props) {
 
   return (
     <ThemeProvider theme={themeOrangeGrey}>
-      <Button constiant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add an episode
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
