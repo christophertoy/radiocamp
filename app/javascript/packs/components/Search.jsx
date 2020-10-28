@@ -32,20 +32,22 @@ export default function Search(props) {
   const location = useLocation();
   const [searchResults, setSearchResults] = useState([]);
 
+  const handle = props.broadcasterData.handle;
+
   // const [episodeData, setEpisodeData] = useState({});
   // const match = useRouteMatch();
   // let { episodeId } = useParams();
 
   useEffect(async () => {
     // console.log('match', match);
-    // console.log('params', params);
-    const queryPath = `${location.pathname}/api${location.search}`;
-    console.log(queryPath);
-    console.log(location);
+    // console.log('params', params;
+    if(props.broadcasterData.handle){
+    const queryPath = `/${handle}/api/search${location.search}`;
+    // console.log('queryPath', queryPath);
     const resp = await axios.get(queryPath);
-    setSearchResults(resp.data);
-    console.log(resp.data);
-  }, [location]);
+    // console.log(resp.data);
+    setSearchResults(resp.data);}
+  }, [props.broadcasterData.handle, location]);
 
   return ( 
     <div>
@@ -77,10 +79,12 @@ export default function Search(props) {
       {searchResults.map((x, i) => x.show_id ? 
         <EpisodeListItem
           key={i}
-          id={x.id}
-          title={x.title}
-          description={x.description}
-          date={x.date}
+          episodeData={x}
+          // id={x.id}
+          // title={x.title}
+          // description={x.description}
+          // date={x.date}
+          broadcasterData={props.broadcasterData}
         /> : 
         <ShowListItem
           key={i}
@@ -88,6 +92,7 @@ export default function Search(props) {
           name={x.name}
           description={x.description}
           date={x.date}
+          broadcasterData={props.broadcasterData}
         />)}
     </div>
   );

@@ -62,7 +62,7 @@ export default function Show(props) {
         </CardContent>
       </Card>
       <EpisodeForm broadcasterId={props.broadcasterId}/>
-      <EpisodeList showId={showId}/>
+      <EpisodeList broadcasterData={props.broadcasterData} showId={showId}/>
     </div>
   );
 }

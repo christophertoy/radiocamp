@@ -56,13 +56,13 @@ export default function Site(props) {
           <Broadcaster broadcasterData={broadcasterData} />
         </Route>
         <Route path={`${match.path}/search`}>
-          <Search />
+          <Search broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId/:episodeId`}>
-          <Episode />
+          <Episode broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId`}>
-          <Show broadcasterId={broadcasterData.id}/>
+          <Show broadcasterId={broadcasterData.id} broadcasterData={broadcasterData}/>
         </Route>
       </Switch>
     </div>

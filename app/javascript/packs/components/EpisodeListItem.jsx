@@ -32,16 +32,16 @@ export default function EpisodeListItem(props) {
 
   return (
     <div className={classes.root}>
-      <Link to={`${match.url}/${props.id}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/${props.broadcasterData.handle}/${props.episodeData.show_id}/${props.episodeData.id}`} style={{ textDecoration: 'none' }}>
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary={props.title}
-            secondary={props.description}
+            primary={props.episodeData.title}
+            secondary={props.episodeData.description}
           />
-          <ListItemText primary={props.date} />
+          <ListItemText primary={props.episodeData.date} />
         </ListItem>
       </Link>
     </div>
