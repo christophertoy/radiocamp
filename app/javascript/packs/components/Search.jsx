@@ -19,6 +19,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import ShowListItem from "./ShowListItem";
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles({
 export default function Search(props) {
   const classes = useStyles();
   const location = useLocation();
+  const [searchResults, setSearchResults] = useState([]);
 
   // const [episodeData, setEpisodeData] = useState({});
   // const match = useRouteMatch();
@@ -41,7 +43,7 @@ export default function Search(props) {
     console.log(queryPath);
     console.log(location);
     const resp = await axios.get(queryPath);
-    // setSearchResults(resp.data);
+    setSearchResults(resp.data);
     console.log(resp.data);
   }, [location]);
 
@@ -72,6 +74,21 @@ export default function Search(props) {
           </Button>
         </CardActions>
       </Card>
+      {searchResults.map((x, i) => x.show_id ? 
+        <EpisodeListItem
+          key={i}
+          id={x.id}
+          title={x.title}
+          description={x.description}
+          date={x.date}
+        /> : 
+        <ShowListItem
+          key={i}
+          id={x.id}
+          name={x.name}
+          description={x.description}
+          date={x.date}
+        />)}
     </div>
   );
 }
