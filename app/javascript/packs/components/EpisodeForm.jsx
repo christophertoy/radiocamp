@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   
@@ -18,6 +18,7 @@ import {
 
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
+import axios from 'axios';
 
 // junk data - remove once API calls are in place
 
@@ -70,25 +71,45 @@ const jsonShows = [
 
 // dummy placeholder function returns a simplified show object
 // there will need to be a call to API here
-const getShows = () => {
-  return jsonShows.map(show => {
-    return { id: show.id, name: show.name }
-  });
-};
 
-const initialValues = {
-  id: null,
-  showName: "",
-  title: "",
-  description: "",
-  episode_url: "",
-  release_date: "2020-10-31"
-};
+// { Episode Record
+//   id: 1,
+//   title: "The Modern Campfire",
+//   description: "Examining isolation and connection in the age of Zoom parties",
+//   episode_url: "http://www.example.com",
+//   release_date: "2020-10-25T20:20:31.311Z",
+//   show_id: 1,
+//   created_at: "2020-10-25T20:20:31.319Z",
+//   updated_at: "2020-10-25T20:20:31.319Z",
+//   url: "http://localhost:3000/episodes/1.json"
+//   },
 
-export default function EpisodeForm() {
+export default function EpisodeForm(props) {
 
-  const [shows, setShows] = useState(initialValues);
+  const [shows, setShows] = useState([]);
+
+  useEffect(async () => {
+    const resp = await axios.get("/shows.json");
+    const allShows = resp.data.filter(x => x.broadcaster_id === 1);
+    console.log(allShows);
+    setShows(allShows);
+  }, []);
+
+    // const resp = await axios.get("/shows.json");
+    // const allShows = resp.data.filter(show => show.broadcaster_id === 1);   
+
+    // const getShows = () => {
+    //   return allShows.map(show => {
+    //   return { id: show.id, name: show.name }
+    //   });
+    // };
+  
+  const [showId, setShowId] = useState("");
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("");
+  const [releaseDate, setReleaseDate] = useState("2020-12-01");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -96,15 +117,44 @@ export default function EpisodeForm() {
 
   const handleClose = () => {
     setOpen(false);
+  };  
+
+  const reset = function () {
+    setShowId("");
+    setTitle("");
+    setDescription("");
+    setUrl("");
+    setReleaseDate("");
+  };
+  
+  const handleSubmit = function (event) {
+    event.preventDefault();
+    
+
+    const episode = {
+      show_id: showId, 
+      title,
+      description,
+      episode_url: url,
+      release_date: releaseDate,
+    };
+
+    console.log(episode)
+
+    axios
+      .post("/episodes", { episode })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    reset();
+    handleClose();
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setShows({
-      ...shows,
-      [name]: value
-    })
-  }
+  console.log(shows);
 
   return (
     <ThemeProvider theme={themeOrangeGrey}>
@@ -123,15 +173,15 @@ export default function EpisodeForm() {
                 name="showName"
                 label="Show"
                 id="demo-simple-select"
-                value={shows.showName}
-                onChange={handleInputChange}
+                value={showId}
+                onChange={(event) => setShowId(event.target.value)}
               >
               <MenuItem value="Choose a Show"></MenuItem>
                 {
-                  getShows().map(show =>
+                  shows.map(show =>
                     <MenuItem
                       key={show.id}
-                      value={show.name}>
+                      value={show.id}>
                       {show.name}
                     </MenuItem>)
                 }
@@ -142,8 +192,8 @@ export default function EpisodeForm() {
               <InputLabel htmlFor="title">Episode Title</InputLabel>
               <Input
                 name="title"
-                value={shows.title}
-                onChange={handleInputChange}
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
                 id="title"
                 aria-describedby="my-helper-text"
               />             
@@ -155,8 +205,8 @@ export default function EpisodeForm() {
                 multiline
                 rows={4}
                 name="description"
-                value={shows.description}
-                onChange={handleInputChange}
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
               />              
             </FormControl>
 
@@ -164,8 +214,8 @@ export default function EpisodeForm() {
               <InputLabel htmlFor="episode_url">Episode URL</InputLabel>
               <Input
                 name="episode_url"
-                value={shows.episode_url}
-                onChange={handleInputChange}
+                value={url}
+                onChange={(event) => setUrl(event.target.value)}
               />            
             </FormControl>
 
@@ -174,17 +224,17 @@ export default function EpisodeForm() {
               <Input
                 name="release_date"
                 type="date"
-                value={shows.release_date}
-                onChange={handleInputChange}
+                value={releaseDate}
+                onChange={(event) => setReleaseDate(event.target.value)}
               />
             </FormControl>
 
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Cancel
+              <Button onClick={handleSubmit} color="primary">
+                Create Episode
               </Button>
               <Button onClick={handleClose} color="primary">
-                Save
+                Cancel
               </Button>
             </DialogActions>
     
@@ -192,6 +242,5 @@ export default function EpisodeForm() {
         </DialogContent>
       </Dialog>
     </ThemeProvider>
-
   )
 };

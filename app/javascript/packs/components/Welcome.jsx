@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import showList from './ShowList';
 import BroadcasterForm from './BroadcasterForm';
+import EpisodeForm from "./EpisodeForm";
 
 
 export default function Welcome(props) {
@@ -36,6 +37,7 @@ export default function Welcome(props) {
           <h1>Join RadioCamp you will be so happy!</h1>
         </Typography>
         <Box><BroadcasterForm /></Box>
+        <EpisodeForm />
       </Container>
     </div>
   )
