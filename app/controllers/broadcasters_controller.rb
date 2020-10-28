@@ -1,6 +1,13 @@
 class BroadcastersController < ApplicationController
   before_action :set_broadcaster, only: [:show, :edit, :update, :destroy]
 
+  # Search function
+  def search
+    @shows = Show.all
+    @episodes = Episode.all
+    render json: @shows + @episodes
+  end
+
   # GET /broadcasters
   # GET /broadcasters.json
   def index
