@@ -88,10 +88,11 @@ export default function Search(props) {
         /> : 
         <ShowListItem
           key={i}
-          id={x.id}
-          name={x.name}
-          description={x.description}
-          date={x.date}
+          showData={x}
+          // id={x.id}
+          // name={x.name}
+          // description={x.description}
+          // date={x.date}
           broadcasterData={props.broadcasterData}
         />)}
     </div>
