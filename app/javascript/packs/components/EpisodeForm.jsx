@@ -27,7 +27,7 @@ export default function EpisodeForm(props) {
     const resp = await axios.get("/shows.json");
     const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
     setShows(allShows);
-  }, []);
+  }, [props.broadcasterId]);
 
   const getCurrentDate = () => {
     let today = new Date();
@@ -109,9 +109,9 @@ export default function EpisodeForm(props) {
                 value={showId}
                 onChange={(event) => setShowId(event.target.value)}
               >
-                <MenuItem value="Choose a Show"></MenuItem>
-                {
-                  shows.map(show =>
+                <MenuItem id="bug" value="Choose a Show"></MenuItem>
+                {  
+                shows.map(show =>
                     <MenuItem
                       key={show.id}
                       value={show.id}>
