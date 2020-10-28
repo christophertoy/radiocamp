@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 
 export default function Site(props) {
   const classes = useStyles();
-
+  
   return (
     <div>
       <Card className={classes.root}>
@@ -60,7 +60,7 @@ export default function Site(props) {
         </CardActions>
       </Card>
       <ShowForm broadcasterId={props.broadcasterData.id} />
-      <ShowList broadcasterId={props.broadcasterData.id} />
+      <ShowList broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} />
     </div>
   );
 }

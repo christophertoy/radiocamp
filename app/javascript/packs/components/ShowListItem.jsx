@@ -32,12 +32,12 @@ export default function ShowListItem(props) {
 
   return (
     <div className={classes.root}>
-      <Link to={`${match.url}/${props.showId}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/${props.broadcasterData.handle}/${props.showData.id}`} style={{ textDecoration: 'none' }}>
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
-          <ListItemText primary={props.name} secondary={props.description} />
+          <ListItemText primary={props.showData.name} secondary={props.showData.description} />
         </ListItem>
       </Link>
     </div>

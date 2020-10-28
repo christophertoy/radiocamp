@@ -50,19 +50,19 @@ export default function Site(props) {
   // console.log('broadcasterData', broadcasterData);
   return (
     <div>
-      <NavBar title={name} />
+      <NavBar broadcasterData={broadcasterData} title={name} />
       <Switch>
         <Route exact path={match.path}>
           <Broadcaster broadcasterData={broadcasterData} />
         </Route>
         <Route path={`${match.path}/search`}>
-          <Search />
+          <Search broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId/:episodeId`}>
-          <Episode />
+          <Episode broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId`}>
-          <Show broadcasterId={broadcasterData.id}/>
+          <Show broadcasterId={broadcasterData.id} broadcasterData={broadcasterData}/>
         </Route>
       </Switch>
     </div>
