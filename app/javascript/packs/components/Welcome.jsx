@@ -10,6 +10,8 @@ import axios from "axios";
 import showList from './ShowList';
 import BroadcasterForm from './BroadcasterForm';
 import EpisodeForm from "./EpisodeForm";
+import { ThemeProvider } from '@material-ui/core';
+import { theme, themePurpleYellow, themeOrangeGrey } from './themes'
 
 
 export default function Welcome(props) {
@@ -31,14 +33,16 @@ export default function Welcome(props) {
 
   return (
     <div>
+      <ThemeProvider theme={themeOrangeGrey}>
       <NavBar title="RadioCamp"/> 
-      <Container >
-        <Typography>
-          <h1>Join RadioCamp you will be so happy!</h1>
+      <Container>
+        <Typography variant="h4">
+          Join RadioCamp you will be so happy!
         </Typography>
         <Box><BroadcasterForm /></Box>
         <EpisodeForm />
       </Container>
+      </ThemeProvider>
     </div>
   )
 }

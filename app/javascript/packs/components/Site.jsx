@@ -46,7 +46,7 @@ export default function Site(props) {
     setName(thisBroadcaster.name);
     setBroadcasterData(thisBroadcaster);
   }, []);
-
+  // console.log('broadcasterData', broadcasterData);
   return (
     <div>
       <NavBar title={name} />
@@ -58,7 +58,7 @@ export default function Site(props) {
           <Episode />
         </Route>
         <Route path={`${match.path}/:showId`}>
-          <Show />
+          <Show broadcasterId={broadcasterData.id}/>
         </Route>
       </Switch>
     </div>

@@ -21,6 +21,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import EpisodeForm from "./EpisodeForm";
 
 const useStyles = makeStyles({
   root: {
@@ -60,6 +61,7 @@ export default function Show(props) {
           </Typography>
         </CardContent>
       </Card>
+      <EpisodeForm broadcasterId={props.broadcasterId}/>
       <EpisodeList showId={showId}/>
     </div>
   );
