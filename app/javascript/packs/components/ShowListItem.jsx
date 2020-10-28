@@ -32,7 +32,7 @@ export default function ShowListItem(props) {
 
   return (
     <div className={classes.root}>
-      <Link to={`${match.url}/${props.showId}`}>
+      <Link to={`${match.url}/${props.showId}`} style={{ textDecoration: 'none' }}>
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

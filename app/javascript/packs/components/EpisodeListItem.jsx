@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     backgroundColor: theme.palette.background.paper,
+    
   },
 }));
 
@@ -31,7 +32,7 @@ export default function EpisodeListItem(props) {
 
   return (
     <div className={classes.root}>
-      <Link to={`${match.url}/${props.id}`}>
+      <Link to={`${match.url}/${props.id}`} style={{ textDecoration: 'none' }}>
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
