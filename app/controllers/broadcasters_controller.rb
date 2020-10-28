@@ -3,8 +3,9 @@ class BroadcastersController < ApplicationController
 
   # Search function
   def search
-    @shows = Show.all
-    @episodes = Episode.all
+    @shows = Show.where(broadcaster_id: Broadcaster.where('handle = ?', params[:broadcaster_handle]))
+    @episodes = Episode.where(show_id: @shows)
+
     render json: @shows + @episodes
   end
 
