@@ -23,6 +23,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Broadcaster from "./Broadcaster";
 import Show from "./Show";
+import Search from "./Search";
 
 const useStyles = makeStyles({
   root: {
@@ -53,6 +54,9 @@ export default function Site(props) {
       <Switch>
         <Route exact path={match.path}>
           <Broadcaster broadcasterData={broadcasterData} />
+        </Route>
+        <Route path={`${match.path}/search`}>
+          <Search />
         </Route>
         <Route path={`${match.path}/:showId/:episodeId`}>
           <Episode />
