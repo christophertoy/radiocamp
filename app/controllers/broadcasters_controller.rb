@@ -1,4 +1,5 @@
 class BroadcastersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_broadcaster, only: [:show, :edit, :update, :destroy]
 
   # Search function

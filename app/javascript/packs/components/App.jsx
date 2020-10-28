@@ -9,29 +9,28 @@ import Site from './Site';
 import Welcome from './Welcome';
 
 export default function App(props) {
-  const [shows, setShows] = useState([])
-  const [loggedInStatus, setLoggedInStatus] = useState("Not Logged In")
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
 
-  // useEffect(async ()=> {
-  //   const resp = await axios.get('/shows.json')
-  //   console.log(resp.data);
-  //   setShows(resp.data);
-  // },[]);
+  useEffect(async ()=> {
+    await setUser(localStorage.getItem("user"));
+  },[]);
 
-  const handleLogin = (data) => {
-    setLoggedInStatus("Logged In")
-    setUser(data.user)
+
+  const handleSubmit = (data) => {
+      event.preventDefault();
+      setUser(data)
+      localStorage.setItem("user", data)
+      console.log("data", data)
   }
+
+
 
   return (
       <BrowserRouter>
         <Switch>
           <Route exact path ='/'> 
-            <Welcome
-            handleLogin={handleLogin}
-            loggedInStatus={loggedInStatus}
-            loggedInUser={user}/> 
+            <Welcome 
+            handleSubmit={handleSubmit}/> 
           </Route>
           <Route path = "/:broadcasterHandle">
             <Site />

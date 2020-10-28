@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
@@ -32,28 +32,17 @@ export default function Welcome(props) {
   //   setBroadcasterId(thisBroadcaster.id);
   // },[]);
 
-  const handleSuccessfulAuth = (data) => {
-    props.handleLogin(data)
-  }
-
-
 
   return (
     <div>
       <ThemeProvider theme={themeOrangeGrey}>
       <NavBar title="RadioCamp"/> 
       <Container>
-      <Typography variant="h4">
-          Logged in Status: {props.loggedInStatus}
-        </Typography>
-        <Typography variant="h4">
-          Logged in User: {props.loggedInUser.handle}
-        </Typography>
         <Typography variant="h4">
           Join RadioCamp you will be so happy!
         </Typography>
         <Box><BroadcasterForm /></Box>
-        <Login handleSuccessfulAuth={handleSuccessfulAuth}/>
+        <Login handleSubmit={props.handleSubmit}/>
       </Container>
       </ThemeProvider>
     </div>

@@ -13,6 +13,14 @@ import {
   DialogTitle
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+  useHistory
+} from "react-router-dom";
 import axios from "axios";
 
 export default function login (props) {
@@ -29,27 +37,12 @@ export default function login (props) {
     setOpen(false);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const user = {
-      handle,
-      // password
-    }
-
-    axios
-      .post("/sessions", user)
-      .then(response => {
-          props.handleSuccessfulAuth(response.data)
-          console.log("response from login", response);
-
-      })
-      .catch(error => {
-        console.log("error", error)
-        alert("Incorrect handle");
-      })
-
-      handleClose();
-  }
+  // const history = useHistory();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //     history.push(`/${handle}`)
+  //     handleClose();
+  // }
 
 
 
@@ -100,7 +93,7 @@ export default function login (props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={handleSubmit} color="primary">
+              <Button onClick={() => props.handleSubmit(handle)} color="primary">
                 Login
               </Button>          
             </DialogActions>
