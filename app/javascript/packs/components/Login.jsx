@@ -36,8 +36,6 @@ export default function login (props) {
       // password
     }
 
-    // console.log(user);
-
     axios
       .post("/sessions", user)
       .then(response => {
@@ -47,6 +45,7 @@ export default function login (props) {
       })
       .catch(error => {
         console.log("error", error)
+        alert("Incorrect handle");
       })
 
       handleClose();

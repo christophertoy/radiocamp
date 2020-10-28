@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     else 
       render json: { status: 401 }
     # # If user's login doesn't work, send them back to the login form.
-    #   redirect_to '/login'
+      redirect_to '/'
     end
   end
 
