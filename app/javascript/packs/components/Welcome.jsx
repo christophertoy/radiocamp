@@ -12,6 +12,7 @@ import BroadcasterForm from './BroadcasterForm';
 import EpisodeForm from "./EpisodeForm";
 import { ThemeProvider } from '@material-ui/core';
 import { theme, themePurpleYellow, themeOrangeGrey } from './themes'
+import Login from "./Login"
 
 
 export default function Welcome(props) {
@@ -31,16 +32,28 @@ export default function Welcome(props) {
   //   setBroadcasterId(thisBroadcaster.id);
   // },[]);
 
+  const handleSuccessfulAuth = (data) => {
+    props.handleLogin(data)
+  }
+
+
+
   return (
     <div>
       <ThemeProvider theme={themeOrangeGrey}>
       <NavBar title="RadioCamp"/> 
       <Container>
+      <Typography variant="h4">
+          Logged in Status: {props.loggedInStatus}
+        </Typography>
+        <Typography variant="h4">
+          Logged in User: {props.loggedInUser.handle}
+        </Typography>
         <Typography variant="h4">
           Join RadioCamp you will be so happy!
         </Typography>
         <Box><BroadcasterForm /></Box>
-        <EpisodeForm />
+        <Login handleSuccessfulAuth={handleSuccessfulAuth}/>
       </Container>
       </ThemeProvider>
     </div>
