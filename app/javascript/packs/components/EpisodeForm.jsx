@@ -109,7 +109,7 @@ export default function EpisodeForm(props) {
                 value={showId}
                 onChange={(event) => setShowId(event.target.value)}
               >
-                <MenuItem id="bug" value="Choose a Show"></MenuItem>
+                <MenuItem value="Choose a Show"></MenuItem>
                 {  
                 shows.map(show =>
                     <MenuItem
