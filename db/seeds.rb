@@ -27,6 +27,7 @@ Broadcaster.create(handle: 'sparrow', name: 'Sparrow Radio', description: '98.5F
 (1..20).each do
   Show.create(
     name: Faker::Book.unique.title,
+    description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
     broadcaster_id: rand(1..Broadcaster.count),
     image: Samples::IMAGES[rand(1..Samples::IMAGES.count)-1]
   )
