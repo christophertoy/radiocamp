@@ -20,6 +20,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { getEmbedCode } from './helpers';
 
 const useStyles = makeStyles({
   root: {
@@ -40,7 +41,7 @@ export default function Episode(props) {
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setEpisodeData(resp.data);
   }, []);
-
+  
   return ( 
     <div>
       <Card className={classes.root}>
@@ -56,18 +57,16 @@ export default function Episode(props) {
             {episodeData.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-            <em>from {episodeData.showName}</em>
-        </Link>
+            <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+              <em>from {episodeData.showName}</em>
+            </Link>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {episodeData.description}
-          </Typography>
-          <div>
-          </div>
+          </Typography>          
         </CardContent>
       </Card>
-      <Player className="player" episodeData={episodeData}/>
+      <Player className="player" embedCode={getEmbedCode(episodeData.episode_url)}/>
     </div>
   );
 }
