@@ -10,6 +10,7 @@ import EpisodeList from "./EpisodeList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EpisodeListItem from "./EpisodeListItem";
+import Player from "./Player";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -55,8 +56,11 @@ export default function Episode(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             {episodeData.description}
           </Typography>
+          <div>
+          </div>
         </CardContent>
       </Card>
+      <Player className="player" episodeData={episodeData}/>
     </div>
   );
 }
