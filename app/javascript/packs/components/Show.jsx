@@ -5,6 +5,7 @@ import {
   Route,
   useParams,
   useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import Aloha from "./Aloha";
 import NavBar from "./NavBar";
@@ -36,6 +37,14 @@ export default function Show(props) {
   const match = useRouteMatch();
   let { showId } = useParams();
 
+  const history = useHistory();
+
+  const handleLogOut = (event) => {
+    event.preventDefault();
+    localStorage.setItem("user", null);
+    history.push("/");
+  };
+
   useEffect(async () => {
     const resp = await axios.get(`/shows/${showId}.json`);
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
@@ -61,8 +70,15 @@ export default function Show(props) {
           </Typography>
         </CardContent>
       </Card>
-      <EpisodeForm broadcasterId={props.broadcasterId}/>
-      <EpisodeList broadcasterData={props.broadcasterData} showId={showId}/>
+      {props.currentUser === props.broadcasterData.handle && (
+        <EpisodeForm broadcasterId={props.broadcasterId} />
+      )}
+      {props.currentUser === props.broadcasterData.handle && (
+        <Button variant="outlined" color="primary" onClick={handleLogOut}>
+          Logout
+        </Button>
+      )}
+      <EpisodeList broadcasterData={props.broadcasterData} showId={showId} />
     </div>
   );
 }

@@ -53,7 +53,9 @@ export default function Site(props) {
       <NavBar broadcasterData={broadcasterData} title={name} />
       <Switch>
         <Route exact path={match.path}>
-          <Broadcaster broadcasterData={broadcasterData} />
+          <Broadcaster 
+          currentUser={props.currentUser}
+          broadcasterData={broadcasterData} />
         </Route>
         <Route path={`${match.path}/search`}>
           <Search broadcasterData={broadcasterData}/>
@@ -62,7 +64,10 @@ export default function Site(props) {
           <Episode broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId`}>
-          <Show broadcasterId={broadcasterData.id} broadcasterData={broadcasterData}/>
+          <Show
+          currentUser={props.currentUser} 
+          broadcasterId={broadcasterData.id} 
+          broadcasterData={broadcasterData}/>
         </Route>
       </Switch>
     </div>
