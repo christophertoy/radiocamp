@@ -27,8 +27,9 @@ Broadcaster.create(handle: 'sparrow', name: 'Sparrow Radio', description: '98.5F
 (1..20).each do
   Show.create(
     name: Faker::Book.unique.title,
-    broadcaster_id: rand(1..Broadcaster.count),
-    image: Samples::IMAGES[rand(1..Samples::IMAGES.count)-1]
+    description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
+    broadcaster_id: random.rand(1..Broadcaster.count),
+    image: Samples::IMAGES[random.rand(1..Samples::IMAGES.count)-1]
   )
 end
 
@@ -38,6 +39,6 @@ end
     description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
     release_date: Faker::Date.between(from: 3.years.ago, to: Date.today),
     episode_url: Faker::Boolean.boolean ? 'https://www.mixcloud.com/residentadvisor/ra670/' : 'https://open.spotify.com/episode/1zcbnS759Fj53gCY2CpgD9',
-    show_id: rand(1..Show.count)
+    show_id: random.rand(1..Show.count)
   )
 end
