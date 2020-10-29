@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,7 @@ import BroadcasterForm from './BroadcasterForm';
 import EpisodeForm from "./EpisodeForm";
 import { ThemeProvider } from '@material-ui/core';
 import { theme, themePurpleYellow, themeOrangeGrey } from './themes'
+import Login from "./Login"
 
 
 export default function Welcome(props) {
@@ -31,6 +32,7 @@ export default function Welcome(props) {
   //   setBroadcasterId(thisBroadcaster.id);
   // },[]);
 
+
   return (
     <div>
       <ThemeProvider theme={themeOrangeGrey}>
@@ -40,7 +42,7 @@ export default function Welcome(props) {
           Join RadioCamp you will be so happy!
         </Typography>
         <Box><BroadcasterForm /></Box>
-        <EpisodeForm />
+        <Login handleSubmit={props.handleSubmit}/>
       </Container>
       </ThemeProvider>
     </div>

@@ -15,7 +15,10 @@ require('./css/application.css')
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     // <BroadcasterForm name="React" />,
-      <App />,
+    <BrowserRouter>
+    
+      <App />
+    </BrowserRouter>,
     document.getElementById("root")
     // document.body.appendChild(document.createElement('div')),
   )
