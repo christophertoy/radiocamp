@@ -13,15 +13,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  useParams,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
-import axios from "axios";
+
 
 export default function login(props) {
   const [handle, setHandle] = useState("");
@@ -65,20 +57,20 @@ export default function login(props) {
               </FormHelperText>
             </FormControl>
 
-            {/* <FormControl>
+            <FormControl>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input 
                 name="password"
                 id="password" 
                 aria-describedby="my-helper-text"
-                required={true}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                // required={true}
+                // value={password}
+                // onChange={(event) => setPassword(event.target.value)}
               />              
             <FormHelperText id="my-helper-text">
                 Enter your password
               </FormHelperText>
-            </FormControl> */}
+            </FormControl>
 
             <DialogActions>
               <Button onClick={handleClose} color="primary">
