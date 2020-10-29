@@ -1,6 +1,7 @@
 import React from "react";
 import {
   BrowserRouter,
+  Link,
   Switch,
   Route,
   useParams,
@@ -33,6 +34,7 @@ export default function Episode(props) {
   let { episodeId } = useParams();
 
   useEffect(async () => {
+    // this API call will return a custom JSON object that contains all episdoe data and showName and showImage
     const resp = await axios.get(`/episodes/${episodeId}.json`);
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setEpisodeData(resp.data);
@@ -45,12 +47,17 @@ export default function Episode(props) {
           component="img"
           alt="Contemplative Reptile"
           height="250"
-          image="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_163052525-730x342.jpg"
+          image={episodeData.showImage}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {episodeData.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+            <em>from {episodeData.showName}</em>
+        </Link>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {episodeData.description}

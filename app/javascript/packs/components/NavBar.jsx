@@ -9,6 +9,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import {
   BrowserRouter,
+  Link,
   Switch,
   Route,
   useParams,
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    hover: 'none'
   },
   search: {
     position: 'relative',
@@ -92,7 +94,9 @@ export default function NavBar(props) {
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h6" className={classes.title}>
+        <Link to={`/${props.broadcasterData.handle}`} style={{textDecoration: 'none', color: 'inherit'}}>
         {props.title}
+        </Link>
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
