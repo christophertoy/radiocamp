@@ -34,6 +34,7 @@ end
     title: Faker::Lorem.sentence(word_count: 1, random_words_to_add: 4).titleize,
     description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
     release_date: Faker::Date.between(from: 3.years.ago, to: Date.today),
+    episode_url: Faker::Boolean.boolean ? 'https://www.mixcloud.com/residentadvisor/ra670/' : 'https://open.spotify.com/episode/1zcbnS759Fj53gCY2CpgD9',
     show_id: rand(1..Show.count)
   )
 end
