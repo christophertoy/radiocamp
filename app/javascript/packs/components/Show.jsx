@@ -58,7 +58,7 @@ export default function Show(props) {
           component="img"
           alt={showData.name + 'header image'}
           height="250"
-          image={showData.image}
+          image={showData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={showData.name}
         />
         <CardContent>
