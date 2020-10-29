@@ -85,6 +85,7 @@ export default function Search(props) {
           // description={x.description}
           // date={x.date}
           broadcasterData={props.broadcasterData}
+          isSearchItem={true}
         /> : 
         <ShowListItem
           key={i}
@@ -94,6 +95,7 @@ export default function Search(props) {
           // description={x.description}
           // date={x.date}
           broadcasterData={props.broadcasterData}
+          isSearchItem={true}
         />)}
     </div>
   );
