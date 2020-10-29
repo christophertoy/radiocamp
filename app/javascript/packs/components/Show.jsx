@@ -56,10 +56,10 @@ export default function Show(props) {
       <Card className={classes.root}>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt={showData.name + 'header image'}
           height="250"
           image={showData.image}
-          title="Contemplative Reptile"
+          title={showData.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
