@@ -5,6 +5,7 @@ import {
   Route,
   useParams,
   useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import Aloha from "./Aloha";
 import NavBar from "./NavBar";
@@ -29,9 +30,17 @@ const useStyles = makeStyles({
 });
 
 
+
 export default function Site(props) {
   const classes = useStyles();
+  const history = useHistory();
   
+  const handleLogOut = (event) => {
+    event.preventDefault();
+    localStorage.setItem("user", null);
+    history.push('/');
+  };
+
   return (
     <div>
       <Card className={classes.root}>
@@ -59,8 +68,18 @@ export default function Site(props) {
           </Button>
         </CardActions>
       </Card>
-      <ShowForm broadcasterId={props.broadcasterData.id} />
-      <ShowList broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} />
+      {props.currentUser === props.broadcasterData.handle && (
+        <ShowForm broadcasterId={props.broadcasterData.id} />
+      )}
+      {props.currentUser === props.broadcasterData.handle && (
+        <Button variant="outlined" color="primary" onClick={handleLogOut}>
+        Logout
+        </Button>
+      )}
+      <ShowList
+        broadcasterId={props.broadcasterData.id}
+        broadcasterData={props.broadcasterData}
+      />
     </div>
   );
 }
