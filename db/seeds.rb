@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Samples::IMAGES
+require_relative 'sample_data'
+
 # Initialize a deterministic pseudo-random number generator with a specific seed value so we get the same 'random' numbers every time this script is executed
 random = Random.new(123456)
 Faker::Config.random = random
@@ -25,7 +28,7 @@ Broadcaster.create(handle: 'sparrow', name: 'Sparrow Radio', description: '98.5F
   Show.create(
     name: Faker::Book.unique.title,
     broadcaster_id: rand(1..Broadcaster.count),
-    image: Faker::LoremFlickr.image(size: "800x300", search_terms: ['cats'])
+    image: Samples::IMAGES[rand(1..Samples::IMAGES.count)-1]
   )
 end
 
