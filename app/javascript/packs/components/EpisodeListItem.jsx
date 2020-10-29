@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     backgroundColor: theme.palette.background.paper,
-    
   },
 }));
 
@@ -32,15 +31,25 @@ export default function EpisodeListItem(props) {
 
   return (
     <div className={classes.root}>
-      <Link to={`/${props.broadcasterData.handle}/${props.episodeData.show_id}/${props.episodeData.id}`} style={{ textDecoration: 'none' }}>
+      <Link
+        to={`/${props.broadcasterData.handle}/${props.episodeData.show_id}/${props.episodeData.id}`}
+        style={{ textDecoration: "none" }}
+      >
         <ListItem button>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
-          <ListItemText
-            primary={props.episodeData.title}
-            secondary={props.episodeData.description}
-          />
+          {props.isSearchItem ? (
+            <ListItemText
+              primary={`Episode: ${props.episodeData.title}`}
+              secondary={props.episodeData.description}
+            />
+          ) : (
+            <ListItemText
+              primary={props.episodeData.title}
+              secondary={props.episodeData.description}
+            />
+          )}
           <ListItemText primary={props.episodeData.date} />
         </ListItem>
       </Link>
