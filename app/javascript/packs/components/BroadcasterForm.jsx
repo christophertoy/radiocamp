@@ -88,7 +88,7 @@ export default function BroadcasterForm(props) {
                 aria-describedby="my-helper-text" 
                 required={true}
                 value={handle}
-                onChange={(event) => setHandle(event.target.value)}
+                onChange={(event) => setHandle(event.target.value.toLowerCase())}
               />
               <FormHelperText id="my-helper-text">
                 Enter your station's handle or call sign.
