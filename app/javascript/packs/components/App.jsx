@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import Aloha from './Aloha';
 import NavBar from './NavBar';
 import { useEffect, useState } from "react";
@@ -16,17 +16,18 @@ export default function App(props) {
   },[]);
 
 
+  const history = useHistory();
   const handleSubmit = (data) => {
       event.preventDefault();
       setUser(data)
       localStorage.setItem("user", data)
       console.log("data", data)
+      history.push(`/${user}`)
   }
 
 
 
   return (
-      <BrowserRouter>
         <Switch>
           <Route exact path ='/'> 
             <Welcome 
@@ -42,6 +43,5 @@ export default function App(props) {
             return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
           } }/> */}
         </Switch>
-      </BrowserRouter>
   )
 }

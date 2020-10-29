@@ -10,7 +10,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
 import {
@@ -19,12 +19,11 @@ import {
   Route,
   useParams,
   useRouteMatch,
-  useHistory
+  useHistory,
 } from "react-router-dom";
 import axios from "axios";
 
-export default function login (props) {
-
+export default function login(props) {
   const [handle, setHandle] = useState("");
   // const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
@@ -37,34 +36,26 @@ export default function login (props) {
     setOpen(false);
   };
 
-  // const history = useHistory();
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //     history.push(`/${handle}`)
-  //     handleClose();
-  // }
-
-
-
-
   return (
     <ThemeProvider theme={themeOrangeGrey}>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-      Login
+        Login
       </Button>
 
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Login Information</DialogTitle>
-          <DialogContent>
-          
+        <DialogContent>
           <FormGroup>
-            
             <FormControl>
               <InputLabel htmlFor="hanlde">Handle</InputLabel>
-              <Input 
-                name="handle" 
-                id="handle" 
-                aria-describedby="my-helper-text" 
+              <Input
+                name="handle"
+                id="handle"
+                aria-describedby="my-helper-text"
                 required={true}
                 value={handle}
                 onChange={(event) => setHandle(event.target.value)}
@@ -93,17 +84,16 @@ export default function login (props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={() => props.handleSubmit(handle)} color="primary">
+              <Button
+                onClick={() => props.handleSubmit(handle)}
+                color="primary"
+              >
                 Login
-              </Button>          
+              </Button>
             </DialogActions>
-            
           </FormGroup>
         </DialogContent>
       </Dialog>
     </ThemeProvider>
-    
-  )
-
-
+  );
 }
