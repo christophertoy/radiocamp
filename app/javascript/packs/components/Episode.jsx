@@ -44,13 +44,13 @@ export default function Episode(props) {
   
   return ( 
     <div>
-      <Card className={classes.root}>
+      <Card className={classes.root} >
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt={episodeData.title}
           height="250"
-          image={episodeData.showImage}
-          title="Contemplative Reptile"
+          image={episodeData.showImage+'?fit=crop&h=250&w=1080&crop=entropy'}
+          title={episodeData.title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
