@@ -81,6 +81,7 @@ export default function EpisodeForm(props) {
       .post("/episodes.json", { episode })
       .then((response) => {
         episode.id = response.data.id;
+        episode.showImage = response.data.showImage;
         props.setEpisodes((prev) => {
           return [episode, ...prev]
         });
