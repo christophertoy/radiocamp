@@ -43,25 +43,25 @@ export default function BroadcasterForm(props) {
     setLogo("");
   };
 
-  // const saveBroadcaster = (event) => {
-  //   event.preventDefault();
-  //   axios.post('/broadcasters', {
-  //     handle,
-  //     name,
-  //     description,
-  //     logo,
-  //     theme,
-  //     authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  //   reset();
-  //   handleClose();
-  // };
+  const saveBroadcaster = (event) => {
+    event.preventDefault();
+    axios.post('/broadcasters.json', {
+      handle,
+      name,
+      description,
+      logo,
+      theme,
+      authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    reset();
+    handleClose();
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
