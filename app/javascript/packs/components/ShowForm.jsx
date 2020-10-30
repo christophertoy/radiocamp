@@ -21,6 +21,7 @@ export default function ShowForm(props) {
   const [description, setDescription] = useState("");
   const [logo, setLogo] = useState("");
   const [host, setHost] = useState("");
+  const [genre, setGenre] = useState("");
   const [open, setOpen] = useState(false);
 
 
@@ -37,7 +38,7 @@ export default function ShowForm(props) {
       name,
       description,
       image: logo,
-      genre: null,
+      genre,
       host,
       broadcaster_id: props.broadcasterId,
     };
@@ -114,6 +115,19 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter the name of your show's host
+          </FormHelperText>
+            </FormControl>
+
+            <FormControl>
+              <InputLabel htmlFor="genre">Genre</InputLabel>
+              <Input
+                id="genre"
+                aria-describedby="my-helper-text"
+                value={genre}
+                onChange={(event) => setGenre(event.target.value)}
+              />
+              <FormHelperText id="my-helper-text">
+                Enter your show's genre
           </FormHelperText>
             </FormControl>
 
