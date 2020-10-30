@@ -41,8 +41,14 @@ export default function Show(props) {
 
   useEffect(async () => {
     const resp = await axios.get("/episodes.json");
-    const filteredData = resp.data.filter(x => x.show_id == showId); 
-    setEpisodes(filteredData);
+    const filteredData = resp.data.filter(x => x.show_id == showId);
+    // sorts episodes by episode number, highest number first 
+    setEpisodes(filteredData.sort((a, b) => {
+      if (a.episode_number > b.episode_number) return -1;
+      if (a.episode_number < b.episode_number) return 1;
+      return 0;
+    }
+    ));
     console.log(filteredData);
   }, []);
   //----

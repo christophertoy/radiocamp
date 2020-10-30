@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 });
 
 
-
 export default function Broadcaster(props) {
   const classes = useStyles();
   const history = useHistory();
@@ -39,8 +38,14 @@ export default function Broadcaster(props) {
 
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
-    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterData.id); 
-    setShows(filteredData);
+    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterData.id);
+    // sorts shows alphabetically by name
+    setShows(filteredData.sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    }
+    ));
   }, [props.broadcasterData.id]);
   
   const handleLogOut = (event) => {
