@@ -45,7 +45,7 @@ export default function BroadcasterForm(props) {
 
   const saveBroadcaster = (event) => {
     event.preventDefault();
-    axios.post('/broadcasters', {
+    axios.post('/broadcasters.json', {
       handle,
       name,
       description,
