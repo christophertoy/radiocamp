@@ -37,7 +37,7 @@ export default function EpisodeListItem(props) {
       >
         <ListItem button>
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={props.episodeData.showImage}/>
+            <Avatar alt="Remy Sharp" src={props.episodeData.showImage+"?fit=crop&h=100&w=100&crop=entropy"}/>
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItemText
