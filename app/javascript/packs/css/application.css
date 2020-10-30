@@ -9,4 +9,9 @@
   display: flex;
   flex-direction: row;
   justify-content: left;
+  align-items: center;
+}
+
+#show-list-header > div {
+  margin-right: 50px;
 }
