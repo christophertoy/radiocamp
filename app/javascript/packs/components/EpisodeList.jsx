@@ -20,10 +20,10 @@ export default function episodeList(props) {
   return (
     <div className={classes.root}>
       <Typography variant="h4">Episodes</Typography>
-      {props.episodes.map((episode) => {
+      {props.episodes.map((episode, index) => {
         return (
           <EpisodeListItem
-            key={episode.id}
+            key={index}
             broadcasterData={props.broadcasterData}
             episodeData={episode}
           />
