@@ -74,6 +74,7 @@ export default function EpisodeForm(props) {
       description,
       episode_url: url,
       release_date: releaseDate,
+      episode_number: episodeNumber
     };
 
     axios
