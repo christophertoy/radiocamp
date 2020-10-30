@@ -44,8 +44,8 @@ export default function Show(props) {
     const filteredData = resp.data.filter(x => x.show_id == showId);
     // sorts episodes by episode number, highest number first 
     setEpisodes(filteredData.sort((a, b) => {
-      if (a.episode_number > b.episode_number) return -1;
-      if (a.episode_number < b.episode_number) return 1;
+      if (a.release_date > b.release_date) return -1;
+      if (a.release_date < b.release_date) return 1;
       return 0;
     }
     ));
