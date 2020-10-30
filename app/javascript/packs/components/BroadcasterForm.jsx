@@ -154,7 +154,7 @@ export default function BroadcasterForm(props) {
               >
                 <MenuItem value="Choose a Theme"></MenuItem>
                 {  
-                ['themePurpleYellow', 'themeOrangeGrey'].map((theme, index) =>
+                ['themePurpleYellow', 'themeOrangeGrey', 'themeTeal'].map((theme, index) =>
                     <MenuItem
                       key={index}
                       value={theme}

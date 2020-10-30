@@ -12,7 +12,7 @@ import axios from "axios";
 import Episode from "./Episode";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
-import { themeOrangeGrey, themePurpleYellow } from "./themes";
+import { themeOrangeGrey, themePurpleYellow, themeTeal } from "./themes";
 import Broadcaster from "./Broadcaster";
 import Show from "./Show";
 import Search from "./Search";
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 export default function Site(props) {
   const classes = useStyles();
-  const themes = { themeOrangeGrey, themePurpleYellow };
+  const themes = { themeOrangeGrey, themePurpleYellow, themeTeal };
 
   let { broadcasterHandle } = useParams();
 
