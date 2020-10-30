@@ -14,7 +14,6 @@ import {
   DialogContent,
   DialogTitle
 } from "@material-ui/core";
-import { themePurpleYellow } from "./themes";
 // props will need to contain broadcaster ID
 
 export default function ShowForm(props) {
@@ -65,7 +64,7 @@ export default function ShowForm(props) {
   };
 
   return (
-    <ThemeProvider theme={themePurpleYellow}>
+    <ThemeProvider >
 
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add a show

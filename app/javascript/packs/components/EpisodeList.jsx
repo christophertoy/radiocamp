@@ -21,7 +21,7 @@ export default function episodeList(props) {
     const resp = await axios.get("/episodes.json");
     const filteredData = resp.data.filter(x => x.show_id == props.showId); 
     setEpisodes(filteredData);
-  }, [props.broadcasterId]);
+  }, []);
   
   return (
     <div className={classes.root}>
