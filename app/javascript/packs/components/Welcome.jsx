@@ -41,8 +41,8 @@ export default function Welcome(props) {
         <Typography variant="h4">
           Join RadioCamp you will be so happy!
         </Typography>
-        <Box><BroadcasterForm /></Box>
-        <Login handleSubmit={props.handleSubmit}/>
+        <Box><BroadcasterForm handleCreateBroadcaster={props.handleCreateBroadcaster}/></Box>
+        <Login handleLogin={props.handleLogin}/>
       </Container>
       </ThemeProvider>
     </div>
