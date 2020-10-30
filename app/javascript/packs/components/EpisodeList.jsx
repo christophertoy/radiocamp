@@ -22,7 +22,7 @@ export default function episodeList(props) {
     const filteredData = resp.data.filter(x => x.show_id == props.showId); 
     console.log(filteredData);
     setEpisodes(filteredData);
-  }, [props.broadcasterId]);
+  }, []);
   
   return (
     <div className={classes.root}>

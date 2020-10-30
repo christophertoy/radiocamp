@@ -90,7 +90,7 @@ export default function EpisodeForm(props) {
   };
 
   return (
-    <ThemeProvider theme={themeOrangeGrey}>
+    <ThemeProvider>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add an episode
       </Button>
