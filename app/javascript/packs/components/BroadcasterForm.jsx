@@ -50,6 +50,7 @@ export default function BroadcasterForm(props) {
       name,
       description,
       logo,
+      theme,
       authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
     })
     .then(function (response) {
