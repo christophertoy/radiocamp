@@ -80,6 +80,7 @@ export default function EpisodeForm(props) {
     axios
       .post("/episodes.json", { episode })
       .then((response) => {
+        episode.id = response.data.id;
         props.setEpisodes((prev) => {
           return [...prev, episode]
         });
