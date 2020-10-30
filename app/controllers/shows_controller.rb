@@ -26,6 +26,7 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = Show.new(show_params)
+    puts show_params
 
     respond_to do |format|
       if @show.save
@@ -70,6 +71,6 @@ class ShowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def show_params
-      params.require(:show).permit(:name, :description, :image, :genre, :broadcaster_id)
+      params.require(:show).permit(:name, :description, :image, :genre, :broadcaster_id, :host)
     end
 end

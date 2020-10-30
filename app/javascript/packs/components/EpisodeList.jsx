@@ -15,18 +15,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function episodeList(props) {
   const classes = useStyles();
-  const [episodes, setEpisodes] = useState([]);
-
-  useEffect(async () => {
-    const resp = await axios.get("/episodes.json");
-    const filteredData = resp.data.filter(x => x.show_id == props.showId); 
-    setEpisodes(filteredData);
-  }, []);
+  
   
   return (
     <div className={classes.root}>
       <Typography variant="h4">Episodes</Typography>
-      {episodes.map((episode) => {
+      {props.episodes.map((episode) => {
         return (
           <EpisodeListItem
             key={episode.id}

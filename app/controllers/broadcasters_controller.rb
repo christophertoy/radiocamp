@@ -89,6 +89,6 @@ class BroadcastersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def broadcaster_params
-      params.require(:broadcaster).permit(:handle, :name, :logo, :description)
+      params.require(:broadcaster).permit(:handle, :name, :logo, :description, :theme)
     end
 end

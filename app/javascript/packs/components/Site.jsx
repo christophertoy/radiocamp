@@ -25,6 +25,7 @@ const useStyles = makeStyles({
 
 export default function Site(props) {
   const classes = useStyles();
+  const themes = { themeOrangeGrey, themePurpleYellow };
 
   let { broadcasterHandle } = useParams();
 
@@ -41,7 +42,7 @@ export default function Site(props) {
   }, []);
   // console.log('broadcasterData', broadcasterData);
   return (
-    <ThemeProvider theme={ broadcasterData.handle !== 'purple-finch' ? themeOrangeGrey : themePurpleYellow}>
+    <ThemeProvider theme={ themes[broadcasterData.theme] || themePurpleYellow}>
       <NavBar 
         broadcasterData={broadcasterData} 
         title={name} />

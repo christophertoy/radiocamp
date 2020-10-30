@@ -34,8 +34,19 @@ export default function Show(props) {
   const classes = useStyles();
 
   const [showData, setShowData] = useState({});
-  const match = useRouteMatch();
+
+  // was on left
+  const [episodes, setEpisodes] = useState([]);
   let { showId } = useParams();
+
+  useEffect(async () => {
+    const resp = await axios.get("/episodes.json");
+    const filteredData = resp.data.filter(x => x.show_id == showId); 
+    setEpisodes(filteredData);
+  }, []);
+  //----
+
+  const match = useRouteMatch();
 
   const history = useHistory();
 
@@ -71,14 +82,20 @@ export default function Show(props) {
         </CardContent>
       </Card>
       {props.currentUser === props.broadcasterData.handle && (
-        <EpisodeForm broadcasterId={props.broadcasterId} showId={showData.id}/>
+        <EpisodeForm 
+          broadcasterId={props.broadcasterId} 
+          showId={showData.id}
+          setEpisodes={setEpisodes}/>
       )}
       {props.currentUser === props.broadcasterData.handle && (
         <Button variant="outlined" color="primary" onClick={handleLogOut}>
           Logout
         </Button>
       )}
-      <EpisodeList broadcasterData={props.broadcasterData} showId={showId} />
+      <EpisodeList 
+        episodes={episodes} 
+        broadcasterData={props.broadcasterData} 
+        showId={showId} />
     </div>
   );
 }
