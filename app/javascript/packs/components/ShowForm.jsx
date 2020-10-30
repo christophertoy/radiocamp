@@ -44,7 +44,7 @@ export default function ShowForm(props) {
     };
 
     axios
-      .post("/shows", { show })
+      .post("/shows.json", { show })
       .then((response) => {
         props.setShows((prev) => {
           return [...prev, show]
