@@ -37,7 +37,7 @@ export default function EpisodeListItem(props) {
       >
         <ListItem button>
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt="Remy Sharp" src={props.episodeData.showImage}/>
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItemText
@@ -46,7 +46,7 @@ export default function EpisodeListItem(props) {
             />
           ) : (
             <ListItemText
-              primary={`Episode ${props.episodeData.episode_number}`}
+              primary={`Episode ${props.episodeData.episode_number} ${props.episodeData.release_date.split("T")[0]}`}
               secondary={props.episodeData.description}
             />
           )}
