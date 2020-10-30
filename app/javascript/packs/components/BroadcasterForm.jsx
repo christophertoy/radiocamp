@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+  MenuItem,
+  Select,
   FormGroup,
   FormControl,
   InputLabel,
@@ -32,6 +34,7 @@ export default function BroadcasterForm(props) {
   const [description, setDescription] = useState("");
   const [logo, setLogo] = useState("");
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState("");
 
   const reset = () => {
     setHandle("");
@@ -138,6 +141,29 @@ export default function BroadcasterForm(props) {
               </FormHelperText>
             </FormControl>
 
+            <FormControl>
+              <InputLabel id="demo-simple-select-label">Theme</InputLabel>
+              <Select
+                type="select"
+                name="showTheme"
+                label="Theme"
+                id="demo-simple-select"
+                value={theme}
+                onChange={(event) => setTheme(event.target.value)}
+              >
+                <MenuItem value="Choose a Theme"></MenuItem>
+                {  
+                ['themePurpleYellow', 'themeOrangeGrey'].map((theme, index) =>
+                    <MenuItem
+                      key={index}
+                      value={theme}
+                      // selected={props.showId === show.id}
+                      >
+                      {theme}
+                    </MenuItem>)
+                }
+              </Select>
+            </FormControl>
 
             <DialogActions>
               <Button onClick={handleClose} color="primary">
