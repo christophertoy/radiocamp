@@ -8,7 +8,6 @@ export const getEmbedCode = (url) => {
     return `<iframe width='100%' height='60' src=${url} frameborder='0' ></iframe>`;
   } else if (url && url.includes("spotify.com")) {
     url = url.split("/");
-    console.log(url);
     url = ["'https://open.spotify.com/embed-podcast/episode/", url[4], "'"].join("");
     return `<iframe src=${url} width='100%' height='170' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>`;
   } else {
