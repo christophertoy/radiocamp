@@ -29,12 +29,13 @@ export default function ShowForm(props) {
     setName("");
     setDescription("");
     setLogo("");
+    setHost("")
+    setGenre("");
   };
 
   const handleSubmit = function (event) {
     event.preventDefault();
-
-    const show = {
+    let show = {
       name,
       description,
       image: logo,
@@ -42,6 +43,10 @@ export default function ShowForm(props) {
       host,
       broadcaster_id: props.broadcasterId,
     };
+
+    if (!show.image) {
+      show = {...show, image: "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
+    }
 
     axios
       .post("/shows.json", { show })
