@@ -78,6 +78,9 @@ export default function EpisodeForm(props) {
     axios
       .post("/episodes", { episode })
       .then((response) => {
+        props.setEpisodes((prev) => {
+          return [...prev, episode]
+        });
       })
       .catch((error) => {
         console.log(error);

@@ -45,7 +45,6 @@ export default function ShowForm(props) {
     axios
       .post("/shows", { show })
       .then((response) => {
-        console.log(response.data);
         props.setShows((prev) => {
           return [...prev, show]
         })
@@ -54,7 +53,6 @@ export default function ShowForm(props) {
         console.log(error);
       });
 
-    // console.log("name:", name, "description:", description, "logo:", logo);
     reset();
     handleClose();
   };
