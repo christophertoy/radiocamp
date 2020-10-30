@@ -46,7 +46,7 @@ export default function EpisodeListItem(props) {
             />
           ) : (
             <ListItemText
-              primary={`Episode ${props.episodeData.episode_number} ${props.episodeData.release_date.split("T")[0]}`}
+              primary={`${props.episodeData.title} - Episode ${props.episodeData.episode_number}: ${props.episodeData.release_date.split("T")[0]}`}
               secondary={props.episodeData.description}
             />
           )}
