@@ -82,11 +82,6 @@ export default function Broadcaster(props) {
         </CardActions>
       </Card>
       {props.currentUser === props.broadcasterData.handle && (
-        <ShowForm 
-        setShows={setShows}
-        broadcasterId={props.broadcasterData.id} />
-      )}
-      {props.currentUser === props.broadcasterData.handle && (
         <Button variant="outlined" color="primary" onClick={handleLogOut}>
         Logout
         </Button>
@@ -95,6 +90,8 @@ export default function Broadcaster(props) {
         shows={shows}
         broadcasterId={props.broadcasterData.id}
         broadcasterData={props.broadcasterData}
+        currentUser={props.currentUser}
+        setShows={setShows}
       />
     </div>
   );
