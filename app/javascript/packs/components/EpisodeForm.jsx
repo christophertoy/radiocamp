@@ -37,6 +37,7 @@ export default function EpisodeForm(props) {
   const [showId, setShowId] = useState(props.showId || "");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
+  const [episodeNumber, setEpisodeNumber] = useState(0);
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [releaseDate, setReleaseDate] = useState(getCurrentDate());
@@ -73,6 +74,7 @@ export default function EpisodeForm(props) {
       description,
       episode_url: url,
       release_date: releaseDate,
+      episode_number: episodeNumber
     };
 
     axios
@@ -161,6 +163,16 @@ export default function EpisodeForm(props) {
                 type="date"
                 value={releaseDate}
                 onChange={(event) => setReleaseDate(event.target.value)}
+              />
+            </FormControl>
+            
+            <FormControl>
+              <InputLabel htmlFor="episode_number">Episode Number</InputLabel>
+              <Input
+                name="episode_number"
+                // type="date"
+                value={episodeNumber}
+                onChange={(event) => setEpisodeNumber(event.target.value)}
               />
             </FormControl>
 
