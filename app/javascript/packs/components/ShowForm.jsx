@@ -48,7 +48,7 @@ export default function ShowForm(props) {
       .then((response) => {
         show.id = response.data.id;
         props.setShows((prev) => {
-          return [...prev, show]
+          return [show, ...prev]
         })
       })
       .catch((error) => {

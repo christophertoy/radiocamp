@@ -82,7 +82,7 @@ export default function EpisodeForm(props) {
       .then((response) => {
         episode.id = response.data.id;
         props.setEpisodes((prev) => {
-          return [...prev, episode]
+          return [episode, ...prev]
         });
       })
       .catch((error) => {
