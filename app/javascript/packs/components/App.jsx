@@ -23,7 +23,7 @@ export default function App(props) {
   }, []);
 
   const history = useHistory();
-  const handleSubmit = (data) => {
+  const handleLogin = (data) => {
     event.preventDefault();
     setUser(data);
     localStorage.setItem("user", data);
@@ -31,13 +31,29 @@ export default function App(props) {
     history.push(`/${data}`);
   };
 
+  const handleCreateBroadcaster = (data) => {
+    axios
+      .post("/broadcasters", data)
+      .then(function (response) {
+        setUser(data.handle);
+        localStorage.setItem("user", data.handle);
+        history.push(`/${data.handle}`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <Switch>
       <Route exact path="/">
-        <Welcome handleSubmit={handleSubmit} />
+        <Welcome
+          handleCreateBroadcaster={handleCreateBroadcaster}
+          handleLogin={handleLogin}
+        />
       </Route>
       <Route path="/:broadcasterHandle">
-        <Site currentUser={user}/>
+        <Site currentUser={user} />
         {/* <Route path = '/:broadcasterHandle/' render = { (props) => {
             return <Site handle={props.match.params.broadcasterHandle} />
           } }/> */}

@@ -170,7 +170,7 @@ export default function BroadcasterForm(props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={saveBroadcaster} color="primary">
+              <Button onClick={() => props.handleCreateBroadcaster({handle, name, description, logo, theme})} color="primary">
                 Save
               </Button>          
             </DialogActions>

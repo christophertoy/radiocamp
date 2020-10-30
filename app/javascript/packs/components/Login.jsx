@@ -77,7 +77,7 @@ export default function login(props) {
                 Cancel
               </Button>
               <Button
-                onClick={() => props.handleSubmit(handle)}
+                onClick={() => props.handleLogin(handle)}
                 color="primary"
               >
                 Login
