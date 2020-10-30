@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Button,
-  TextField,
-  makeStyles,
   Select,
   FormControl,
   FormGroup,
@@ -19,44 +17,44 @@ import {
 import { themeOrangeGrey } from "./themes";
 import axios from 'axios';
 
+const getCurrentDate = () => {
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  let yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  return today = yyyy + '-' + mm + '-' + dd;
+};
+
 export default function EpisodeForm(props) {
 
-  const [shows, setShows] = useState([]);
-
-  useEffect(async () => {
-    const resp = await axios.get("/shows.json");
-    const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
-    setShows(allShows);
-  }, [props.broadcasterId]);
-
-  const getCurrentDate = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1;
-    let yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    return today = yyyy + '-' + mm + '-' + dd;
-  };
-
-  const [showId, setShowId] = useState("");
+  const [shows, setShows] = useState([]); 
+  const [showId, setShowId] = useState(props.showId || "");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [releaseDate, setReleaseDate] = useState(getCurrentDate());
+  
+  useEffect(async () => {
+    const resp = await axios.get("/shows.json");
+    const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
+    setShows(allShows);
+    setShowId(props.showId);
+  }, [props.broadcasterId, props.showId]);  
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  
   const handleClose = () => {
     setOpen(false);
-  };
+  };  
 
   const reset = function () {
     setShowId("");
@@ -80,7 +78,6 @@ export default function EpisodeForm(props) {
     axios
       .post("/episodes", { episode })
       .then((response) => {
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -114,7 +111,9 @@ export default function EpisodeForm(props) {
                 shows.map(show =>
                     <MenuItem
                       key={show.id}
-                      value={show.id}>
+                      value={show.id}
+                      selected={props.showId === show.id}
+                      >
                       {show.name}
                     </MenuItem>)
                 }

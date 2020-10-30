@@ -71,7 +71,7 @@ export default function Show(props) {
         </CardContent>
       </Card>
       {props.currentUser === props.broadcasterData.handle && (
-        <EpisodeForm broadcasterId={props.broadcasterId} />
+        <EpisodeForm broadcasterId={props.broadcasterId} showId={showData.id}/>
       )}
       {props.currentUser === props.broadcasterData.handle && (
         <Button variant="outlined" color="primary" onClick={handleLogOut}>
