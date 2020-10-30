@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { deepPurple, amber, deepOrange, grey, green, red } from "@material-ui/core/colors";
+import { deepPurple, amber, deepOrange, grey, green, red, teal } from "@material-ui/core/colors";
 
 // import { createMuiTheme } from '@material-ui/core/styles';
 // import { green, grey, red } from '@material-ui/core/colors';
@@ -33,6 +33,42 @@ themePurpleYellow.overrides = {
       "&:hover": {
         backgroundColor: amber[500],
         color: deepPurple[900],
+      },
+    },
+    containedSecondary: {
+      fontWeight: 700,
+    },
+  },
+};
+
+const themeTeal = createMuiTheme({
+  palette: {
+    primary: {
+      main: teal[500],
+    },
+    secondary: {
+      main: grey[500],
+      contrastText: teal[900],
+    },
+  },
+});
+
+themeTeal.props = {
+  MuiButton: {
+    disableElevation: true,
+  },
+};
+
+themeTeal.overrides = {
+  MuiButton: {
+    root: {
+      borderRadius: 0,
+      textTransform: "none",
+    },
+    containedPrimary: {
+      "&:hover": {
+        backgroundColor: grey[500],
+        color: teal[900],
       },
     },
     containedSecondary: {
@@ -185,4 +221,4 @@ const theme = {
 
 // export default theme;
 
-export { themePurpleYellow, themeOrangeGrey, theme };
+export { themePurpleYellow, themeOrangeGrey, themeTeal, theme };
