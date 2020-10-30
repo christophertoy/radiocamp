@@ -38,7 +38,7 @@ export default function ShowListItem(props) {
       >
         <ListItem button>
           <ListItemAvatar>
-            <Avatar alt={props.showData.title} src={props.showData.image}/>
+            <Avatar alt={props.showData.title} src={props.showData.image+"?fit=crop&h=100&w=100&crop=entropy"}/>
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItemText
