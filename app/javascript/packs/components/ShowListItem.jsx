@@ -38,18 +38,24 @@ export default function ShowListItem(props) {
       >
         <ListItem button>
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt={props.showData.title} src={props.showData.image}/>
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItemText
               primary={`Show: ${props.showData.name}`}
-              secondary={props.showData.description}
+              secondary={props.showData.genre}
             />
           ) : (
+            <ListItem>
             <ListItemText
               primary={props.showData.name}
+              secondary={`Hosted by ${props.showData.host}`}
+              />
+              <ListItemText
               secondary={props.showData.description}
-            />
+              />
+              </ListItem>
+            
           )}
         </ListItem>
       </Link>

@@ -20,16 +20,18 @@ ActiveRecord::Base.connection.reset_pk_sequence!('broadcasters')
 ActiveRecord::Base.connection.reset_pk_sequence!('shows')
 ActiveRecord::Base.connection.reset_pk_sequence!('episodes')
 
-Broadcaster.create(handle: 'purple-finch', name: 'Purple Finch Podcasts', description: 'Just a gang of pals with stories to tell')
-Broadcaster.create(handle: 'chickadee', name: 'Chickadee Community Radio', description: 'Chickadee Community Radio, broadcasting out of the offices of Yoyodyne industries')
-Broadcaster.create(handle: 'sparrow', name: 'Sparrow Radio', description: '98.5FM in Kenora, ON')
+Broadcaster.create(handle: 'purple-finch', name: 'Purple Finch Podcasts', description: 'Just a gang of pals with stories to tell', theme: 'themePurpleYellow')
+Broadcaster.create(handle: 'chickadee', name: 'Chickadee Community Radio', description: 'Chickadee Community Radio, broadcasting out of the offices of Yoyodyne industries', theme: 'themePurpleYellow')
+Broadcaster.create(handle: 'sparrow', name: 'Sparrow Radio', description: '98.5FM in Kenora, ON', theme: 'themeOrangeGrey')
 
 (1..20).each do
   Show.create(
     name: Faker::Book.unique.title,
     description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
     broadcaster_id: random.rand(1..Broadcaster.count),
-    image: Samples::IMAGES[random.rand(1..Samples::IMAGES.count)-1]
+    image: Samples::IMAGES[random.rand(1..Samples::IMAGES.count)-1],
+    host: [Faker::Name.unique.name, (Faker::Name.unique.name + ' & ' + Faker::Name.unique.name)].sample,
+    genre: ["Music", "News", "Art", "Technology", "Comedy", "Fiction", "True Crime"].sample
   )
 end
 
@@ -39,6 +41,7 @@ end
     description: Faker::Lorem.paragraph(random_sentences_to_add: 10),
     release_date: Faker::Date.between(from: 3.years.ago, to: Date.today),
     episode_url: Faker::Boolean.boolean ? 'https://www.mixcloud.com/residentadvisor/ra670/' : 'https://open.spotify.com/episode/1zcbnS759Fj53gCY2CpgD9',
-    show_id: random.rand(1..Show.count)
+    show_id: random.rand(1..Show.count),
+    episode_number: random.rand(1..10)
   )
 end

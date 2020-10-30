@@ -43,6 +43,7 @@ export default function Show(props) {
     const resp = await axios.get("/episodes.json");
     const filteredData = resp.data.filter(x => x.show_id == showId); 
     setEpisodes(filteredData);
+    console.log(filteredData);
   }, []);
   //----
 
@@ -93,8 +94,8 @@ export default function Show(props) {
         </Button>
       )}
       <EpisodeList 
-        episodes={episodes} 
-        broadcasterData={props.broadcasterData} 
+        episodes={episodes}
+        broadcasterData={props.broadcasterData}
         showId={showId} />
     </div>
   );
