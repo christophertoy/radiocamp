@@ -14,18 +14,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function showList(props) {
   const classes = useStyles();
-  const [shows, setShows] = useState([]);
-
-  useEffect(async () => {
-    const resp = await axios.get("/shows.json");
-    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterId); 
-    setShows(filteredData);
-  }, [props.broadcasterId]);
   
   return (
     <div className={classes.root}>
       <Typography variant="h4">Shows</Typography>
-      {shows.map((show) => {
+      {props.shows.map((show) => {
         return (
           <ShowListItem
             key={show.id}

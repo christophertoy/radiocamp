@@ -44,6 +44,9 @@ export default function ShowForm(props) {
       .post("/shows", { show })
       .then((response) => {
         console.log(response.data);
+        props.setShows((prev) => {
+          return [...prev, show]
+        })
       })
       .catch((error) => {
         console.log(error);

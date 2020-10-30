@@ -31,9 +31,17 @@ const useStyles = makeStyles({
 
 
 
-export default function Site(props) {
+export default function Broadcaster(props) {
   const classes = useStyles();
   const history = useHistory();
+
+  const [shows, setShows] = useState([]);
+
+  useEffect(async () => {
+    const resp = await axios.get("/shows.json");
+    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterData.id); 
+    setShows(filteredData);
+  }, [props.broadcasterData.id]);
   
   const handleLogOut = (event) => {
     event.preventDefault();
@@ -69,7 +77,9 @@ export default function Site(props) {
         </CardActions>
       </Card>
       {props.currentUser === props.broadcasterData.handle && (
-        <ShowForm broadcasterId={props.broadcasterData.id} />
+        <ShowForm 
+        setShows={setShows}
+        broadcasterId={props.broadcasterData.id} />
       )}
       {props.currentUser === props.broadcasterData.handle && (
         <Button variant="outlined" color="primary" onClick={handleLogOut}>
@@ -77,6 +87,7 @@ export default function Site(props) {
         </Button>
       )}
       <ShowList
+        shows={shows}
         broadcasterId={props.broadcasterData.id}
         broadcasterData={props.broadcasterData}
       />
