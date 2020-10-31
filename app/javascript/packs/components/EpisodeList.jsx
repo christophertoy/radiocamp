@@ -20,13 +20,15 @@ export default function episodeList(props) {
   
   return (
     <div className={classes.root}>
-      <Typography variant="h4">Episodes</Typography>
-      {props.currentUser === props.broadcasterData.handle && (
+      <div id="episode-list-header" >
+      <div><Typography variant="h4">Episodes</Typography></div>
+      <div>{props.currentUser === props.broadcasterData.handle && (
         <EpisodeForm 
           broadcasterId={props.broadcasterData.id} 
           showId={props.showId}
           setEpisodes={props.setEpisodes}/>
-      )}
+      )}</div>
+      </div>
       {props.episodes.map((episode, index) => {
         return (
           <EpisodeListItem
