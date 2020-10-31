@@ -18,7 +18,7 @@ class BroadcastersController < ApplicationController
       description_matches || title_matches || name_matches
     end
 
-    render json: @results
+    render "search.json.jbuilder"
   end
 
   # GET /broadcasters
