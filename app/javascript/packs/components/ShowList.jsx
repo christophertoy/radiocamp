@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowListItem from "./ShowListItem";
+import ShowForm from "./ShowForm";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
@@ -17,7 +18,14 @@ export default function showList(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant="h4">Shows</Typography>
+      <div id="show-list-header" >
+        <div> <Typography variant="h4">Shows</Typography></div>
+        <div>{props.currentUser === props.broadcasterData.handle && (
+          <ShowForm 
+          setShows={props.setShows}
+          broadcasterId={props.broadcasterData.id} />
+        )}</div>
+      </div>
       {props.shows.map((show) => {
         return (
           <ShowListItem
