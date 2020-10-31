@@ -41,6 +41,8 @@ export default function Episode(props) {
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setEpisodeData(resp.data);
   }, []);
+
+  const episodeCode= getEmbedCode(episodeData.episode_url);
   
   return ( 
     <div>
@@ -66,7 +68,7 @@ export default function Episode(props) {
           </Typography>          
         </CardContent>
       </Card>
-      <Player className="player" embedCode={getEmbedCode(episodeData.episode_url)}/>
+      <Player className="player" embedCode={episodeCode}/>
     </div>
   );
 }
