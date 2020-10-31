@@ -11,8 +11,24 @@
   height:152px;
 }
 
-/* .iframe{
-  position: absolute;
-  top: 0;
-  height:100%
-} */
+#show-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+#show-list-header > div {
+  margin-right: 50px;
+}
+
+#episode-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+#episode-list-header > div {
+  margin-right: 50px;
+}
