@@ -23,6 +23,14 @@ export default function App(props) {
   }, []);
 
   const history = useHistory();
+    
+  const handleLogOut = (event) => {
+    event.preventDefault();
+    localStorage.setItem("user", null);
+    setUser(null);
+    // history.push(`/`);
+  };
+
   const handleLogin = (data) => {
     event.preventDefault();
     setUser(data);
@@ -53,7 +61,7 @@ export default function App(props) {
         />
       </Route>
       <Route path="/:broadcasterHandle">
-        <Site currentUser={user} />
+        <Site currentUser={user} handleLogOut={handleLogOut}/>
         {/* <Route path = '/:broadcasterHandle/' render = { (props) => {
             return <Site handle={props.match.params.broadcasterHandle} />
           } }/> */}
