@@ -10,34 +10,38 @@ import EpisodeForm from "./EpisodeForm";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#272C2F",
   },
 }));
 
 export default function episodeList(props) {
   const classes = useStyles();
-  
-  
+
   return (
     <div className={classes.root}>
-      <div id="episode-list-header" >
-      <div><Typography variant="h4">Episodes</Typography></div>
-      <div>{props.currentUser === props.broadcasterData.handle && (
-        <EpisodeForm 
-          broadcasterId={props.broadcasterData.id} 
-          showId={props.showId}
-          setEpisodes={props.setEpisodes}/>
-      )}</div>
+      <div id="episode-list-container">
+        <div id="episode-list-header">
+          <div>
+            <Typography variant="h4">Episodes</Typography>
+          </div>
+          <div>
+            {props.currentUser === props.broadcasterData.handle && (
+              <EpisodeForm
+                broadcasterId={props.broadcasterData.id}
+                showId={props.showId}
+                setEpisodes={props.setEpisodes}/>
+            )}
+          </div>
+        </div>
+        {props.episodes.map((episode, index) => {
+          return (
+            <EpisodeListItem
+              key={index}
+              broadcasterData={props.broadcasterData}
+              episodeData={episode}/>
+          );
+        })}
       </div>
-      {props.episodes.map((episode, index) => {
-        return (
-          <EpisodeListItem
-            key={index}
-            broadcasterData={props.broadcasterData}
-            episodeData={episode}
-          />
-        );
-      })}
     </div>
   );
 }

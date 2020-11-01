@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#272C2F",
   },
 }));
 
@@ -18,26 +18,34 @@ export default function showList(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div id="show-list-header" >
-        <div> <Typography variant="h4">Shows</Typography></div>
-        <div>{props.currentUser === props.broadcasterData.handle && (
-          <ShowForm 
-          setShows={props.setShows}
-          broadcasterId={props.broadcasterData.id} />
-        )}</div>
+      <div id="show-list-container">
+        <div id="show-list-header">
+          <div>
+            {" "}
+            <Typography variant="h4">Shows</Typography>
+          </div>
+          <div>
+            {props.currentUser === props.broadcasterData.handle && (
+              <ShowForm
+                setShows={props.setShows}
+                broadcasterId={props.broadcasterData.id}
+              />
+            )}
+          </div>
+        </div>
+        {props.shows.map((show) => {
+          return (
+            <ShowListItem
+              key={show.id}
+              broadcasterData={props.broadcasterData}
+              showData={show}
+              // showId={show.id}
+              // name={show.name}
+              // description={show.description}
+            />
+          );
+        })}
       </div>
-      {props.shows.map((show) => {
-        return (
-          <ShowListItem
-            key={show.id}
-            broadcasterData={props.broadcasterData}
-            showData={show}
-            // showId={show.id}
-            // name={show.name}
-            // description={show.description}
-          />
-        );
-      })}
     </div>
   );
 }

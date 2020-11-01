@@ -22,6 +22,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ShowForm from "./ShowForm";
+import { grey } from "@material-ui/core/colors";
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -56,31 +58,32 @@ export default function Broadcaster(props) {
 
   return (
     <div>
-      <Card className={classes.root}>
+      <Card className={classes.root} id="broadcaster-card">
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt="broadcaster-logo"
           height="250"
           image="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_163052525-730x342.jpg"
-          title="Contemplative Reptile"
+          title="Broadcaster Logo"
         />
-        <CardContent>
+        <CardContent class="broadcaster-card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {props.broadcasterData.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             {props.broadcasterData.description}
           </Typography>
         </CardContent>
-        <CardActions>
+        {/* <CardActions>
           <Button size="small" color="primary">
             Share
           </Button>
           <Button size="small" color="primary">
             Contact Me
           </Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
+      <Divider></Divider>
       <ShowList
         shows={shows}
         broadcasterId={props.broadcasterData.id}
