@@ -8,6 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 // import InboxIcon from "@material-ui/icons/Inbox";
 // import DraftsIcon from "@material-ui/icons/Drafts";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Divider from '@material-ui/core/Divider';
 import Avatar from "@material-ui/core/Avatar";
 import {
   BrowserRouter,
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     backgroundColor: theme.palette.background.paper,
   },
+  inline: {
+    display: 'inline',
+  },
 }));
 
 export default function ShowListItem(props) {
@@ -36,9 +40,12 @@ export default function ShowListItem(props) {
         to={`/${props.broadcasterData.handle}/${props.showData.id}`}
         style={{ textDecoration: "none" }}
       >
-        <ListItem button>
+        <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={props.showData.title} src={props.showData.image+"?fit=crop&h=100&w=100&crop=entropy"}/>
+            <Avatar
+              style={{height: "120px", width: "120px"}}
+              variant='square' 
+              alt={props.showData.title} src={props.showData.image+"?fit=crop&h=100&w=100&crop=entropy"}/>
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItemText
@@ -49,15 +56,14 @@ export default function ShowListItem(props) {
             <ListItem>
             <ListItemText
               primary={props.showData.name}
-              secondary={`Hosted by ${props.showData.host}`}
-              />
-              <ListItemText
               secondary={props.showData.description}
               />
+            {`Hosted by ${props.showData.host}`}
               </ListItem>
             
           )}
         </ListItem>
+        <Divider variant="middle" />
       </Link>
     </div>
   );
