@@ -80,7 +80,7 @@ export default function NavBar(props) {
   const [searchResults, setSearchResults] = useState([]);
   const [queryString, setQueryString] = useState("");
   const match = useRouteMatch();
-  // const history = useHistory();
+  const history = useHistory();
   const location = useLocation();
 
   const doSearch = async function (queryString) {
