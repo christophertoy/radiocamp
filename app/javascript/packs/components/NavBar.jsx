@@ -18,6 +18,7 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
+import Login from './Login';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,7 +81,7 @@ export default function NavBar(props) {
   const [searchResults, setSearchResults] = useState([]);
   const [queryString, setQueryString] = useState("");
   const match = useRouteMatch();
-  // const history = useHistory();
+  const history = useHistory();
   const location = useLocation();
 
   const doSearch = async function (queryString) {
@@ -111,6 +112,8 @@ export default function NavBar(props) {
               {props.title}
             </Link>
           </Typography>
+
+        {props.currentUser || props.broadcasterData ? null : <Login handleLogin={props.handleLogin}/>}
 
           {props.currentUser && props.broadcasterData && props.currentUser === props.broadcasterData.handle && (
             <Button variant="outlined" color="secondary" onClick={props.handleLogOut}>

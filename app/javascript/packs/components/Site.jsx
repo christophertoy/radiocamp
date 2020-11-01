@@ -35,12 +35,6 @@ export default function Site(props) {
 
   const history = useHistory();
   let match = useRouteMatch();
-    
-  const handleLogOut = (event) => {
-    event.preventDefault();
-    localStorage.setItem("user", null);
-    history.push(`/`);
-  };
 
   useEffect(async () => {
     const resp = await axios.get("/broadcasters.json");
@@ -54,7 +48,7 @@ export default function Site(props) {
       <NavBar 
         currentUser={props.currentUser}
         broadcasterData={broadcasterData} 
-        handleLogOut={handleLogOut}
+        handleLogOut={props.handleLogOut}
         title={name} />
       <Switch>
         <Route exact path={match.path}>

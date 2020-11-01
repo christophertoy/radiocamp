@@ -72,7 +72,7 @@ export default function Show(props) {
 
   return (
     <div>
-      <Card className={classes.root} id="show-card">
+      <Card square={true} className={classes.root} id="show-card">
         <CardMedia
           component="img"
           alt={showData.name + 'header image'}
