@@ -63,6 +63,7 @@ export default function login(props) {
                 name="password"
                 id="password" 
                 aria-describedby="my-helper-text"
+                type="password"
                 // required={true}
                 // value={password}
                 // onChange={(event) => setPassword(event.target.value)}
