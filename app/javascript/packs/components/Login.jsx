@@ -30,8 +30,8 @@ export default function login(props) {
 
   return (
     <ThemeProvider theme={themeOrangeGrey}>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Login
+      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+        Admin Login
       </Button>
 
       <Dialog

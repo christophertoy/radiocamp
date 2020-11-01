@@ -36,13 +36,12 @@ export default function Welcome(props) {
   return (
     <div>
       <ThemeProvider theme={themeOrangeGrey}>
-      <NavBar title="RadioCamp"/> 
-      <Container>
-        <Typography variant="h4">
+      <NavBar title="RadioCamp" handleLogin={props.handleLogin}/> 
+      <Container style={{ marginTop: '80px', textAlign: 'center' }}>
+        <Typography variant="h4" >
           Join RadioCamp you will be so happy!
         </Typography>
-        <Box><BroadcasterForm handleCreateBroadcaster={props.handleCreateBroadcaster}/></Box>
-        <Login handleLogin={props.handleLogin}/>
+        <Box style={{ marginTop: '50px' }}><BroadcasterForm  handleCreateBroadcaster={props.handleCreateBroadcaster}/></Box>
       </Container>
       </ThemeProvider>
     </div>
