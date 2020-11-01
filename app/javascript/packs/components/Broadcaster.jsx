@@ -22,6 +22,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ShowForm from "./ShowForm";
+import { grey } from "@material-ui/core/colors";
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -56,7 +58,7 @@ export default function Broadcaster(props) {
 
   return (
     <div>
-      <Card className={classes.root} square={true}>
+      <Card className={classes.root} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}
@@ -64,23 +66,24 @@ export default function Broadcaster(props) {
           image="https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"
           title={props.broadcasterData.name}
         />
-        <CardContent>
+        <CardContent class="broadcaster-card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {props.broadcasterData.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             {props.broadcasterData.description}
           </Typography>
         </CardContent>
-        <CardActions>
+        {/* <CardActions>
           <Button size="small" color="primary">
             Share
           </Button>
           <Button size="small" color="primary">
             Contact Me
           </Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
+      <Divider></Divider>
       <ShowList
         shows={shows}
         broadcasterId={props.broadcasterData.id}

@@ -23,6 +23,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import EpisodeForm from "./EpisodeForm";
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -71,7 +72,7 @@ export default function Show(props) {
 
   return (
     <div>
-      <Card square={true} className={classes.root}>
+      <Card square={true} className={classes.root} id="show-card">
         <CardMedia
           component="img"
           alt={showData.name + 'header image'}
@@ -79,15 +80,16 @@ export default function Show(props) {
           image={showData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={showData.name}
         />
-        <CardContent>
+        <CardContent class="show-card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {showData.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             {showData.description}
           </Typography>
         </CardContent>
       </Card>
+      <Divider></Divider>
       <EpisodeList 
         currentUser={props.currentUser}
         setEpisodes={setEpisodes}
