@@ -5,6 +5,7 @@ import {
   Route,
   useParams,
   useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
@@ -32,7 +33,14 @@ export default function Site(props) {
   const [name, setName] = useState("");
   const [broadcasterData, setBroadcasterData] = useState({});
 
+  const history = useHistory();
   let match = useRouteMatch();
+    
+  const handleLogOut = (event) => {
+    event.preventDefault();
+    localStorage.setItem("user", null);
+    history.push(`/`);
+  };
 
   useEffect(async () => {
     const resp = await axios.get("/broadcasters.json");
@@ -40,11 +48,13 @@ export default function Site(props) {
     setName(thisBroadcaster.name);
     setBroadcasterData(thisBroadcaster);
   }, []);
-  // console.log('broadcasterData', broadcasterData);
+
   return (
     <ThemeProvider theme={ themes[broadcasterData.theme] || themePurpleYellow}>
       <NavBar 
+        currentUser={props.currentUser}
         broadcasterData={broadcasterData} 
+        handleLogOut={handleLogOut}
         title={name} />
       <Switch>
         <Route exact path={match.path}>

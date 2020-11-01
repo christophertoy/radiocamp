@@ -81,11 +81,6 @@ export default function Broadcaster(props) {
           </Button>
         </CardActions>
       </Card>
-      {props.currentUser === props.broadcasterData.handle && (
-        <Button variant="outlined" color="primary" onClick={handleLogOut}>
-        Logout
-        </Button>
-      )}
       <ShowList
         shows={shows}
         broadcasterId={props.broadcasterData.id}

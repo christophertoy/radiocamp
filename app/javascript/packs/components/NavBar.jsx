@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 // import IconButton from '@material-ui/core/IconButton';
 import Typography from "@material-ui/core/Typography";
@@ -79,7 +80,7 @@ export default function NavBar(props) {
   const [searchResults, setSearchResults] = useState([]);
   const [queryString, setQueryString] = useState("");
   const match = useRouteMatch();
-  const history = useHistory();
+  // const history = useHistory();
   const location = useLocation();
 
   const doSearch = async function (queryString) {
@@ -110,6 +111,12 @@ export default function NavBar(props) {
               {props.title}
             </Link>
           </Typography>
+
+          {props.currentUser && props.broadcasterData && props.currentUser === props.broadcasterData.handle && (
+            <Button variant="outlined" color="secondary" onClick={props.handleLogOut}>
+            Logout
+            </Button>
+          )}
 
           {locationPath !== "/" && (
             <div className={classes.search}>
