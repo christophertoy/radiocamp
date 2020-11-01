@@ -39,7 +39,7 @@ export default function Site(props) {
   const handleLogOut = (event) => {
     event.preventDefault();
     localStorage.setItem("user", null);
-    history.push(`/`);
+    // history.push(`/`);
   };
 
   useEffect(async () => {
