@@ -46,7 +46,7 @@ export default function Episode(props) {
   
   return ( 
     <div>
-      <Card className={classes.root} >
+      <Card className={classes.root} square={true} >
         <CardMedia
           component="img"
           alt={episodeData.title}

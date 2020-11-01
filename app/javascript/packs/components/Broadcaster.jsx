@@ -56,7 +56,7 @@ export default function Broadcaster(props) {
 
   return (
     <div>
-      <Card className={classes.root}>
+      <Card className={classes.root} square={true}>
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
