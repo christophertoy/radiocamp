@@ -35,8 +35,8 @@
 
 #episode-list-container{
   padding:15px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   background-color: #272c2F;
   color:#edeef0
 }
@@ -64,8 +64,8 @@
 
 #show-list-container{
   padding:15px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   background-color: #272c2F;
   color:#edeef0
 }
@@ -103,4 +103,19 @@
 
 #episode-card{
   background-color: #272c2F;
+}
+
+
+#show-page-container {
+  background-color: #272c2F;
+  height:100%;
+  width: 100%;
+  min-height:100vh;
+}
+
+#broadcaster-page-container {
+  background-color: #272c2F;
+  height:100%;
+  width:100%;
+  min-height: 100vh;
 }

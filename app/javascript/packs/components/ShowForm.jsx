@@ -93,7 +93,7 @@ export default function ShowForm(props) {
                 onChange={(event) => setName(event.target.value)}
               />
               <FormHelperText id="my-helper-text">
-                Enter the name of your show
+                Enter the name of your show.
           </FormHelperText>
             </FormControl>
 
@@ -119,7 +119,7 @@ export default function ShowForm(props) {
                 onChange={(event) => setHost(event.target.value)}
               />
               <FormHelperText id="my-helper-text">
-                Enter the name of your show's host
+                Enter the name of your show's host.
           </FormHelperText>
             </FormControl>
 
@@ -132,7 +132,7 @@ export default function ShowForm(props) {
                 onChange={(event) => setGenre(event.target.value)}
               />
               <FormHelperText id="my-helper-text">
-                Enter your show's genre
+                Enter your show's genre.
           </FormHelperText>
             </FormControl>
 
@@ -145,7 +145,7 @@ export default function ShowForm(props) {
                 onChange={(event) => setLogo(event.target.value)}
               />
               <FormHelperText id="my-helper-text">
-                Enter a URL that points to your show's logo
+                Enter an image URL that represents your show.
           </FormHelperText>
             </FormControl>
 

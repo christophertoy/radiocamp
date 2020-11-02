@@ -1,14 +1,16 @@
 import React from "react";
-import {
-  useParams,
-  useRouteMatch,
-  useHistory
-} from "react-router-dom";
+import { useParams, useRouteMatch, useHistory } from "react-router-dom";
 import EpisodeList from "./EpisodeList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, CardMedia, Typography, Divider } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Divider,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -27,14 +29,15 @@ export default function Show(props) {
 
   useEffect(async () => {
     const resp = await axios.get("/episodes.json");
-    const filteredData = resp.data.filter(x => x.show_id == showId);
-    // sorts episodes by episode number, highest number first 
-    setEpisodes(filteredData.sort((a, b) => {
-      if (a.release_date > b.release_date) return -1;
-      if (a.release_date < b.release_date) return 1;
-      return 0;
-    }
-    ));
+    const filteredData = resp.data.filter((x) => x.show_id == showId);
+    // sorts episodes by episode number, highest number first
+    setEpisodes(
+      filteredData.sort((a, b) => {
+        if (a.release_date > b.release_date) return -1;
+        if (a.release_date < b.release_date) return 1;
+        return 0;
+      })
+    );
     console.log(filteredData);
   }, []);
   //----
@@ -56,13 +59,13 @@ export default function Show(props) {
   }, []);
 
   return (
-    <div>
+    <div id="show-page-container">
       <Card square={true} className={classes.root} id="show-card">
         <CardMedia
           component="img"
-          alt={showData.name + 'header image'}
+          alt={showData.name + "header image"}
           height="250"
-          image={showData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
+          image={showData.image + "?fit=crop&h=250&w=1080&crop=entropy"}
           title={showData.name}
         />
         <CardContent class="show-card-content">
@@ -75,12 +78,14 @@ export default function Show(props) {
         </CardContent>
       </Card>
       <Divider></Divider>
-      <EpisodeList 
-        currentUser={props.currentUser}
-        setEpisodes={setEpisodes}
-        episodes={episodes}
-        broadcasterData={props.broadcasterData}
-        showId={showId} />
+      <div id="episode-list-containter">
+        <EpisodeList
+          currentUser={props.currentUser}
+          setEpisodes={setEpisodes}
+          episodes={episodes}
+          broadcasterData={props.broadcasterData}
+          showId={showId}/>
+      </div>
     </div>
   );
 }

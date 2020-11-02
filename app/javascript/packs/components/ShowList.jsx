@@ -34,7 +34,6 @@ export default function showList(props) {
         {props.shows.map((show) => {
           return (
           <List>
-
             <ShowListItem
               key={show.id}
               broadcasterData={props.broadcasterData}
@@ -43,8 +42,6 @@ export default function showList(props) {
               // name={show.name}
               // description={show.description}
             />
-
-
           </List>
           );
         })}
