@@ -59,6 +59,7 @@ export default function Site(props) {
           <Broadcaster 
           isLoggedIn={isLoggedIn}
           currentUser={props.currentUser}
+          setBroadcasterData={setBroadcasterData}
           broadcasterData={broadcasterData} />
         </Route>
         <Route path={`${match.path}/search`}>

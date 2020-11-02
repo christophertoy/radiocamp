@@ -40,6 +40,31 @@ export default function Broadcaster(props) {
     );
   }, [props.broadcasterData.id]);
 
+  const saveBroadcaster = (broadcasterData) => {
+    // event.preventDefault();
+    // const broadcaster = {
+    //   handle,
+    //   name,
+    //   description,
+    //   logo,
+    //   theme,
+    //   authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
+    // }
+    axios.put(`/broadcasters/${broadcasterData.id}.json`, { broadcasterData })
+    .then(function (response) {
+      setBroadcasterData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    reset();
+    handleClose();
+
+  };
+
+  const editBroadcaster = function(broadcaster) {
+  }
+
   const handleLogOut = (event) => {
     event.preventDefault();
     localStorage.setItem("user", null);
@@ -67,6 +92,8 @@ export default function Broadcaster(props) {
             <BroadcasterForm
               broadcasterData={props.broadcasterData}
               text="Customize Site"
+              setBroadcasterData={props.setBroadcasterData}
+              handleCreateBroadcaster={saveBroadcaster}
             />
           )}
         </CardContent>

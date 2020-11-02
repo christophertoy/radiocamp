@@ -37,7 +37,7 @@ export default function BroadcasterForm(props) {
       setLogo(bData.image);
       setTheme(bData.theme);
     }
-  });
+  }, [props.broadcasterData]);
 
   const reset = () => {
     setHandle("");
@@ -46,24 +46,42 @@ export default function BroadcasterForm(props) {
     setLogo("");
   };
 
-  const saveBroadcaster = (event) => {
-    event.preventDefault();
-    axios.post('/broadcasters.json', {
-      handle,
-      name,
-      description,
-      logo,
-      theme,
-      authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
-    })
+  const saveBroadcaster = (broadcaster) => {
+    // event.preventDefault();
+    // const broadcaster = {
+    //   handle,
+    //   name,
+    //   description,
+    //   logo,
+    //   theme,
+    //   authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
+    // }
+    props.broadcasterData ? editBroadcaster(broadcaster) : createBroadcaster(broadcaster);
+  };
+
+  // const editBroadcaster = function(broadcaster) {
+  //   axios.put('/broadcasters.json', { broadcaster })
+  //   .then(function (response) {
+  //     setBroadcasterData(response.data);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  //   reset();
+  //   handleClose();
+  // }
+
+  const createBroadcaster = function(broadcaster) {
+    axios.post('/broadcasters.json', { broadcaster })
     .then(function (response) {
+      props.loginAndRedirect(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
-    reset();
-    handleClose();
-  };
+    // reset();
+    // handleClose();
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -172,7 +190,7 @@ export default function BroadcasterForm(props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={() => props.handleCreateBroadcaster({handle, name, description, logo, theme})} color="primary">
+              <Button onClick={() => saveBroadcaster({handle, name, description, logo, theme })} color="primary">
                 Save
               </Button>          
             </DialogActions>
