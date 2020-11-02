@@ -35,23 +35,39 @@ export default function EpisodeListItem(props) {
           {props.isSearchItem ? (
             <ListItem alignItems="flex-start">
               <div class="episode-title">
-                <Typography variant="h6">{`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}</Typography>
-                <Typography variant="subtitle2">
+                <Typography 
+                  variant="h6"                
+                  style={{ textTransform: "uppercase" }}
+                >
+                  {`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}
+                </Typography>
+                <Typography variant="subtitle2" style={{ fontStyle: "italic" }}>
                   {props.episodeData.release_date.split("T")[0]}
                 </Typography>
               </div>
               <div class="episode-description">
-                <Typography>{props.episodeData.description}</Typography>
+                <Typography variant="body1">
+                  {props.episodeData.description}
+                </Typography>
               </div>
             </ListItem>
           ) : (
             <ListItem alignItems="flex-start">
               <div class="episode-title">
-                <Typography variant="h6">{`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}</Typography>
-                <Typography variant="subtitle2">{props.episodeData.release_date.split("T")[0]}</Typography>
+                <Typography 
+                  variant="subtitle1"
+                  style={{ textTransform: "uppercase" }}
+                  >
+                  {`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}
+                </Typography>
+                <Typography variant="subtitle2"  style={{ fontStyle: "italic" }}>
+                  {props.episodeData.release_date.split("T")[0]}
+                </Typography>
               </div>
               <div class="episode-description">
-                <Typography>{props.episodeData.description}</Typography>
+                <Typography variant="body1">
+                  {props.episodeData.description}
+                </Typography>
               </div>
             </ListItem>
             )}
