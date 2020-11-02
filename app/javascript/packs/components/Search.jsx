@@ -45,8 +45,8 @@ export default function Search(props) {
     const queryPath = `/${handle}/api/search${location.search}`;
     // console.log('queryPath', queryPath);
     const resp = await axios.get(queryPath);
-    // console.log(resp.data);
-    setSearchResults(resp.data);}
+    console.log(resp.data);
+    setSearchResults(resp.data.results);}
   }, [props.broadcasterData.handle, location]);
 
   return ( 
