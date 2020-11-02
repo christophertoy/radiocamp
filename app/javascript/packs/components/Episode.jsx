@@ -48,7 +48,7 @@ export default function Episode(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {episodeData.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{textDecoration: 'none', color: 'inherit'}}>
               <em>from {episodeData.showName}</em>
             </Link>
