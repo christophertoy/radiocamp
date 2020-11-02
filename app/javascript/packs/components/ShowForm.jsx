@@ -34,18 +34,6 @@ export default function ShowForm(props) {
       setGenre(showData.genre);
     }
   }, [props.showData]);
-  
-  // // Load episode info
-  // useEffect(async () => {
-  //   if(props.episodeData) {
-  //     setTitle(props.episodeData.title);
-  //     setEpisodeNumber(parseInt(props.episodeData.episode_number));
-  //     setDescription(props.episodeData.description);
-  //     setUrl(props.episodeData.episode_url);
-  //     // setReleaseDate(Date.parse(props.episodeData.release_date));
-  //   }
-  // }, [props.episodeData])
-
 
   const reset = function () {
     setName("");
@@ -70,6 +58,12 @@ export default function ShowForm(props) {
       show = {...show, image: "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
     }
 
+    createShow(show)
+
+  };
+
+  const createShow = function (show) {
+
     axios
       .post("/shows.json", { show })
       .then((response) => {
@@ -84,7 +78,7 @@ export default function ShowForm(props) {
 
     reset();
     handleClose();
-  };
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
