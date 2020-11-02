@@ -113,7 +113,7 @@ export default function BroadcasterForm(props) {
   };
 
   return (
-    <ThemeProvider theme={themeOrangeGrey}>
+    <div>
       <Button
         variant="outlined"
         size="large"
@@ -238,6 +238,6 @@ export default function BroadcasterForm(props) {
           </FormGroup>
         </DialogContent>
       </Dialog>
-    </ThemeProvider>
+    </div>
   );
 }
