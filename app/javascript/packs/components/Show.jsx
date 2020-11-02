@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useRouteMatch, useHistory } from "react-router-dom";
 import EpisodeList from "./EpisodeList";
+import ShowForm from "./ShowForm";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
@@ -38,7 +39,7 @@ export default function Show(props) {
         return 0;
       })
     );
-    console.log(filteredData);
+    // console.log(filteredData);
   }, []);
   //----
 
@@ -81,6 +82,7 @@ export default function Show(props) {
           <Typography variant="body2" component="p">
             {`Hosted by: ${showData.host}`}
           </Typography>
+          { props.isLoggedIn && <ShowForm setShowData={setShowData} text={'Edit Show'} showData={showData}/>}
         </CardContent>
       </Card>
       <Divider></Divider>

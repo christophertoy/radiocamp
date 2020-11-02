@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   FormGroup,
@@ -23,6 +23,16 @@ export default function ShowForm(props) {
   const [genre, setGenre] = useState("");
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if(props.showData) {
+      const showData = props.showData;
+      setName(showData.name);
+      setDescription(showData.description);
+      setLogo(showData.image);
+      setHost(showData.host);
+      setGenre(showData.genre);
+    }
+  }, [props.showData]);
 
   const reset = function () {
     setName("");
@@ -47,6 +57,25 @@ export default function ShowForm(props) {
       show = {...show, image: "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
     }
 
+    props.showData ? editShow(show) : createShow(show)
+  };
+
+  const editShow = function (show) {
+    axios
+      .put(`/shows/${props.showData.id}.json`, { show })
+      .then((response) => {
+        show.id = response.data.id;
+        props.setShowData(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    reset();
+    handleClose();
+  }
+
+  const createShow = function (show) {
     axios
       .post("/shows.json", { show })
       .then((response) => {
@@ -61,7 +90,7 @@ export default function ShowForm(props) {
 
     reset();
     handleClose();
-  };
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,7 +105,7 @@ export default function ShowForm(props) {
     <ThemeProvider >
 
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add a show
+        {props.text || 'Add a Show'}
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -151,7 +180,7 @@ export default function ShowForm(props) {
 
             <DialogActions>
               <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Create Show
+                Submit
               </Button>
               <Button variant="contained" color="secondary" onClick={handleClose}>
                 Cancel

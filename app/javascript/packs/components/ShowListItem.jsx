@@ -1,11 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, ListItem, ListItemAvatar, Divider, Avatar } from "@material-ui/core";
 import {
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+  Typography,
+  ListItem,
+  ListItemAvatar,
+  Divider,
+  Avatar,
+} from "@material-ui/core";
+import { Link, useParams, useRouteMatch } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,9 +15,8 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: theme.palette.background.paper,
   },
   inline: {
-    display: 'inline',
+    display: "inline",
   },
-
 }));
 
 export default function ShowListItem(props) {
@@ -40,27 +41,50 @@ export default function ShowListItem(props) {
           </ListItemAvatar>
           {props.isSearchItem ? (
             <ListItem alignItems="flex-start">
-              <div class="show-title">
-                <Typography variant="h5">{`Show: ${props.showData.name}`}</Typography>
-                <Typography>{`Hosted by: ${props.showData.host}`}</Typography>                
-                <Typography>{`Genre: ${props.showData.genre}`}</Typography>
-              </div>
-              <div class="show-description">
-                <Typography variant="body1">{props.showData.description}</Typography>
+              <div class="show-text-container">
+                <div class="show-title">
+                  <Typography
+                    variant="h5"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    {props.showData.name}
+                  </Typography>
+                  <Divider class="show-title-divider"></Divider>
+                  <Typography
+                    variant="subtitle1"
+                    style={{ fontStyle: "italic" }}
+                  >{`Hosted by ${props.showData.host}`}</Typography>
+                  <Typography variant="body2">{`Genre: ${props.showData.genre}`}</Typography>
+                </div>
+                <div class="show-description">
+                  <Typography variant="body1">
+                    {props.showData.description}
+                  </Typography>
+                </div>
               </div>
             </ListItem>
           ) : (
             <ListItem alignItems="flex-start">
-              <div class="show-title">
-                <Typography variant="h5">{props.showData.name}</Typography>
-                <Typography>{`Hosted by ${props.showData.host}`}</Typography>
-      <Divider></Divider>
-                
-                <Typography>{`Genre: ${props.showData.genre}`}</Typography>
+              <div class="show-text-container">
+                <div class="show-title">
+                  <Typography
+                    variant="h5"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    {props.showData.name}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    style={{ fontStyle: "italic" }}
+                  >{`Hosted by ${props.showData.host}`}</Typography>
+                  <Typography variant="body2">{`Genre: ${props.showData.genre}`}</Typography>
+                </div>
+                <div class="show-description">
+                  <Typography variant="body1">
+                    {props.showData.description}
+                  </Typography>
+                </div>
               </div>
-              <div class="show-description">
-                <Typography variant="body1">{props.showData.description}</Typography>
-              </div>           
             </ListItem>
           )}
         </ListItem>
