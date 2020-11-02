@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MenuItem,
   Select,
@@ -28,6 +28,17 @@ export default function BroadcasterForm(props) {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("");
 
+  useEffect( () => {
+    if(props.broadcasterData) {
+      const bData = props.broadcasterData;
+      setHandle(bData.handle);
+      setName(bData.name);
+      setDescription(bData.description);
+      setLogo(bData.image);
+      setTheme(bData.theme);
+    }
+  }, [props.broadcasterData]);
+
   const reset = () => {
     setHandle("");
     setName("");
@@ -35,24 +46,42 @@ export default function BroadcasterForm(props) {
     setLogo("");
   };
 
-  const saveBroadcaster = (event) => {
-    event.preventDefault();
-    axios.post('/broadcasters.json', {
-      handle,
-      name,
-      description,
-      logo,
-      theme,
-      authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
-    })
+  const saveBroadcaster = (broadcaster) => {
+    // event.preventDefault();
+    // const broadcaster = {
+    //   handle,
+    //   name,
+    //   description,
+    //   logo,
+    //   theme,
+    //   authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
+    // }
+    props.broadcasterData ? editBroadcaster(broadcaster) : createBroadcaster(broadcaster);
+  };
+
+  const editBroadcaster = function(broadcaster) {
+    axios.put(`/broadcasters/${props.broadcasterData.id}.json`, { broadcaster })
     .then(function (response) {
+      props.setBroadcasterData(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
     reset();
     handleClose();
-  };
+  }
+
+  const createBroadcaster = function(broadcaster) {
+    axios.post('/broadcasters.json', { broadcaster })
+    .then(function (response) {
+      props.loginAndRedirect(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    // reset();
+    // handleClose();
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -66,7 +95,7 @@ export default function BroadcasterForm(props) {
   return (
     <ThemeProvider theme={themeOrangeGrey}>
       <Button variant="outlined" size="large" color="primary" onClick={handleClickOpen}>
-      Create my site
+        {props.text || 'Create My Site'}
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -83,7 +112,7 @@ export default function BroadcasterForm(props) {
                 aria-describedby="my-helper-text" 
                 required={true}
                 value={handle}
-                onChange={(event) => setHandle(event.target.value)}
+                onChange={props.broadcasterData ? () => {} : (event) => setHandle(event.target.value)}
               />
               <FormHelperText id="my-helper-text">
                 Enter your station's handle or call sign.
@@ -161,7 +190,7 @@ export default function BroadcasterForm(props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={() => props.handleCreateBroadcaster({handle, name, description, logo, theme})} color="primary">
+              <Button onClick={() => saveBroadcaster({handle, name, description, logo, theme })} color="primary">
                 Save
               </Button>          
             </DialogActions>

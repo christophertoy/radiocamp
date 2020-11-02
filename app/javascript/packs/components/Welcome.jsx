@@ -16,7 +16,7 @@ export default function Welcome(props) {
         <Typography variant="h4" style={{color: "white"}}>
           Join RadioCamp you will be so happy!
         </Typography>
-        <Box style={{ marginTop: '50px' }}><BroadcasterForm  handleCreateBroadcaster={props.handleCreateBroadcaster}/></Box>
+        <Box style={{ marginTop: '50px' }}><BroadcasterForm  loginAndRedirect={props.loginAndRedirect}/></Box>
       </Container>
       </ThemeProvider>
     </div>

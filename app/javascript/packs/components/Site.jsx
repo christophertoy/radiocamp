@@ -53,12 +53,13 @@ export default function Site(props) {
         currentUser={props.currentUser}
         broadcasterData={broadcasterData} 
         handleLogOut={props.handleLogOut}
-        title={name} />
+        title={broadcasterData.name} />
       <Switch>
         <Route exact path={match.path}>
           <Broadcaster 
           isLoggedIn={isLoggedIn}
           currentUser={props.currentUser}
+          setBroadcasterData={setBroadcasterData}
           broadcasterData={broadcasterData} />
         </Route>
         <Route path={`${match.path}/search`}>

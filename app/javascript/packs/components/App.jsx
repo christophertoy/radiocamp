@@ -32,24 +32,17 @@ export default function App(props) {
     history.push(`/${data}`);
   };
 
-  const handleCreateBroadcaster = (data) => {
-    axios
-      .post("/broadcasters", data)
-      .then(function (response) {
-        setUser(data.handle);
-        localStorage.setItem("user", data.handle);
-        history.push(`/${data.handle}`);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const loginAndRedirect = (data) => {
+    setUser(data.handle);
+    localStorage.setItem("user", data.handle);
+    history.push(`/${data.handle}`);
   };
 
   return (
     <Switch>
       <Route exact path="/">
         <Welcome
-          handleCreateBroadcaster={handleCreateBroadcaster}
+          loginAndRedirect={loginAndRedirect}
           handleLogin={handleLogin}
         />
       </Route>
