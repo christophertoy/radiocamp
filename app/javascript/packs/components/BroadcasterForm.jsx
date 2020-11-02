@@ -14,10 +14,11 @@ import {
   DialogContent,
   DialogTitle
 } from "@material-ui/core";
-import { themeOrangeGrey } from "./themes";
+import { themeOrangeGrey, THEME_A, THEME_B, THEME_C } from "./themes";
 import axios from "axios";
 
 export default function BroadcasterForm(props) {
+  
   // can the broadcaster state be contained in a single object instead of using state 5 times?
   //const [broadcaster, setBroadcaster] = useState(emptyBroadcaster);
 
@@ -37,6 +38,7 @@ export default function BroadcasterForm(props) {
 
   const saveBroadcaster = (event) => {
     event.preventDefault();
+
     axios.post('/broadcasters.json', {
       handle,
       name,
@@ -145,7 +147,7 @@ export default function BroadcasterForm(props) {
               >
                 <MenuItem value="Choose a Theme"></MenuItem>
                 {  
-                ['themePurpleYellow', 'themeOrangeGrey', 'themeTeal'].map((theme, index) =>
+                [THEME_A, THEME_B, THEME_C].map((theme, index) =>
                     <MenuItem
                       key={index}
                       value={theme}

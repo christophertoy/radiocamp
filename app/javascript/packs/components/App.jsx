@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Site from "./Site";
 import Welcome from "./Welcome";
+import { THEME_A, THEME_B, THEME_C } from "./themes";
 
 export default function App(props) {
   const [user, setUser] = useState("");
@@ -33,6 +34,24 @@ export default function App(props) {
   };
 
   const handleCreateBroadcaster = (data) => {
+    // if a new theme is created in the themes.js file, it needs to be added to this switch statement
+    switch(data.theme) {
+      case THEME_A:
+        data.theme = 'themePurpleYellow';
+        break;
+
+      case THEME_B:
+        data.theme = 'themeOrangeGrey';
+        break;
+
+      case THEME_C:
+        data.theme = 'themeTeal';
+        break;
+      
+      default:
+        data.theme = 'themeTeal';
+    }
+
     axios
       .post("/broadcasters", data)
       .then(function (response) {

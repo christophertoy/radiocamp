@@ -1,6 +1,12 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { deepPurple, amber, deepOrange, grey, green, red, teal } from "@material-ui/core/colors";
 
+// these strings will appear in the create new broadcaster dropdown list and can be changed
+// if you add another theme add the associated global variable to app.jsx and broadcasterform.jsx
+export const THEME_A = 'Lakers';
+export const THEME_B = 'Orange Juice';
+export const THEME_C = 'Under the Sea';
+
 // import { createMuiTheme } from '@material-ui/core/styles';
 // import { green, grey, red } from '@material-ui/core/colors';
 
