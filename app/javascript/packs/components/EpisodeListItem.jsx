@@ -29,7 +29,7 @@ export default function EpisodeListItem(props) {
               style={{ height: "120px", width: "160px" }}
               variant="square"
               alt={props.episodeData.title}
-              src={props.episodeData.image + "?fit=crop&h=100&w=100&crop=entropy"}
+              src={(props.episodeData.image || props.episodeData.show_image) + "?fit=crop&h=100&w=100&crop=entropy"}
             />
           </ListItemAvatar>
           {props.isSearchItem ? (
