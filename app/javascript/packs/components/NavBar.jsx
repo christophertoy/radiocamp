@@ -90,10 +90,6 @@ export default function NavBar(props) {
         queryString
       )}`
     );
-    // console.log(queryString);
-    // const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
-    // setSearchResults(resp.data);
-    // console.log(resp.data);
   };
 
   const classes = useStyles();

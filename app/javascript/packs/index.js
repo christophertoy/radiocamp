@@ -4,7 +4,6 @@
 
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import Aloha from './components/Aloha';
 import NavBar from './components/NavBar';
 import EpisodeForm from './components/EpisodeForm';
 import BroadcasterForm from './components/BroadcasterForm';

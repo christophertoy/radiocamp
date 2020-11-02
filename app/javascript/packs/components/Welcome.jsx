@@ -16,22 +16,6 @@ import Login from "./Login"
 
 
 export default function Welcome(props) {
-  // const [shows, setShows] = useState([])
-  // useEffect(async ()=> {
-  //   const resp = await axios.get('/shows.json')
-  //   console.log(resp.data);
-  //   setShows(resp.data);
-  // },[]);
-  // const [name, setName] = useState('');
-  // const [broadcasterId, setBroadcasterId] = useState(0);
-
-  // useEffect(async ()=> {
-  //   const resp = await axios.get('/broadcasters.json')
-  //   const thisBroadcaster = resp.data.find( x => x.handle === props.handle );
-  //   setName(thisBroadcaster.name);
-  //   setBroadcasterId(thisBroadcaster.id);
-  // },[]);
-
 
   return (
     <div>
