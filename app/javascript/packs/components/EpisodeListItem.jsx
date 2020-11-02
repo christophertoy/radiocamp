@@ -30,7 +30,7 @@ export default function EpisodeListItem(props) {
               variant="square"
               alt="Remy Sharp"
               src={
-                props.episodeData.showImage +
+                props.episodeData.image +
                 "?fit=crop&h=100&w=100&crop=entropy"
               }
             />
