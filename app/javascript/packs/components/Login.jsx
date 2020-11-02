@@ -29,7 +29,7 @@ export default function login(props) {
   };
 
   return (
-    <ThemeProvider theme={themeOrangeGrey}>
+    <div>
       <Button style={{color:"white"}} variant="outlined" onClick={handleClickOpen}>
         Admin Login
       </Button>
@@ -87,6 +87,6 @@ export default function login(props) {
           </FormGroup>
         </DialogContent>
       </Dialog>
-    </ThemeProvider>
+    </div>
   );
 }

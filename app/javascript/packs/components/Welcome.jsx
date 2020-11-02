@@ -3,7 +3,7 @@ import { Typography, Container, Box } from "@material-ui/core";
 import NavBar from './NavBar';
 import BroadcasterForm from './BroadcasterForm';
 import { ThemeProvider } from '@material-ui/core';
-import { themeOrangeGrey } from './themes'
+import { themeOrangeGrey, themeTeal } from './themes'
 
 
 export default function Welcome(props) {
