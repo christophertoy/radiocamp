@@ -39,26 +39,28 @@ export default function ShowListItem(props) {
             />
           </ListItemAvatar>
           {props.isSearchItem ? (
-            <div class="show-title">
-              <Typography variant="h5">{`Show: ${props.showData.name}`}</Typography>
-              <Typography>{`Genre: ${props.showData.genre}`}</Typography>
-            </div>
+            <ListItem alignItems="flex-start">
+              <div class="show-title">
+                <Typography variant="h5">{`Show: ${props.showData.name}`}</Typography>
+                <Typography>{`Hosted by: ${props.showData.host}`}</Typography>                
+                <Typography>{`Genre: ${props.showData.genre}`}</Typography>
+              </div>
+              <div class="show-description">
+                <Typography variant="body1">{props.showData.description}</Typography>
+              </div>
+            </ListItem>
           ) : (
             <ListItem alignItems="flex-start">
               <div class="show-title">
                 <Typography variant="h5">{props.showData.name}</Typography>
                 <Typography>{`Hosted by ${props.showData.host}`}</Typography>
+      <Divider></Divider>
+                
+                <Typography>{`Genre: ${props.showData.genre}`}</Typography>
               </div>
               <div class="show-description">
                 <Typography variant="body1">{props.showData.description}</Typography>
-              </div>
-              {/* <ListItemText
-              primary={props.showData.name}
-              secondary={`Hosted by ${props.showData.host}`}
-              />
-              <ListItemText
-              secondary={props.showData.description}
-              /> */}
+              </div>           
             </ListItem>
           )}
         </ListItem>

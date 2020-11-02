@@ -28,33 +28,33 @@ export default function EpisodeListItem(props) {
             <Avatar
               style={{ height: "120px", width: "160px" }}
               variant="square"
-              alt="Remy Sharp"
-              src={
-                props.episodeData.image +
-                "?fit=crop&h=100&w=100&crop=entropy"
-              }
+              alt={props.episodeData.title}
+              src={props.episodeData.image + "?fit=crop&h=100&w=100&crop=entropy"}
             />
           </ListItemAvatar>
           {props.isSearchItem ? (
-            <div class="episode-title">
-              <Typography variant="h5">{`Episode: ${props.episodeData.title}`}</Typography>
-              <Typography>{props.episodeData.description}</Typography>
-            </div>
-          ) : (
             <ListItem alignItems="flex-start">
               <div class="episode-title">
                 <Typography variant="h5">{props.episodeData.title}</Typography>
                 <Typography>
-                  {`Episode ${props.episodeData.episode_number}: ${
-                    props.episodeData.release_date.split("T")[0]
-                  }`}
+                  {`Episode ${props.episodeData.episode_number}: ${props.episodeData.release_date.split("T")[0]}`}
                 </Typography>
               </div>
               <div class="episode-description">
                 <Typography>{props.episodeData.description}</Typography>
               </div>
             </ListItem>
-          )}
+          ) : (
+            <ListItem alignItems="flex-start">
+              <div class="episode-title">
+                <Typography variant="h5">{props.episodeData.title}</Typography>
+                <Typography>{`Episode ${props.episodeData.episode_number}: ${props.episodeData.release_date.split("T")[0]}`}</Typography>
+              </div>
+              <div class="episode-description">
+                <Typography>{props.episodeData.description}</Typography>
+              </div>
+            </ListItem>
+            )}
           <ListItemText primary={props.episodeData.date} />
         </ListItem>
         <Divider class="show-list-divider" variant="middle" />
