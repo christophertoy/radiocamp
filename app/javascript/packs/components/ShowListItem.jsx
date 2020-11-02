@@ -40,7 +40,7 @@ export default function ShowListItem(props) {
           </ListItemAvatar>
           {props.isSearchItem ? (
             <div class="show-title">
-              <Typography variant="h5">{props.showData.name}</Typography>
+              <Typography variant="h5">{`Show: ${props.showData.name}`}</Typography>
               <Typography>{`Genre: ${props.showData.genre}`}</Typography>
             </div>
           ) : (
