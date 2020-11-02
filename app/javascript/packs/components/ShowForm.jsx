@@ -25,7 +25,6 @@ export default function ShowForm(props) {
 
   useEffect(() => {
     if(props.showData) {
-      console.log(props.showData);
       const showData = props.showData;
       setName(showData.name);
       setDescription(showData.description);
