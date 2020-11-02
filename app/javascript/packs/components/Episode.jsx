@@ -42,7 +42,7 @@ export default function Episode(props) {
           component="img"
           alt={episodeData.title}
           height="500"
-          image={episodeData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
+          image={ (episodeData.image || episodeData.show_image)+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={episodeData.title}
         />
         <CardContent class="episode-card-content">
