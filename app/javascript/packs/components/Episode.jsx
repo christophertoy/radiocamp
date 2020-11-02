@@ -27,7 +27,7 @@ export default function Episode(props) {
   let { episodeId } = useParams();
 
   useEffect(async () => {
-    // this API call will return a custom JSON object that contains all episdoe data and showName and showImage
+    // this API call will return a custom JSON object that contains all episdoe data and showName and image
     const resp = await axios.get(`/episodes/${episodeId}.json`);
     // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setEpisodeData(resp.data);
@@ -42,7 +42,7 @@ export default function Episode(props) {
           component="img"
           alt={episodeData.title}
           height="250"
-          image={episodeData.showImage+'?fit=crop&h=250&w=1080&crop=entropy'}
+          image={episodeData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={episodeData.title}
         />
         <CardContent class="episode-card-content">
