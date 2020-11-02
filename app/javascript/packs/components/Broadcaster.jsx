@@ -85,7 +85,7 @@ export default function Broadcaster(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {props.broadcasterData.name}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography style={{margin:"15px"}} variant="body2" component="p">
             {props.broadcasterData.description}
           </Typography>
           {props.isLoggedIn && (
