@@ -75,6 +75,9 @@ export default function Show(props) {
           <Typography variant="body2" component="p">
             {showData.description}
           </Typography>
+          <Typography variant="body2" component="p">
+            {`Hosted by: ${showData.host}`}
+          </Typography>
         </CardContent>
       </Card>
       <Divider></Divider>
