@@ -13,7 +13,7 @@ export default function Welcome(props) {
       <ThemeProvider theme={themeOrangeGrey}>
       <NavBar title="RadioCamp" handleLogin={props.handleLogin}/> 
       <Container style={{ marginTop: '80px', textAlign: 'center' }}>
-        <Typography variant="h4" >
+        <Typography variant="h4" style={{color: "white"}}>
           Join RadioCamp you will be so happy!
         </Typography>
         <Box style={{ marginTop: '50px' }}><BroadcasterForm  handleCreateBroadcaster={props.handleCreateBroadcaster}/></Box>
