@@ -7,7 +7,6 @@ import {
   useRouteMatch,
   useHistory
 } from "react-router-dom";
-import Aloha from "./Aloha";
 import NavBar from "./NavBar";
 import EpisodeList from "./EpisodeList";
 import { useEffect, useState } from "react";

@@ -7,7 +7,6 @@ import {
   useRouteMatch,
   useHistory
 } from "react-router-dom";
-import Aloha from "./Aloha";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";

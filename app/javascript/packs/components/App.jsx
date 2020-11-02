@@ -7,7 +7,6 @@ import {
   useRouteMatch,
   useHistory,
 } from "react-router-dom";
-import Aloha from "./Aloha";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -35,7 +34,6 @@ export default function App(props) {
     event.preventDefault();
     setUser(data);
     localStorage.setItem("user", data);
-    console.log("data", data);
     history.push(`/${data}`);
   };
 
