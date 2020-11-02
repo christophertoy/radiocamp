@@ -91,7 +91,7 @@ export default function NavBar(props) {
   const locationPath = location.pathname;
   return (
     <div>
-      <AppBar position="static">
+      <AppBar style={{top:"0", }}position="fixed">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link
