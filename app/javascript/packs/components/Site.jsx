@@ -1,19 +1,18 @@
 import React from "react";
 import {
-  BrowserRouter,
   Switch,
   Route,
   useParams,
   useRouteMatch,
   useHistory
 } from "react-router-dom";
-import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Episode from "./Episode";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
 import { themeOrangeGrey, themePurpleYellow, themeTeal } from "./themes";
+import NavBar from "./NavBar";
+import Episode from "./Episode";
 import Broadcaster from "./Broadcaster";
 import Show from "./Show";
 import Search from "./Search";

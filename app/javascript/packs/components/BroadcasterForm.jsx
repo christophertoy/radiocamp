@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Card,
   MenuItem,
   Select,
   FormGroup,
@@ -17,14 +16,6 @@ import {
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
 import axios from "axios";
-
-
-// const emptyBroadcaster = {
-//   handle: "",
-//   name: "",
-//   description: "",
-//   logo: ""
-// };
 
 export default function BroadcasterForm(props) {
   // can the broadcaster state be contained in a single object instead of using state 5 times?
