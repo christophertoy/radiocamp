@@ -72,6 +72,9 @@ export default function Show(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {showData.name}
           </Typography>
+          <Typography gutterBottom variant="body" component="p">
+            {`Genre: ${showData.genre}`}
+          </Typography>
           <Typography variant="body2" component="p">
             {showData.description}
           </Typography>
