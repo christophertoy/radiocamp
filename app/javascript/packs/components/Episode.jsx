@@ -25,6 +25,7 @@ import { getEmbedCode } from './helpers';
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
+    backgroundColor: "#272C2F",
   },
 });
 
@@ -46,7 +47,7 @@ export default function Episode(props) {
   
   return ( 
     <div>
-      <Card className={classes.root} square={true} >
+      <Card className={classes.root} square={true} id="episode-card">
         <CardMedia
           component="img"
           alt={episodeData.title}
@@ -54,7 +55,7 @@ export default function Episode(props) {
           image={episodeData.showImage+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={episodeData.title}
         />
-        <CardContent>
+        <CardContent class="episode-card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {episodeData.title}
           </Typography>
@@ -63,7 +64,7 @@ export default function Episode(props) {
               <em>from {episodeData.showName}</em>
             </Link>
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             {episodeData.description}
           </Typography>          
         </CardContent>
