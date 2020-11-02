@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MenuItem,
   Select,
@@ -27,6 +27,17 @@ export default function BroadcasterForm(props) {
   const [logo, setLogo] = useState("");
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("");
+
+  useEffect( () => {
+    if(props.broadcasterData) {
+      const bData = props.broadcasterData;
+      setHandle(bData.handle);
+      setName(bData.name);
+      setDescription(bData.description);
+      setLogo(bData.image);
+      setTheme(bData.theme);
+    }
+  });
 
   const reset = () => {
     setHandle("");
@@ -66,7 +77,7 @@ export default function BroadcasterForm(props) {
   return (
     <ThemeProvider theme={themeOrangeGrey}>
       <Button variant="outlined" size="large" color="primary" onClick={handleClickOpen}>
-      Create my site
+        {props.text || 'Create My Site'}
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

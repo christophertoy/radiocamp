@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowList from "./ShowList";
+import BroadcasterForm from "./BroadcasterForm";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -62,6 +63,12 @@ export default function Broadcaster(props) {
           <Typography variant="body2" component="p">
             {props.broadcasterData.description}
           </Typography>
+          {props.isLoggedIn && (
+            <BroadcasterForm
+              broadcasterData={props.broadcasterData}
+              text="Customize Site"
+            />
+          )}
         </CardContent>
         {/* <CardActions>
           <Button size="small" color="primary">
