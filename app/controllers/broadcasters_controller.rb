@@ -16,7 +16,7 @@ class BroadcastersController < ApplicationController
       show.description != nil && show.description.downcase.include?(query) || show.name != nil && show.name.downcase.include?(query)
     end
 
-    @results = @episodes + @shows
+    @results = @shows + @episodes
 
     render 'search.json.jbuilder'
   end
