@@ -82,7 +82,7 @@ export default function Show(props) {
           <Typography variant="body2" component="p">
             {`Hosted by: ${showData.host}`}
           </Typography>
-          { props.isLoggedIn && <ShowForm text={'Edit Show'} showData={showData}/>}
+          { props.isLoggedIn && <ShowForm setShowData={setShowData} text={'Edit Show'} showData={showData}/>}
         </CardContent>
       </Card>
       <Divider></Divider>

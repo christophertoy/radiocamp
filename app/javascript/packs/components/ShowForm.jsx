@@ -58,12 +58,25 @@ export default function ShowForm(props) {
       show = {...show, image: "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
     }
 
-    createShow(show)
-
+    props.showData ? editShow(show) : createShow(show)
   };
 
-  const createShow = function (show) {
+  const editShow = function (show) {
+    axios
+      .put(`/shows/${props.showData.id}.json`, { show })
+      .then((response) => {
+        show.id = response.data.id;
+        props.setShowData(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
+    reset();
+    handleClose();
+  }
+
+  const createShow = function (show) {
     axios
       .post("/shows.json", { show })
       .then((response) => {
