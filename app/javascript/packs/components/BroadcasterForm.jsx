@@ -101,7 +101,7 @@ export default function BroadcasterForm(props) {
                 onChange={(event) => setName(event.target.value)}
               />              
             <FormHelperText id="my-helper-text">
-                Enter your station's name
+                Enter your station's name.
               </FormHelperText>
             </FormControl>
 
@@ -129,7 +129,7 @@ export default function BroadcasterForm(props) {
                  value={logo}
                  onChange={(event) => setLogo(event.target.value)}/>
               <FormHelperText id="my-helper-text">
-                Enter a URL that points to your station's logo
+                Enter an image URL that represents your station.
               </FormHelperText>
             </FormControl>
 
