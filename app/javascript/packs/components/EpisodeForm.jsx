@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Select,
@@ -11,10 +11,9 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  ThemeProvider
-
+  ThemeProvider,
 } from "@material-ui/core";
-import axios from 'axios';
+import axios from "axios";
 
 const getCurrentDate = () => {
   let today = new Date();
@@ -22,18 +21,18 @@ const getCurrentDate = () => {
   let mm = today.getMonth() + 1;
   let yyyy = today.getFullYear();
   if (dd < 10) {
-    dd = '0' + dd;
+    dd = "0" + dd;
   }
   if (mm < 10) {
-    mm = '0' + mm;
+    mm = "0" + mm;
   }
-  return today = yyyy + '-' + mm + '-' + dd;
+  return (today = yyyy + "-" + mm + "-" + dd);
 };
 
 export default function EpisodeForm(props) {
   // console.log(props.episodeData.title);
 
-  const [shows, setShows] = useState([]); 
+  const [shows, setShows] = useState([]);
   const [showId, setShowId] = useState(props.showId || "");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState();
@@ -44,36 +43,45 @@ export default function EpisodeForm(props) {
 
   // Load episode info
   useEffect(async () => {
-    if(props.episodeData) {
-      setTitle(props.episodeData.title);
-      setEpisodeNumber(parseInt(props.episodeData.episode_number));
-      setDescription(props.episodeData.description);
-      setUrl(props.episodeData.episode_url);
-      // setReleaseDate(Date.parse(props.episodeData.release_date));
+    if (props.episodeData) {
+      reload();
     }
-  }, [props.episodeData])
-  
+  }, [props.episodeData]);
+
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
-    const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
+    const allShows = resp.data.filter(
+      (x) => x.broadcaster_id === props.broadcasterId
+    );
     setShows(allShows);
     setShowId(props.showId);
-  }, [props.broadcasterId, props.showId, props.episodeData]);  
+  }, [props.broadcasterId, props.showId, props.episodeData]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  
+
   const handleClose = () => {
+    reset();
     setOpen(false);
-  };  
+  };
 
   const reset = function () {
-    setShowId("");
-    setTitle("");
-    setDescription("");
-    setUrl("");
-    setReleaseDate(getCurrentDate());
+    if (props.episodeData) reload();
+    else {
+      setShowId("");
+      setTitle("");
+      setDescription("");
+      setUrl("");
+      setReleaseDate(getCurrentDate());
+    }
+  };
+
+  const reload = function () {
+    setTitle(props.episodeData.title);
+    setEpisodeNumber(parseInt(props.episodeData.episode_number));
+    setDescription(props.episodeData.description);
+    setUrl(props.episodeData.episode_url);
   };
 
   const handleSubmit = function (event) {
@@ -85,7 +93,7 @@ export default function EpisodeForm(props) {
       description,
       episode_url: url,
       release_date: releaseDate,
-      episode_number: episodeNumber
+      episode_number: episodeNumber,
     };
 
     props.episodeData ? editEpisode(episode) : createEpisode(episode);
@@ -104,9 +112,8 @@ export default function EpisodeForm(props) {
       .catch((error) => {
         console.log(error);
       });
-    reset();
     handleClose();
-  }
+  };
 
   const createEpisode = function (episode) {
     axios
@@ -115,7 +122,7 @@ export default function EpisodeForm(props) {
         episode.id = response.data.id;
         episode.image = response.data.image;
         props.setEpisodes((prev) => {
-          return [episode, ...prev]
+          return [episode, ...prev];
         });
       })
       .catch((error) => {
@@ -123,18 +130,23 @@ export default function EpisodeForm(props) {
       });
     reset();
     handleClose();
-  }
+  };
 
   return (
     <ThemeProvider>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        { props.text || 'Add Episode' }
+        {props.text || "Add Episode"}
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">{ props.text || 'Add Episode' }</DialogTitle>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">
+          {props.text || "Add Episode"}
+        </DialogTitle>
         <DialogContent>
           <FormGroup>
-
             <FormControl>
               <InputLabel id="demo-simple-select-label">Show</InputLabel>
               <Select
@@ -146,16 +158,15 @@ export default function EpisodeForm(props) {
                 onChange={(event) => setShowId(event.target.value)}
               >
                 <MenuItem value="Choose a Show"></MenuItem>
-                {  
-                shows.map(show =>
-                    <MenuItem
-                      key={show.id}
-                      value={show.id}
-                      selected={props.showId === show.id}
-                      >
-                      {show.name}
-                    </MenuItem>)
-                }
+                {shows.map((show) => (
+                  <MenuItem
+                    key={show.id}
+                    value={show.id}
+                    selected={props.showId === show.id}
+                  >
+                    {show.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
 
@@ -199,7 +210,7 @@ export default function EpisodeForm(props) {
                 onChange={(event) => setReleaseDate(event.target.value)}
               />
             </FormControl>
-            
+
             <FormControl>
               <InputLabel htmlFor="episode_number">Episode Number</InputLabel>
               <Input
@@ -218,10 +229,9 @@ export default function EpisodeForm(props) {
                 Cancel
               </Button>
             </DialogActions>
-
           </FormGroup>
         </DialogContent>
       </Dialog>
     </ThemeProvider>
-  )
-};
+  );
+}

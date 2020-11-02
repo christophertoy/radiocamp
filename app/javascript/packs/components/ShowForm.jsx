@@ -11,7 +11,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
 } from "@material-ui/core";
 // props will need to contain broadcaster ID
 
@@ -24,22 +24,29 @@ export default function ShowForm(props) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if(props.showData) {
-      const showData = props.showData;
-      setName(showData.name);
-      setDescription(showData.description);
-      setLogo(showData.image);
-      setHost(showData.host);
-      setGenre(showData.genre);
+    if (props.showData) {
+      reload();
     }
   }, [props.showData]);
 
+  const reload = function () {
+    const showData = props.showData;
+    setName(showData.name);
+    setDescription(showData.description);
+    setLogo(showData.image);
+    setHost(showData.host);
+    setGenre(showData.genre);
+  };
+
   const reset = function () {
-    setName("");
-    setDescription("");
-    setLogo("");
-    setHost("")
-    setGenre("");
+    if (props.showData) reload();
+    else {
+      setName("");
+      setDescription("");
+      setLogo("");
+      setHost("");
+      setGenre("");
+    }
   };
 
   const handleSubmit = function (event) {
@@ -54,10 +61,14 @@ export default function ShowForm(props) {
     };
 
     if (!show.image) {
-      show = {...show, image: "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
+      show = {
+        ...show,
+        image:
+          "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg",
+      };
     }
 
-    props.showData ? editShow(show) : createShow(show)
+    props.showData ? editShow(show) : createShow(show);
   };
 
   const editShow = function (show) {
@@ -65,15 +76,14 @@ export default function ShowForm(props) {
       .put(`/shows/${props.showData.id}.json`, { show })
       .then((response) => {
         show.id = response.data.id;
-        props.setShowData(response.data)
+        props.setShowData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
 
-    reset();
     handleClose();
-  }
+  };
 
   const createShow = function (show) {
     axios
@@ -81,8 +91,8 @@ export default function ShowForm(props) {
       .then((response) => {
         show.id = response.data.id;
         props.setShows((prev) => {
-          return [show, ...prev]
-        })
+          return [show, ...prev];
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +100,7 @@ export default function ShowForm(props) {
 
     reset();
     handleClose();
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -102,16 +112,18 @@ export default function ShowForm(props) {
   };
 
   return (
-    <ThemeProvider >
-
+    <ThemeProvider>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        {props.text || 'Add a Show'}
+        {props.text || "Add a Show"}
       </Button>
 
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Show Information</DialogTitle>
         <DialogContent>
-
           <FormGroup>
             <FormControl>
               <InputLabel htmlFor="name">Name</InputLabel>
@@ -123,7 +135,7 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter the name of your show.
-          </FormHelperText>
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -136,7 +148,7 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter a short summary that describes your show.
-          </FormHelperText>
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -149,7 +161,7 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter the name of your show's host.
-          </FormHelperText>
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -162,7 +174,7 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter your show's genre.
-          </FormHelperText>
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -175,18 +187,25 @@ export default function ShowForm(props) {
               />
               <FormHelperText id="my-helper-text">
                 Enter an image URL that represents your show.
-          </FormHelperText>
+              </FormHelperText>
             </FormControl>
 
             <DialogActions>
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+              >
                 Submit
               </Button>
-              <Button variant="contained" color="secondary" onClick={handleClose}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClose}
+              >
                 Cancel
               </Button>
             </DialogActions>
-
           </FormGroup>
         </DialogContent>
       </Dialog>

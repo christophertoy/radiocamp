@@ -12,7 +12,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
 } from "@material-ui/core";
 import { themeOrangeGrey } from "./themes";
 import axios from "axios";
@@ -28,22 +28,29 @@ export default function BroadcasterForm(props) {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("");
 
-  useEffect( () => {
-    if(props.broadcasterData) {
-      const bData = props.broadcasterData;
-      setHandle(bData.handle);
-      setName(bData.name);
-      setDescription(bData.description);
-      setLogo(bData.image);
-      setTheme(bData.theme);
+  useEffect(() => {
+    if (props.broadcasterData) {
+      reload();
     }
   }, [props.broadcasterData]);
 
+  const reload = () => {
+    const bData = props.broadcasterData;
+    setHandle(bData.handle);
+    setName(bData.name);
+    setDescription(bData.description);
+    setLogo(bData.image);
+    setTheme(bData.theme);
+  };
+
   const reset = () => {
-    setHandle("");
-    setName("");
-    setDescription("");
-    setLogo("");
+    if (props.broadcasterData) reload();
+    else {
+      setHandle("");
+      setName("");
+      setDescription("");
+      setLogo("");
+    }
   };
 
   const saveBroadcaster = (broadcaster) => {
@@ -56,63 +63,79 @@ export default function BroadcasterForm(props) {
     //   theme,
     //   authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
     // }
-    props.broadcasterData ? editBroadcaster(broadcaster) : createBroadcaster(broadcaster);
+    props.broadcasterData
+      ? editBroadcaster(broadcaster)
+      : createBroadcaster(broadcaster);
   };
 
-  const editBroadcaster = function(broadcaster) {
-    axios.put(`/broadcasters/${props.broadcasterData.id}.json`, { broadcaster })
-    .then(function (response) {
-      props.setBroadcasterData(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const editBroadcaster = function (broadcaster) {
+    axios
+      .put(`/broadcasters/${props.broadcasterData.id}.json`, { broadcaster })
+      .then(function (response) {
+        props.setBroadcasterData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    handleClose();
+  };
+
+  const createBroadcaster = function (broadcaster) {
+    axios
+      .post("/broadcasters.json", { broadcaster })
+      .then(function (response) {
+        props.loginAndRedirect(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     reset();
     handleClose();
-  }
-
-  const createBroadcaster = function(broadcaster) {
-    axios.post('/broadcasters.json', { broadcaster })
-    .then(function (response) {
-      props.loginAndRedirect(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    // reset();
-    // handleClose();
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    reset();
     setOpen(false);
+    reset();
   };
 
   return (
     <ThemeProvider theme={themeOrangeGrey}>
-      <Button variant="outlined" size="large" color="primary" onClick={handleClickOpen}>
-        {props.text || 'Create My Site'}
+      <Button
+        variant="outlined"
+        size="large"
+        color="primary"
+        onClick={handleClickOpen}
+      >
+        {props.text || "Create My Site"}
       </Button>
 
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Broadcaster Information</DialogTitle>
-          <DialogContent>
-          
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">
+          Broadcaster Information
+        </DialogTitle>
+        <DialogContent>
           <FormGroup>
-            
             <FormControl>
               <InputLabel htmlFor="handle">Handle</InputLabel>
-              <Input 
-                name="handle" 
-                id="handle" 
-                aria-describedby="my-helper-text" 
+              <Input
+                name="handle"
+                id="handle"
+                aria-describedby="my-helper-text"
                 required={true}
                 value={handle}
-                onChange={props.broadcasterData ? () => {} : (event) => setHandle(event.target.value)}
+                onChange={
+                  props.broadcasterData
+                    ? () => {}
+                    : (event) => setHandle(event.target.value)
+                }
               />
               <FormHelperText id="my-helper-text">
                 Enter your station's handle or call sign.
@@ -121,24 +144,24 @@ export default function BroadcasterForm(props) {
 
             <FormControl>
               <InputLabel htmlFor="name">Name</InputLabel>
-              <Input 
+              <Input
                 name="name"
-                id="name" 
+                id="name"
                 aria-describedby="my-helper-text"
                 required={true}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-              />              
-            <FormHelperText id="my-helper-text">
+              />
+              <FormHelperText id="my-helper-text">
                 Enter your station's name.
               </FormHelperText>
             </FormControl>
 
             <FormControl>
               <InputLabel htmlFor="description">Description</InputLabel>
-              <Input 
-                name="description" 
-                id="description" 
+              <Input
+                name="description"
+                id="description"
                 aria-describedby="my-helper-text"
                 required={true}
                 value={description}
@@ -151,12 +174,14 @@ export default function BroadcasterForm(props) {
 
             <FormControl>
               <InputLabel htmlFor="station-logo">Logo</InputLabel>
-              <Input name="logo"
-                 id="station_logo" 
-                 aria-describedby="my-helper-text"
-                 required={true}
-                 value={logo}
-                 onChange={(event) => setLogo(event.target.value)}/>
+              <Input
+                name="logo"
+                id="station_logo"
+                aria-describedby="my-helper-text"
+                required={true}
+                value={logo}
+                onChange={(event) => setLogo(event.target.value)}
+              />
               <FormHelperText id="my-helper-text">
                 Enter an image URL that represents your station.
               </FormHelperText>
@@ -173,16 +198,17 @@ export default function BroadcasterForm(props) {
                 onChange={(event) => setTheme(event.target.value)}
               >
                 <MenuItem value="Choose a Theme"></MenuItem>
-                {  
-                ['themePurpleYellow', 'themeOrangeGrey', 'themeTeal'].map((theme, index) =>
+                {["themePurpleYellow", "themeOrangeGrey", "themeTeal"].map(
+                  (theme, index) => (
                     <MenuItem
                       key={index}
                       value={theme}
                       // selected={props.showId === show.id}
-                      >
+                    >
                       {theme}
-                    </MenuItem>)
-                }
+                    </MenuItem>
+                  )
+                )}
               </Select>
             </FormControl>
 
@@ -190,11 +216,15 @@ export default function BroadcasterForm(props) {
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={() => saveBroadcaster({handle, name, description, logo, theme })} color="primary">
+              <Button
+                onClick={() =>
+                  saveBroadcaster({ handle, name, description, logo, theme })
+                }
+                color="primary"
+              >
                 Save
-              </Button>          
+              </Button>
             </DialogActions>
-            
           </FormGroup>
         </DialogContent>
       </Dialog>
