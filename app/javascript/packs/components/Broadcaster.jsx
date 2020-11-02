@@ -1,19 +1,22 @@
 import React from "react";
-import {
-  useHistory
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowList from "./ShowList";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, CardMedia, Typography, Divider } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Divider,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
   },
 });
-
 
 export default function Broadcaster(props) {
   const classes = useStyles();
@@ -23,24 +26,27 @@ export default function Broadcaster(props) {
 
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
-    const filteredData = resp.data.filter(x => x.broadcaster_id === props.broadcasterData.id);
+    const filteredData = resp.data.filter(
+      (x) => x.broadcaster_id === props.broadcasterData.id
+    );
     // sorts shows alphabetically by name
-    setShows(filteredData.sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    }
-    ));
+    setShows(
+      filteredData.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      })
+    );
   }, [props.broadcasterData.id]);
-  
+
   const handleLogOut = (event) => {
     event.preventDefault();
     localStorage.setItem("user", null);
-    history.push('/');
+    history.push("/");
   };
 
   return (
-    <div>
+    <div id="broadcaster-page-container">
       <Card className={classes.root} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
@@ -67,13 +73,15 @@ export default function Broadcaster(props) {
         </CardActions> */}
       </Card>
       <Divider></Divider>
-      <ShowList
-        shows={shows}
-        broadcasterId={props.broadcasterData.id}
-        broadcasterData={props.broadcasterData}
-        currentUser={props.currentUser}
-        setShows={setShows}
-      />
+      <div id="show-list-container">
+        <ShowList
+          shows={shows}
+          broadcasterId={props.broadcasterData.id}
+          broadcasterData={props.broadcasterData}
+          currentUser={props.currentUser}
+          setShows={setShows}
+        />
+      </div>
     </div>
   );
 }
