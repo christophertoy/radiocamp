@@ -61,7 +61,7 @@ export default function Show(props) {
 
   return (
     <div id="show-page-container">
-      <Card square={true} className={classes.root} id="show-card">
+      <Card style={{marginTop:"55px"}} square={true} className={classes.root} id="show-card">
         <CardMedia
           component="img"
           alt={showData.name + "header image"}
@@ -73,13 +73,13 @@ export default function Show(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {showData.name}
           </Typography>
-          <Typography gutterBottom variant="body" component="p">
+          <Typography variant="body2" component="p">
             {`Genre: ${showData.genre}`}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography gutterBottom variant="body2" component="p">
             {showData.description}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography style={{marginBottom:"10px", fontStyle:"italic"}} variant="body1" component="p">
             {`Hosted by: ${showData.host}`}
           </Typography>
           { props.isLoggedIn && <ShowForm setShowData={setShowData} text={'Edit Show'} showData={showData}/>}

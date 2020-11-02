@@ -73,19 +73,19 @@ export default function Broadcaster(props) {
 
   return (
     <div id="broadcaster-page-container">
-      <Card className={classes.root} id="broadcaster-card" square={true}>
+      <Card style={{marginTop:"55px"}} className={classes.root} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}
           height="250"
-          image={props.broadcasterData.logo || "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
+          image={props.broadcasterData.logo + '?fit=crop&h=250&w=1080&crop=entropy' || "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
           title={props.broadcasterData.name}
         />
         <CardContent class="broadcaster-card-content">
           <Typography gutterBottom variant="h5" component="h2">
             {props.broadcasterData.name}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography style={{margin:"15px"}} variant="body2" component="p">
             {props.broadcasterData.description}
           </Typography>
           {props.isLoggedIn && (

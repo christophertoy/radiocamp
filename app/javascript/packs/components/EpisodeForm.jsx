@@ -40,6 +40,7 @@ export default function EpisodeForm(props) {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [releaseDate, setReleaseDate] = useState(getCurrentDate());
+  const [image, setImage] = useState("");
 
   // Load episode info
   useEffect(async () => {
@@ -94,6 +95,7 @@ export default function EpisodeForm(props) {
       episode_url: url,
       release_date: releaseDate,
       episode_number: episodeNumber,
+      image
     };
 
     props.episodeData ? editEpisode(episode) : createEpisode(episode);
@@ -103,8 +105,8 @@ export default function EpisodeForm(props) {
     axios
       .put(`/episodes/${props.episodeData.id}.json`, { episode })
       .then((response) => {
-        episode.id = response.data.id;
-        episode.image = response.data.image;
+        // episode.id = response.data.id;
+        // episode.image = response.data.image;
         // episode = { showId, title, description, url, releaseDate, episodeNumber }
         // props.setEpisodeData( prev => { return { ...prev, ...episode } });
         props.setEpisodeData(response.data);
@@ -119,10 +121,10 @@ export default function EpisodeForm(props) {
     axios
       .post("/episodes.json", { episode })
       .then((response) => {
-        episode.id = response.data.id;
-        episode.image = response.data.image;
+        // episode.id = response.data.id;
+        // episode.image = response.data.image;
         props.setEpisodes((prev) => {
-          return [episode, ...prev];
+          return [response.data, ...prev];
         });
       })
       .catch((error) => {
@@ -189,6 +191,15 @@ export default function EpisodeForm(props) {
                 name="description"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl>
+              <InputLabel htmlFor="image">Episode Image</InputLabel>
+              <Input
+                name="image"
+                value={image}
+                onChange={(event) => setImage(event.target.value)}
               />
             </FormControl>
 
