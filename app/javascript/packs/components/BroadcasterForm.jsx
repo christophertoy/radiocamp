@@ -59,17 +59,17 @@ export default function BroadcasterForm(props) {
     props.broadcasterData ? editBroadcaster(broadcaster) : createBroadcaster(broadcaster);
   };
 
-  // const editBroadcaster = function(broadcaster) {
-  //   axios.put('/broadcasters.json', { broadcaster })
-  //   .then(function (response) {
-  //     setBroadcasterData(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  //   reset();
-  //   handleClose();
-  // }
+  const editBroadcaster = function(broadcaster) {
+    axios.put(`/broadcasters/${props.broadcasterData.id}.json`, { broadcaster })
+    .then(function (response) {
+      props.setBroadcasterData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    reset();
+    handleClose();
+  }
 
   const createBroadcaster = function(broadcaster) {
     axios.post('/broadcasters.json', { broadcaster })
