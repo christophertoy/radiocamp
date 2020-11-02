@@ -149,7 +149,7 @@ export default function EpisodeForm(props) {
             </FormControl>
 
             <FormControl>
-              <InputLabel htmlFor="episode_url">Episode URL</InputLabel>
+              <InputLabel htmlFor="episode_url">Audio URL</InputLabel>
               <Input
                 name="episode_url"
                 value={url}
