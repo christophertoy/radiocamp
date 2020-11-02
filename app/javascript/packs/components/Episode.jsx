@@ -60,7 +60,10 @@ export default function Episode(props) {
           { props.isLoggedIn && <EpisodeForm setEpisodeData={setEpisodeData} text={'Edit Episode'} broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} episodeData={episodeData} showId={episodeData.show_id}/>}
         </CardContent>
       </Card>
+      <div id="player-container">
       <Player className="player" embedCode={episodeCode}/>
+
+      </div>
     </div>
   );
 }
