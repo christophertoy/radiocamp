@@ -31,22 +31,34 @@ const getCurrentDate = () => {
 };
 
 export default function EpisodeForm(props) {
+  // console.log(props.episodeData.title);
 
   const [shows, setShows] = useState([]); 
   const [showId, setShowId] = useState(props.showId || "");
   const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState();
   const [episodeNumber, setEpisodeNumber] = useState(0);
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [releaseDate, setReleaseDate] = useState(getCurrentDate());
+
+  // Load episode info
+  useEffect(async () => {
+    if(props.episodeData) {
+      setTitle(props.episodeData.title);
+      setEpisodeNumber(parseInt(props.episodeData.episode_number));
+      setDescription(props.episodeData.description);
+      setUrl(props.episodeData.episode_url);
+      // setReleaseDate(Date.parse(props.episodeData.release_date));
+    }
+  }, [props.episodeData])
   
   useEffect(async () => {
     const resp = await axios.get("/shows.json");
     const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
     setShows(allShows);
     setShowId(props.showId);
-  }, [props.broadcasterId, props.showId]);  
+  }, [props.broadcasterId, props.showId, props.episodeData]);  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,6 +88,27 @@ export default function EpisodeForm(props) {
       episode_number: episodeNumber
     };
 
+    props.episodeData ? editEpisode(episode) : createEpisode(episode);
+  };
+
+  const editEpisode = function (episode) {
+    axios
+      .put(`/episodes/${props.episodeData.id}.json`, { episode })
+      .then((response) => {
+        episode.id = response.data.id;
+        episode.image = response.data.image;
+        // episode = { showId, title, description, url, releaseDate, episodeNumber }
+        // props.setEpisodeData( prev => { return { ...prev, ...episode } });
+        props.setEpisodeData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    reset();
+    handleClose();
+  }
+
+  const createEpisode = function (episode) {
     axios
       .post("/episodes.json", { episode })
       .then((response) => {
@@ -90,15 +123,15 @@ export default function EpisodeForm(props) {
       });
     reset();
     handleClose();
-  };
+  }
 
   return (
     <ThemeProvider>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add an episode
+        { props.text || 'Add Episode' }
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Episode</DialogTitle>
+        <DialogTitle id="form-dialog-title">{ props.text || 'Add Episode' }</DialogTitle>
         <DialogContent>
           <FormGroup>
 
@@ -179,7 +212,7 @@ export default function EpisodeForm(props) {
 
             <DialogActions>
               <Button onClick={handleSubmit} color="primary">
-                Create Episode
+                Submit
               </Button>
               <Button onClick={handleClose} color="primary">
                 Cancel
