@@ -14,7 +14,6 @@ import {
   ThemeProvider
 
 } from "@material-ui/core";
-import { themeOrangeGrey } from "./themes";
 import axios from 'axios';
 
 const getCurrentDate = () => {

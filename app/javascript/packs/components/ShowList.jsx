@@ -1,11 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import ShowListItem from "./ShowListItem";
 import ShowForm from "./ShowForm";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import List from '@material-ui/core/List';
+import { Typography, List } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function showList(props) {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
       <div id="show-list-container">
