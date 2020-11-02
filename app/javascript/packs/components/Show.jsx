@@ -39,7 +39,7 @@ export default function Show(props) {
         return 0;
       })
     );
-    console.log(filteredData);
+    // console.log(filteredData);
   }, []);
   //----
 
@@ -82,7 +82,7 @@ export default function Show(props) {
           <Typography variant="body2" component="p">
             {`Hosted by: ${showData.host}`}
           </Typography>
-          { props.isLoggedIn && <ShowForm text={'Edit Show'}/>}
+          { props.isLoggedIn && <ShowForm text={'Edit Show'} showData={showData}/>}
         </CardContent>
       </Card>
       <Divider></Divider>

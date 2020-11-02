@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   FormGroup,
@@ -22,6 +22,29 @@ export default function ShowForm(props) {
   const [host, setHost] = useState("");
   const [genre, setGenre] = useState("");
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(props.showData) {
+      console.log(props.showData);
+      const showData = props.showData;
+      setName(showData.name);
+      setDescription(showData.description);
+      setLogo(showData.image);
+      setHost(showData.host);
+      setGenre(showData.genre);
+    }
+  }, [props.showData]);
+  
+  // // Load episode info
+  // useEffect(async () => {
+  //   if(props.episodeData) {
+  //     setTitle(props.episodeData.title);
+  //     setEpisodeNumber(parseInt(props.episodeData.episode_number));
+  //     setDescription(props.episodeData.description);
+  //     setUrl(props.episodeData.episode_url);
+  //     // setReleaseDate(Date.parse(props.episodeData.release_date));
+  //   }
+  // }, [props.episodeData])
 
 
   const reset = function () {
