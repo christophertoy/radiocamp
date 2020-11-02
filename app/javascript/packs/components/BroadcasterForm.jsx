@@ -14,10 +14,11 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
-import { themeOrangeGrey } from "./themes";
+import { themeOrangeGrey, THEME_A, THEME_B, THEME_C } from "./themes";
 import axios from "axios";
 
 export default function BroadcasterForm(props) {
+  
   // can the broadcaster state be contained in a single object instead of using state 5 times?
   //const [broadcaster, setBroadcaster] = useState(emptyBroadcaster);
 
@@ -54,15 +55,24 @@ export default function BroadcasterForm(props) {
   };
 
   const saveBroadcaster = (broadcaster) => {
-    // event.preventDefault();
-    // const broadcaster = {
-    //   handle,
-    //   name,
-    //   description,
-    //   logo,
-    //   theme,
-    //   authenticity_token: "7Q6hhcViECR6WibzTIdQVwufBs8K7C+MfzrpIeW+SlUrwEvXHzjZuOp42FAf+0vRLV36n27++5iLTHuV+gS/Eg=="
-    // }
+
+    switch(broadcaster.theme) {
+      case THEME_A:
+        broadcaster.theme = 'themePurpleYellow';
+        break;
+
+      case THEME_B:
+        broadcaster.theme = 'themeOrangeGrey';
+        break;
+
+      case THEME_C:
+        broadcaster.theme = 'themeTeal';
+        break;
+      
+      default:
+        broadcaster.theme = 'themeTeal';
+    }
+
     props.broadcasterData
       ? editBroadcaster(broadcaster)
       : createBroadcaster(broadcaster);
@@ -198,8 +208,8 @@ export default function BroadcasterForm(props) {
                 onChange={(event) => setTheme(event.target.value)}
               >
                 <MenuItem value="Choose a Theme"></MenuItem>
-                {["themePurpleYellow", "themeOrangeGrey", "themeTeal"].map(
-                  (theme, index) => (
+                {  
+                [THEME_A, THEME_B, THEME_C].map((theme, index) =>
                     <MenuItem
                       key={index}
                       value={theme}
@@ -208,7 +218,7 @@ export default function BroadcasterForm(props) {
                       {theme}
                     </MenuItem>
                   )
-                )}
+                }
               </Select>
             </FormControl>
 
