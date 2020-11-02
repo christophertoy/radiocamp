@@ -7,6 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Player from "./Player";
+import EpisodeForm from "./EpisodeForm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { getEmbedCode } from './helpers';
@@ -55,7 +56,8 @@ export default function Episode(props) {
           </Typography>
           <Typography variant="body2" component="p">
             {episodeData.description}
-          </Typography>          
+          </Typography>
+          <EpisodeForm text={'Edit Episode'} broadcasterId= {props.broadcasterData.id} broadcasterData={props.broadcasterData} episodeData={episodeData} showId={episodeData.show_id}/>
         </CardContent>
       </Card>
       <Player className="player" embedCode={episodeCode}/>

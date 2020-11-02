@@ -98,7 +98,7 @@ export default function EpisodeForm(props) {
         Add an episode
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Episode</DialogTitle>
+        <DialogTitle id="form-dialog-title">{ props.text || 'Add Episode' }</DialogTitle>
         <DialogContent>
           <FormGroup>
 
