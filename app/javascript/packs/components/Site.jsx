@@ -31,9 +31,14 @@ export default function Site(props) {
 
   const [name, setName] = useState("");
   const [broadcasterData, setBroadcasterData] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(broadcasterHandle === props.currentUser);
 
   const history = useHistory();
   let match = useRouteMatch();
+
+  useEffect(() => {
+    setIsLoggedIn(broadcasterHandle === props.currentUser);
+  },[props.currentUser])
 
   useEffect(async () => {
     const resp = await axios.get("/broadcasters.json");
@@ -52,6 +57,7 @@ export default function Site(props) {
       <Switch>
         <Route exact path={match.path}>
           <Broadcaster 
+          isLoggedIn={isLoggedIn}
           currentUser={props.currentUser}
           broadcasterData={broadcasterData} />
         </Route>
@@ -59,11 +65,12 @@ export default function Site(props) {
           <Search broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId/:episodeId`}>
-          <Episode broadcasterData={broadcasterData}/>
+          <Episode isLoggedIn={isLoggedIn} broadcasterData={broadcasterData}/>
         </Route>
         <Route path={`${match.path}/:showId`}>
           <Show
           currentUser={props.currentUser} 
+          isLoggedIn={isLoggedIn}
           broadcasterId={broadcasterData.id} 
           broadcasterData={broadcasterData}/>
         </Route>

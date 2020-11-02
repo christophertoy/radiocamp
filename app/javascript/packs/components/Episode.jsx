@@ -57,7 +57,7 @@ export default function Episode(props) {
           <Typography variant="body2" component="p">
             {episodeData.description}
           </Typography>
-          <EpisodeForm setEpisodeData={setEpisodeData} text={'Edit Episode'} broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} episodeData={episodeData} showId={episodeData.show_id}/>
+          { props.isLoggedIn && <EpisodeForm setEpisodeData={setEpisodeData} text={'Edit Episode'} broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} episodeData={episodeData} showId={episodeData.show_id}/>}
         </CardContent>
       </Card>
       <Player className="player" embedCode={episodeCode}/>
