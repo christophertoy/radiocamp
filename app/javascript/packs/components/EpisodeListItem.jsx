@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EpisodeListItem(props) {
-  console.log('props from epilistitem', props);
   const classes = useStyles();
   let match = useRouteMatch();
 
