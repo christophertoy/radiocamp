@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import Toolbar from "@material-ui/core/Toolbar";
-// import IconButton from '@material-ui/core/IconButton';
-import Typography from "@material-ui/core/Typography";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
+import React, { useState } from "react";
+import { AppBar, Button, Toolbar, Typography, InputBase } from "@material-ui/core";
+// import AppBar from "@material-ui/core/AppBar";
+// import Button from "@material-ui/core/Button";
+// import Toolbar from "@material-ui/core/Toolbar";
+// import Typography from "@material-ui/core/Typography";
+// import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
+import SearchIcon from "@material-ui/icons/Search";
 import {
-  BrowserRouter,
   Link,
-  Switch,
-  Route,
-  useParams,
   useRouteMatch,
   useHistory,
   useLocation,
@@ -90,10 +85,6 @@ export default function NavBar(props) {
         queryString
       )}`
     );
-    // console.log(queryString);
-    // const resp = await axios.get(`${match.url}/search?query=${encodeURIComponent(queryString)}`);
-    // setSearchResults(resp.data);
-    // console.log(resp.data);
   };
 
   const classes = useStyles();

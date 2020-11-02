@@ -1,9 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import EpisodeList from "./EpisodeListItem";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { Typography } from "@material-ui/core/";
 import EpisodeListItem from "./EpisodeListItem";
 import EpisodeForm from "./EpisodeForm";
 
