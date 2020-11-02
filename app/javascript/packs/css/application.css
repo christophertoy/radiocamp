@@ -42,13 +42,21 @@
 }
 
 .episode-title {
+  width: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.episode-date {
   width: 20%;
   margin-left: 5px;
   margin-right: 5px;
 }
+
 .episode-description {
-  width: 60%;
-  color: #edeef0
+  width: 80%;
+  color: #edeef0;
+  margin-left: 20px;
 }
 
 .show-title {

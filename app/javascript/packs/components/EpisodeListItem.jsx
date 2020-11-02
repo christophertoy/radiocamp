@@ -35,9 +35,9 @@ export default function EpisodeListItem(props) {
           {props.isSearchItem ? (
             <ListItem alignItems="flex-start">
               <div class="episode-title">
-                <Typography variant="h5">{props.episodeData.title}</Typography>
-                <Typography>
-                  {`Episode ${props.episodeData.episode_number}: ${props.episodeData.release_date.split("T")[0]}`}
+                <Typography variant="h6">{`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}</Typography>
+                <Typography variant="subtitle2">
+                  {props.episodeData.release_date.split("T")[0]}
                 </Typography>
               </div>
               <div class="episode-description">
@@ -47,8 +47,8 @@ export default function EpisodeListItem(props) {
           ) : (
             <ListItem alignItems="flex-start">
               <div class="episode-title">
-                <Typography variant="h5">{props.episodeData.title}</Typography>
-                <Typography>{`Episode ${props.episodeData.episode_number}: ${props.episodeData.release_date.split("T")[0]}`}</Typography>
+                <Typography variant="h6">{`Episode ${props.episodeData.episode_number}: ${props.episodeData.title}`}</Typography>
+                <Typography variant="subtitle2">{props.episodeData.release_date.split("T")[0]}</Typography>
               </div>
               <div class="episode-description">
                 <Typography>{props.episodeData.description}</Typography>
