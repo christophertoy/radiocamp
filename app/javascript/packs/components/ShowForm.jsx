@@ -76,7 +76,7 @@ export default function ShowForm(props) {
     <ThemeProvider >
 
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add a show
+        {props.text || 'Add a Show'}
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -151,7 +151,7 @@ export default function ShowForm(props) {
 
             <DialogActions>
               <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Create Show
+                Submit
               </Button>
               <Button variant="contained" color="secondary" onClick={handleClose}>
                 Cancel
