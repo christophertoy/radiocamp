@@ -5,6 +5,7 @@ import ShowListItem from "./ShowListItem";
 import ShowForm from "./ShowForm";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import List from '@material-ui/core/List';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +36,8 @@ export default function showList(props) {
         </div>
         {props.shows.map((show) => {
           return (
+          <List>
+
             <ShowListItem
               key={show.id}
               broadcasterData={props.broadcasterData}
@@ -43,6 +46,9 @@ export default function showList(props) {
               // name={show.name}
               // description={show.description}
             />
+
+
+          </List>
           );
         })}
       </div>

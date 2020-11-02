@@ -37,7 +37,7 @@ export default function EpisodeListItem(props) {
         to={`/${props.broadcasterData.handle}/${props.episodeData.show_id}/${props.episodeData.id}`}
         style={{ textDecoration: "none" }}
       >
-        <ListItem alignItems="flex-start">
+        <ListItem button alignItems="flex-start">
           <ListItemAvatar>
             <Avatar
               style={{ height: "120px", width: "160px" }}

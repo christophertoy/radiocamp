@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+
 }));
 
 export default function ShowListItem(props) {
@@ -41,7 +42,7 @@ export default function ShowListItem(props) {
         to={`/${props.broadcasterData.handle}/${props.showData.id}`}
         style={{ textDecoration: "none" }}
       >
-        <ListItem alignItems="flex-start">
+        <ListItem button alignItems="flex-start">
           <ListItemAvatar>
             <Avatar
               style={{ height: "120px", width: "160px" }}
