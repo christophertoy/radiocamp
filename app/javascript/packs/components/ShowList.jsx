@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function showList(props) {
-  console.log(props.shows[0]);
   const classes = useStyles();
   return (
     <div className={classes.root}>
