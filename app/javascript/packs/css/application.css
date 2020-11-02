@@ -1,15 +1,16 @@
 #mixcloud-player {
-  position: fixed;
+
   bottom:0;
   width:100%;
   height:120px;
 }
 #spotify-player {
-  position: fixed;
+
   bottom:0;
   width:100%;
   height:152px;
 }
+
 
 #show-list-header {
   display: flex;
@@ -110,6 +111,7 @@
 
 #episode-card{
   background-color: #272c2F;
+  height: 700px;
 }
 
 body {
@@ -120,4 +122,5 @@ body {
   display: flex;
   width: 100%;
   justify-content: space-between;
+
 }
