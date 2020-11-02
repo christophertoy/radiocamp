@@ -36,25 +36,36 @@ export default function EpisodeListItem(props) {
             />
           </ListItemAvatar>
           {props.isSearchItem ? (
-            <div class="episode-title">
-              <Typography variant="h5">{`Episode: ${props.episodeData.title}`}</Typography>
-              <Typography>{props.episodeData.description}</Typography>
-            </div>
-          ) : (
             <ListItem alignItems="flex-start">
+
               <div class="episode-title">
                 <Typography variant="h5">{props.episodeData.title}</Typography>
                 <Typography>
                   {`Episode ${props.episodeData.episode_number}: ${
                     props.episodeData.release_date.split("T")[0]
-                  }`}
+                    }`}
                 </Typography>
               </div>
               <div class="episode-description">
                 <Typography>{props.episodeData.description}</Typography>
               </div>
             </ListItem>
-          )}
+
+          ) : (
+              <ListItem alignItems="flex-start">
+                <div class="episode-title">
+                  <Typography variant="h5">{props.episodeData.title}</Typography>
+                  <Typography>
+                    {`Episode ${props.episodeData.episode_number}: ${
+                      props.episodeData.release_date.split("T")[0]
+                      }`}
+                  </Typography>
+                </div>
+                <div class="episode-description">
+                  <Typography>{props.episodeData.description}</Typography>
+                </div>
+              </ListItem>
+            )}
           <ListItemText primary={props.episodeData.date} />
         </ListItem>
         <Divider class="show-list-divider" variant="middle" />
