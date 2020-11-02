@@ -9,7 +9,7 @@ import axios from "axios";
 import Player from "./Player";
 import EpisodeForm from "./EpisodeForm";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
 import { getEmbedCode } from './helpers';
 
 const useStyles = makeStyles({
@@ -41,20 +41,20 @@ export default function Episode(props) {
         <CardMedia
           component="img"
           alt={episodeData.title}
-          height="250"
+          height="500"
           image={episodeData.image+'?fit=crop&h=250&w=1080&crop=entropy'}
           title={episodeData.title}
         />
         <CardContent class="episode-card-content">
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography style={{textTransform: "uppercase"}} gutterBottom variant="h5" component="h2">
             {episodeData.title}
           </Typography>
-          <Typography variant="body2" component="p">
-            <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-              <em>from {episodeData.showName}</em>
+          <Typography style={{fontStyle: "italic", padding: "5px"}} variant="body2" component="p">
+            <Link to={`/${props.broadcasterData.handle}/${episodeData.show_id}`} style={{ color: 'inherit', fontStyle: "italic",}}>
+              From {episodeData.showName}
             </Link>
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography style={{padding:"5px"}} gutterBottom variant="body2" component="p">
             {episodeData.description}
           </Typography>
           { props.isLoggedIn && <EpisodeForm setEpisodeData={setEpisodeData} text={'Edit Episode'} broadcasterId={props.broadcasterData.id} broadcasterData={props.broadcasterData} episodeData={episodeData} showId={episodeData.show_id}/>}
