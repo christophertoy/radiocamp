@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_020023) do
+ActiveRecord::Schema.define(version: 2020_11_02_214851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_020023) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "embed_code"
     t.bigint "episode_number"
+    t.string "image"
     t.index ["show_id"], name: "index_episodes_on_show_id"
   end
 
