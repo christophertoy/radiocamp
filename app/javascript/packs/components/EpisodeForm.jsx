@@ -58,7 +58,7 @@ export default function EpisodeForm(props) {
     const allShows = resp.data.filter(x => x.broadcaster_id === props.broadcasterId);
     setShows(allShows);
     setShowId(props.showId);
-  }, [props.broadcasterId, props.showId]);  
+  }, [props.broadcasterId, props.showId, props.episodeData]);  
 
   const handleClickOpen = () => {
     setOpen(true);
