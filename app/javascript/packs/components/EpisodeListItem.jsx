@@ -44,6 +44,9 @@ export default function EpisodeListItem(props) {
                 <Typography variant="subtitle2" style={{ fontStyle: "italic" }}>
                   {props.episodeData.release_date.split("T")[0]}
                 </Typography>
+                <Typography variant="subtitle2" style={{ fontStyle: "italic" }}>
+                  {`Show: ${props.episodeData.showName}`}
+                </Typography>
               </div>
               <div class="episode-description">
                 <Typography variant="body1">
