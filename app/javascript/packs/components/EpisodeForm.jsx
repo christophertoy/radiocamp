@@ -98,7 +98,8 @@ export default function EpisodeForm(props) {
         episode.id = response.data.id;
         episode.image = response.data.image;
         // episode = { showId, title, description, url, releaseDate, episodeNumber }
-        props.setEpisodeData(episode);
+        // props.setEpisodeData( prev => { return { ...prev, ...episode } });
+        props.setEpisodeData(response.data);
       })
       .catch((error) => {
         console.log(error);
