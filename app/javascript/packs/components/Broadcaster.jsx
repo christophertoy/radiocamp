@@ -73,7 +73,7 @@ export default function Broadcaster(props) {
 
   return (
     <div id="broadcaster-page-container">
-      <Card className={classes.root} id="broadcaster-card" square={true}>
+      <Card style={{marginTop:"55px"}} className={classes.root} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}

@@ -61,7 +61,7 @@ export default function Show(props) {
 
   return (
     <div id="show-page-container">
-      <Card square={true} className={classes.root} id="show-card">
+      <Card style={{marginTop:"55px"}} square={true} className={classes.root} id="show-card">
         <CardMedia
           component="img"
           alt={showData.name + "header image"}
