@@ -12,7 +12,8 @@ export default function Welcome(props) {
     <div>
       <ThemeProvider theme={themeOrangeGrey}>
       <NavBar title="RadioCamp" handleLogin={props.handleLogin}/> 
-      <Container style={{ marginTop: '80px', textAlign: 'center' }}>
+      <Container style={{ marginTop: '200px', textAlign: 'center' }}>
+        <img src="./images/logo.png" width="900px"/>
         <Typography variant="h4" style={{color: "white"}}>
           Join RadioCamp you will be so happy!
         </Typography>
