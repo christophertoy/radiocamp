@@ -4,27 +4,18 @@ import EpisodeList from "./EpisodeList";
 import ShowForm from "./ShowForm";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardContent,
   CardMedia,
   Typography,
-  Divider,
+  Divider
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  root: {
-    // maxWidth: 345,
-  },
-});
-
 export default function Show(props) {
-  const classes = useStyles();
 
   const [showData, setShowData] = useState({});
 
-  // was on left
   const [episodes, setEpisodes] = useState([]);
   let { showId } = useParams();
 
@@ -39,9 +30,7 @@ export default function Show(props) {
         return 0;
       })
     );
-    // console.log(filteredData);
   }, []);
-  //----
 
   const match = useRouteMatch();
 
@@ -55,13 +44,12 @@ export default function Show(props) {
 
   useEffect(async () => {
     const resp = await axios.get(`/shows/${showId}.json`);
-    // const thisBroadcaster = resp.data.find((x) => x.handle === props.handle);
     setShowData(resp.data);
   }, []);
 
   return (
     <div id="show-page-container">
-      <Card style={{marginTop:"55px"}} square={true} className={classes.root} id="show-card">
+      <Card style={{marginTop:"55px"}} square={true} id="show-card">
         <CardMedia
           component="img"
           alt={showData.name + "header image"}
@@ -86,14 +74,12 @@ export default function Show(props) {
         </CardContent>
       </Card>
       <Divider></Divider>
-      <div id="episode-list-containter">
-        <EpisodeList
-          currentUser={props.currentUser}
-          setEpisodes={setEpisodes}
-          episodes={episodes}
-          broadcasterData={props.broadcasterData}
-          showId={showId}/>
-      </div>
+      <EpisodeList
+        currentUser={props.currentUser}
+        setEpisodes={setEpisodes}
+        episodes={episodes}
+        broadcasterData={props.broadcasterData}
+        showId={showId}/>
     </div>
   );
 }
