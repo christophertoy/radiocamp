@@ -30,7 +30,7 @@ export default function login(props) {
 
   return (
     <div>
-      <Button style={{color:"white"}} variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen} color="secondary">
         Admin Login
       </Button>
 
