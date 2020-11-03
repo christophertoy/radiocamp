@@ -85,6 +85,8 @@ export default function EpisodeForm(props) {
     setDescription(props.episodeData.description);
     setUrl(props.episodeData.episode_url);
     setImage(props.episodeData.image);
+    // use slice to remove time information, leaving year, month, and day
+    setReleaseDate(props.episodeData.release_date.slice(0,10));
   };
 
   const handleSubmit = function (event) {
