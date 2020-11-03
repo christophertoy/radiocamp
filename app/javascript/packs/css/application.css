@@ -1,12 +1,9 @@
 #mixcloud-player {
 
-  bottom:0;
   width:100%;
   height:120px;
 }
 #spotify-player {
-
-  bottom:0;
   width:100%;
   height:152px;
 }
@@ -133,4 +130,16 @@ body {
   width: 100%;
   justify-content: space-between;
 
+}
+
+#player-container {
+  height: 152px;
+  width:100%
+}
+
+#episode-page{
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
