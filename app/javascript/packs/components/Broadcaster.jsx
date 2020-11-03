@@ -4,23 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowList from "./ShowList";
 import BroadcasterForm from "./BroadcasterForm";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardContent,
   CardMedia,
   Typography,
-  Divider,
+  Divider
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  root: {
-    // maxWidth: 345,
-  },
-});
-
 export default function Broadcaster(props) {
-  const classes = useStyles();
+  
   const history = useHistory();
 
   const [shows, setShows] = useState([]);
@@ -73,7 +66,7 @@ export default function Broadcaster(props) {
 
   return (
     <div id="broadcaster-page-container">
-      <Card style={{marginTop:"55px"}} className={classes.root} id="broadcaster-card" square={true}>
+      <Card style={{marginTop:"55px"}} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}
@@ -96,26 +89,16 @@ export default function Broadcaster(props) {
               handleCreateBroadcaster={saveBroadcaster}
             />
           )}
-        </CardContent>
-        {/* <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Contact Me
-          </Button>
-        </CardActions> */}
+        </CardContent>        
       </Card>
       <Divider></Divider>
-      <div id="show-list-container">
-        <ShowList
-          shows={shows}
-          broadcasterId={props.broadcasterData.id}
-          broadcasterData={props.broadcasterData}
-          currentUser={props.currentUser}
-          setShows={setShows}
-        />
-      </div>
+      <ShowList
+        shows={shows}
+        broadcasterId={props.broadcasterData.id}
+        broadcasterData={props.broadcasterData}
+        currentUser={props.currentUser}
+        setShows={setShows}
+      />
     </div>
   );
 }
