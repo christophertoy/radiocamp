@@ -178,9 +178,9 @@ export default function ShowForm(props) {
             </FormControl>
 
             <FormControl>
-              <InputLabel htmlFor="show-logo">Logo</InputLabel>
+              <InputLabel htmlFor="show-image">Image</InputLabel>
               <Input
-                id="show_logo"
+                id="show_image"
                 aria-describedby="my-helper-text"
                 value={logo}
                 onChange={(event) => setLogo(event.target.value)}

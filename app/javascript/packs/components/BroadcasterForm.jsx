@@ -183,10 +183,10 @@ export default function BroadcasterForm(props) {
             </FormControl>
 
             <FormControl>
-              <InputLabel htmlFor="station-logo">Logo</InputLabel>
+              <InputLabel htmlFor="station-image">Image</InputLabel>
               <Input
-                name="logo"
-                id="station_logo"
+                name="image"
+                id="station_image"
                 aria-describedby="my-helper-text"
                 required={true}
                 value={logo}
