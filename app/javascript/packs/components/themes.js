@@ -53,7 +53,7 @@ const themeTeal = createMuiTheme({
       main: teal[500],
     },
     secondary: {
-      main: grey[500],
+      main: grey[200],
       contrastText: teal[900],
     },
   },
@@ -73,7 +73,7 @@ themeTeal.overrides = {
     },
     containedPrimary: {
       "&:hover": {
-        backgroundColor: grey[500],
+        backgroundColor: grey[200],
         color: teal[900],
       },
     },
@@ -89,7 +89,7 @@ const themeOrangeGrey = createMuiTheme({
       main: deepOrange[500],
     },
     secondary: {
-      main: grey[500],
+      main: grey[300],
       contrastText: deepOrange[900],
     },
   },
@@ -109,7 +109,7 @@ themeOrangeGrey.overrides = {
     },
     containedPrimary: {
       "&:hover": {
-        backgroundColor: grey[500],
+        backgroundColor: grey[300],
         color: deepOrange[900],
       },
     },
