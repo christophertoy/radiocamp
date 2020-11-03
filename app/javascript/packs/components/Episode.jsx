@@ -69,9 +69,11 @@ export default function Episode(props) {
                 to={`/${props.broadcasterData.handle}/${episodeData.show_id}`}
                 style={{ color: "inherit", fontStyle: "italic" }}
               >
-                From {episodeData.showName}
+                {episodeData.showName},
               </Link>
+                {' '}episode {episodeData.episode_number}
             </Typography>
+            <Typography style={{ padding: "5px" }}>{episodeData.release_date ? episodeData.release_date.slice(0,10) : null}</Typography>
             <Typography
               style={{ padding: "5px" }}
               gutterBottom
