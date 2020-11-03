@@ -133,7 +133,7 @@ body {
 }
 
 #player-container {
-  /* height: 152px; */
+  height: 152px;
   width:100%
 }
 
@@ -143,3 +143,4 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+

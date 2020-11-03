@@ -12,8 +12,10 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  makeStyles
 } from "@material-ui/core";
 // props will need to contain broadcaster ID
+
 
 export default function ShowForm(props) {
   const [name, setName] = useState("");
@@ -111,6 +113,7 @@ export default function ShowForm(props) {
     setOpen(false);
   };
 
+
   return (
     <ThemeProvider>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -121,10 +124,13 @@ export default function ShowForm(props) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        // modal = {true}
+        fullWidth={true}
+        maxWidth = {'md'}
       >
         <DialogTitle id="form-dialog-title">Show Information</DialogTitle>
         <DialogContent>
-          <FormGroup>
+          <FormGroup style={{width:"100%"}}>
             <FormControl>
               <InputLabel htmlFor="name">Name</InputLabel>
               <Input
