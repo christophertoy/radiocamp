@@ -9,7 +9,7 @@ class BroadcastersController < ApplicationController
     @episodes = Episode.where(show_id: @shows)
     
     @episodes = @episodes.select do | episode |
-      episode.description != nil && episode.description.downcase.include?(query) || episode.title != nil && episode.title.downcase.include?(query)
+      episode.description != nil && episode.description.downcase.include?(query) || episode.title != nil && episode.title.downcase.include?(query) || episode.show.name != nil && episode.show.name.downcase.include?(query)
     end
 
     @shows = @shows.select do | show |
