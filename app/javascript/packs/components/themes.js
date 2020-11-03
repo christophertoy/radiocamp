@@ -136,6 +136,42 @@ themeOrangeGrey.overrides = {
   },
 };
 
+const themeWelcome = createMuiTheme({
+  palette: {
+    primary: {
+      main: grey[900]
+    },
+    secondary: {
+      main: grey[200],
+      contrastText: teal[900],
+    },
+  },
+});
+
+themeWelcome.props = {
+  MuiButton: {
+    disableElevation: true,
+  }
+};
+
+themeWelcome.overrides = {
+  MuiButton: {
+    root: {
+      borderRadius: 0,
+      textTransform: "none",
+    },
+    containedPrimary: {
+      "&:hover": {
+        backgroundColor: grey[200],
+        color: teal[900],
+      },
+    },
+    containedSecondary: {
+      fontWeight: 700,
+    },
+  },
+};
+
 // all the code below was copied from https://github.com/mui-org/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/modules/theme.js
 
 const rawTheme = createMuiTheme({
@@ -244,4 +280,4 @@ const theme = {
 
 // export default theme;
 
-export { themePurpleYellow, themeOrangeGrey, themeTeal, theme };
+export { themePurpleYellow, themeOrangeGrey, themeTeal, themeWelcome };
