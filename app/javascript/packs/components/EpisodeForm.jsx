@@ -74,6 +74,7 @@ export default function EpisodeForm(props) {
       setTitle("");
       setDescription("");
       setUrl("");
+      setImage("");
       setReleaseDate(getCurrentDate());
     }
   };
@@ -83,6 +84,7 @@ export default function EpisodeForm(props) {
     setEpisodeNumber(parseInt(props.episodeData.episode_number));
     setDescription(props.episodeData.description);
     setUrl(props.episodeData.episode_url);
+    setImage(props.episodeData.image);
   };
 
   const handleSubmit = function (event) {
