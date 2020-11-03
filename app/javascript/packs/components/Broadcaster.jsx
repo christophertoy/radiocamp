@@ -77,7 +77,7 @@ export default function Broadcaster(props) {
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}
-          height="250"
+          height="500"
           image={props.broadcasterData.logo + '?fit=crop&h=250&w=1080&crop=entropy' || "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
           title={props.broadcasterData.name}
         />
