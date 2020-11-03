@@ -65,7 +65,7 @@ export default function Show(props) {
         <CardMedia
           component="img"
           alt={showData.name + "header image"}
-          height="250"
+          height="500"
           image={showData.image + "?fit=crop&h=250&w=1080&crop=entropy"}
           title={showData.name}
         />
