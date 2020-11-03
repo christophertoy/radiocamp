@@ -1,11 +1,29 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { deepPurple, amber, deepOrange, grey, green, red, teal } from "@material-ui/core/colors";
+import {
+  deepPurple,
+  amber,
+  deepOrange,
+  grey,
+  green,
+  red,
+  teal,
+} from "@material-ui/core/colors";
 
-// these strings will appear in the create new broadcaster dropdown list and can be changed
-// if you add another theme add the associated global variable to app.jsx and broadcasterform.jsx
-export const THEME_A = 'Lakers';
-export const THEME_B = 'Orange Juice';
-export const THEME_C = 'Under the Sea';
+// if you add a new theme, it will need to be added to this array
+export const themeNames = [
+  {
+    text: "Lakers", 
+    name: "themePurpleYellow"
+  },
+  {
+    text: "Orange Juice",
+    name: "themeOrangeGrey"
+  },
+  {
+    text: "Under the Sea", 
+    name: "themeTeal"
+  },
+];
 
 // import { createMuiTheme } from '@material-ui/core/styles';
 // import { green, grey, red } from '@material-ui/core/colors';
@@ -19,8 +37,7 @@ const themePurpleYellow = createMuiTheme({
       main: amber[500],
       contrastText: deepPurple[900],
     },
-  }
-
+  },
 });
 
 themePurpleYellow.props = {
@@ -124,18 +141,18 @@ themeOrangeGrey.overrides = {
 const rawTheme = createMuiTheme({
   palette: {
     primary: {
-      light: '#69696a',
-      main: '#28282a',
-      dark: '#1e1e1f',
+      light: "#69696a",
+      main: "#28282a",
+      dark: "#1e1e1f",
     },
     secondary: {
-      light: '#fff5f8',
-      main: '#ff3366',
-      dark: '#e62958',
+      light: "#fff5f8",
+      main: "#ff3366",
+      dark: "#e62958",
     },
     warning: {
-      main: '#ffc071',
-      dark: '#ffb25e',
+      main: "#ffc071",
+      dark: "#ffb25e",
     },
     error: {
       xLight: red[50],
@@ -162,7 +179,7 @@ const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
   fontFamily: rawTheme.typography.fontFamilySecondary,
-  textTransform: 'uppercase',
+  textTransform: "uppercase",
 };
 
 const theme = {
