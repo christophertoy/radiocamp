@@ -3,6 +3,8 @@ import ShowListItem from "./ShowListItem";
 import ShowForm from "./ShowForm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, List } from "@material-ui/core";
+import { applyTheme } from "./themes";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function showList(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
+  const classes = applyTheme(props.broadcasterData.theme);
+
 
   return (
     <div className={classes.root}>

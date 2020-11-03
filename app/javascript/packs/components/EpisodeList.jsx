@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core/";
 import EpisodeListItem from "./EpisodeListItem";
 import EpisodeForm from "./EpisodeForm";
+import { applyTheme } from "./themes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +13,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function episodeList(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
+
+  const classes = applyTheme(props.broadcasterData.theme);
 
   return (
     <div className={classes.root}>

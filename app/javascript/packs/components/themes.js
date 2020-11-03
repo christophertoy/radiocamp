@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import {
   deepPurple,
   amber,
@@ -172,6 +172,51 @@ themeWelcome.overrides = {
   },
 };
 
+
+// these functions allow further definition of styles where the overrides for createMuiTheme (defined above) are not sufficient
+
+const useThemePurple = makeStyles(() => ({
+  root: {
+    width: "100%",
+    background: 'linear-gradient(to bottom, #272c2F 0%, #673AB7 100%)',
+  },
+}));
+
+const useThemeOrange = makeStyles(() => ({
+  root: {
+    width: "100%",
+    background: 'linear-gradient(to bottom, #272c2f 0%, #FF5722 100%)'
+  },
+}));
+
+const useThemeTeal = makeStyles(() => ({
+  root: {
+    width: "100%",
+    background: 'linear-gradient(to bottom, #272c2f 0%, #009688 100%)'
+  },
+}));
+
+const useThemeWelcome = makeStyles(() => ({
+  root: {
+    width: "100%",
+    background: 'linear-gradient(to bottom, #272c2f 0%, #212121 100%)'
+  },
+}));
+
+// this is the only function you need to import and call for components where classes are being used to style
+
+const applyTheme = (broadCastertheme) => {
+  if (broadCastertheme === 'themePurpleYellow') {
+    return useThemePurple();
+  } else if (broadCastertheme === 'themeOrangeGrey') {
+    return useThemeOrange();
+  } else if (broadCastertheme === 'themeTeal'){
+    return useThemeTeal();
+  } else {
+    return useThemeWelcome();
+  };
+}
+
 // all the code below was copied from https://github.com/mui-org/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/modules/theme.js
 
 const rawTheme = createMuiTheme({
@@ -278,6 +323,4 @@ const theme = {
   },
 };
 
-// export default theme;
-
-export { themePurpleYellow, themeOrangeGrey, themeTeal, themeWelcome };
+export { themePurpleYellow, themeOrangeGrey, themeTeal, themeWelcome, applyTheme };
