@@ -5,15 +5,7 @@ import EpisodeListItem from "./EpisodeListItem";
 import EpisodeForm from "./EpisodeForm";
 import { applyTheme } from "./themes";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    backgroundColor: "#272C2F",
-  },
-}));
-
 export default function episodeList(props) {
-  // const classes = useStyles();
 
   const classes = applyTheme(props.broadcasterData.theme);
 

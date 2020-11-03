@@ -5,25 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography, List } from "@material-ui/core";
 import { applyTheme } from "./themes";
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    backgroundColor: "#272C2F",
-  },
-}));
-
 export default function showList(props) {
-  // const classes = useStyles();
-  const classes = applyTheme(props.broadcasterData.theme);
 
+  const classes = applyTheme(props.broadcasterData.theme);
 
   return (
     <div className={classes.root}>
       <div id="show-list-container">
         <div id="show-list-header">
           <div>
-            {" "}
             <Typography variant="h4">Shows</Typography>
           </div>
           <div>
@@ -37,16 +27,11 @@ export default function showList(props) {
         </div>
         {props.shows.map((show) => {
           return (
-          <List>
             <ShowListItem
               key={show.id}
               broadcasterData={props.broadcasterData}
-              showData={show}
-              // showId={show.id}
-              // name={show.name}
-              // description={show.description}
+              showData={show}              
             />
-          </List>
           );
         })}
       </div>

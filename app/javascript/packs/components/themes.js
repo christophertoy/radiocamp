@@ -205,12 +205,12 @@ const useThemeWelcome = makeStyles(() => ({
 
 // this is the only function you need to import and call for components where classes are being used to style
 
-const applyTheme = (broadCastertheme) => {
-  if (broadCastertheme === 'themePurpleYellow') {
+const applyTheme = (broadcasterTheme) => {
+  if (broadcasterTheme === 'themePurpleYellow') {
     return useThemePurple();
-  } else if (broadCastertheme === 'themeOrangeGrey') {
+  } else if (broadcasterTheme === 'themeOrangeGrey') {
     return useThemeOrange();
-  } else if (broadCastertheme === 'themeTeal'){
+  } else if (broadcasterTheme === 'themeTeal'){
     return useThemeTeal();
   } else {
     return useThemeWelcome();
