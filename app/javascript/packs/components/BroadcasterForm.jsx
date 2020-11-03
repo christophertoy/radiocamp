@@ -109,12 +109,14 @@ export default function BroadcasterForm(props) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        fullWidth={true}
+        maxWidth = {'md'}
       >
         <DialogTitle id="form-dialog-title">
           Broadcaster Information
         </DialogTitle>
         <DialogContent>
-          <FormGroup>
+          <FormGroup style={{width:"100%"}}>
             <FormControl>
               <InputLabel htmlFor="handle">Handle</InputLabel>
               <Input

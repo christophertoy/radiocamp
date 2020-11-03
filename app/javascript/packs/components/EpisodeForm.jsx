@@ -145,12 +145,14 @@ export default function EpisodeForm(props) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        fullWidth={true}
+        maxWidth = {'md'}
       >
         <DialogTitle id="form-dialog-title">
           {props.text || "Add Episode"}
         </DialogTitle>
         <DialogContent>
-          <FormGroup>
+          <FormGroup style={{width:"100%"}}>
             <FormControl>
               <InputLabel id="demo-simple-select-label">Show</InputLabel>
               <Select
