@@ -14,7 +14,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
-import { themeOrangeGrey, THEME_A, THEME_B, THEME_C } from "./themes";
+import { themeNames } from "./themes";
 import axios from "axios";
 
 export default function BroadcasterForm(props) {
@@ -55,24 +55,6 @@ export default function BroadcasterForm(props) {
   };
 
   const saveBroadcaster = (broadcaster) => {
-
-    switch(broadcaster.theme) {
-      case THEME_A:
-        broadcaster.theme = 'themePurpleYellow';
-        break;
-
-      case THEME_B:
-        broadcaster.theme = 'themeOrangeGrey';
-        break;
-
-      case THEME_C:
-        broadcaster.theme = 'themeTeal';
-        break;
-      
-      default:
-        broadcaster.theme = 'themeTeal';
-    }
-
     props.broadcasterData
       ? editBroadcaster(broadcaster)
       : createBroadcaster(broadcaster);
@@ -209,13 +191,12 @@ export default function BroadcasterForm(props) {
               >
                 <MenuItem value="Choose a Theme"></MenuItem>
                 {  
-                [THEME_A, THEME_B, THEME_C].map((theme, index) =>
+                themeNames.map((theme, index) =>
                     <MenuItem
                       key={index}
-                      value={theme}
-                      // selected={props.showId === show.id}
+                      value={theme.name}
                     >
-                      {theme}
+                      {theme.text}
                     </MenuItem>
                   )
                 }

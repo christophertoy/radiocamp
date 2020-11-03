@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Site from "./Site";
 import Welcome from "./Welcome";
-import { THEME_A, THEME_B, THEME_C } from "./themes";
 
 export default function App(props) {
   const [user, setUser] = useState("");
@@ -37,21 +36,6 @@ export default function App(props) {
     setUser(data.handle);
     localStorage.setItem("user", data.handle);
     history.push(`/${data.handle}`);
-  };
-
-  const handleCreateBroadcaster = (data) => {
-    // if a new theme is created in the themes.js file, it needs to be added to this switch statement
-
-    axios
-      .post("/broadcasters", data)
-      .then(function (response) {
-        setUser(data.handle);
-        localStorage.setItem("user", data.handle);
-        history.push(`/${data.handle}`);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   };
 
   return (
