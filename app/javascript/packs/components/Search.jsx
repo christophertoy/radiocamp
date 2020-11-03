@@ -34,7 +34,7 @@ export default function Search(props) {
 
   return (
     <div className={classes.root}>
-      <div id="show-list-container">
+      <div id="search-list-container">
         <div id="show-list-header">
           <div>
 
