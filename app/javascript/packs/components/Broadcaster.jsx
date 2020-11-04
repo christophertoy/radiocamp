@@ -70,7 +70,7 @@ export default function Broadcaster(props) {
           alt={props.broadcasterData.name}
           height="500"
           image={
-            props.broadcasterData.logo !== ""
+            props.broadcasterData.logo
               ? props.broadcasterData.logo + "?fit=crop&h=250&w=1080&crop=entropy"
               : "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"
           }
