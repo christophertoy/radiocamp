@@ -81,6 +81,14 @@ const themeTeal = createMuiTheme({
       main: grey[200],
       contrastText: teal[900],
     },
+  }, 
+  typography: {
+    fontFamily: "'Georgia', 'Times New Roman', serif",
+    fontSize: 14,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Roboto Condensed', sans-serif",
   }
 });
 
