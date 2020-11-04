@@ -5,7 +5,6 @@ import {
   useHistory,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Site from "./Site";
 import Welcome from "./Welcome";
 
@@ -22,7 +21,6 @@ export default function App(props) {
     event.preventDefault();
     localStorage.setItem("user", null);
     setUser(null);
-    // history.push(`/`);
   };
 
   const handleLogin = (data) => {
@@ -48,13 +46,7 @@ export default function App(props) {
       </Route>
       <Route path="/:broadcasterHandle">
         <Site currentUser={user} handleLogOut={handleLogOut}/>
-        {/* <Route path = '/:broadcasterHandle/' render = { (props) => {
-            return <Site handle={props.match.params.broadcasterHandle} />
-          } }/> */}
       </Route>
-      {/* <Route path = '/:broadcasterhandle/' render = { (props) => {
-            return ( shows.map( show => <ShowListItem title={show.name} description={show.description}/>) )
-          } }/> */}
     </Switch>
   );
 }
