@@ -4,16 +4,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowList from "./ShowList";
 import BroadcasterForm from "./BroadcasterForm";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardContent,
   CardMedia,
   Typography,
-  Divider
+  Divider,
 } from "@material-ui/core";
 
+const useStyles = makeStyles({
+  root: {
+    // maxWidth: 345,
+  },
+});
+
 export default function Broadcaster(props) {
-  
+  const classes = useStyles();
   const history = useHistory();
 
   const [shows, setShows] = useState([]);
@@ -66,12 +73,12 @@ export default function Broadcaster(props) {
 
   return (
     <div id="broadcaster-page-container">
-      <Card style={{marginTop:"55px"}} id="broadcaster-card" square={true}>
+      <Card style={{marginTop:"55px"}} className={classes.root} id="broadcaster-card" square={true}>
         <CardMedia
           component="img"
           alt={props.broadcasterData.name}
           height="500"
-          image={props.broadcasterData.logo + '?fit=crop&h=250&w=1080&crop=entropy' || "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
+          image={props.broadcasterData.logo !== "" ? props.broadcasterData.logo + '?fit=crop&h=250&w=1080&crop=entropy' : "https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"}
           title={props.broadcasterData.name}
         />
         <CardContent class="broadcaster-card-content">
@@ -89,16 +96,26 @@ export default function Broadcaster(props) {
               handleCreateBroadcaster={saveBroadcaster}
             />
           )}
-        </CardContent>        
+        </CardContent>
+        {/* <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Contact Me
+          </Button>
+        </CardActions> */}
       </Card>
       <Divider></Divider>
-      <ShowList
-        shows={shows}
-        broadcasterId={props.broadcasterData.id}
-        broadcasterData={props.broadcasterData}
-        currentUser={props.currentUser}
-        setShows={setShows}
-      />
+      <div id="show-list-container">
+        <ShowList
+          shows={shows}
+          broadcasterId={props.broadcasterData.id}
+          broadcasterData={props.broadcasterData}
+          currentUser={props.currentUser}
+          setShows={setShows}
+        />
+      </div>
     </div>
   );
 }
