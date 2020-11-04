@@ -20,7 +20,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('broadcasters')
 ActiveRecord::Base.connection.reset_pk_sequence!('shows')
 ActiveRecord::Base.connection.reset_pk_sequence!('episodes')
 
-Broadcaster.create(handle: 'hipp', name: 'Sound-On Network', description: 'Beneath the underground, there is another sound. News and music from the latest innovators.', theme: 'themeTeal', logo: 'https://images.unsplash.com/photo-1590278684388-6f11dbdd3b53')
+Broadcaster.create(handle: 'sound-on', name: 'Sound-On Network', description: 'Beneath the underground, there is another sound. News and music from the latest innovators.', theme: 'themeTeal', logo: 'https://images.unsplash.com/photo-1590278684388-6f11dbdd3b53')
 Broadcaster.create(handle: 'tcn', name: 'The Cooking Network', description: 'All cooking. All the time.', theme: 'themePurpleYellow', logo: 'https://images.unsplash.com/photo-1516824237444-09453e0027ed')
 
 Broadcaster.create(handle: 'qwerty', name: 'Infinite Loop Network', description: 'Radio for tech junkies', theme: 'themeOrangeGrey', logo: 'https://images.unsplash.com/photo-1468070454955-c5b6932bd08d')
