@@ -77,10 +77,10 @@ export default function Broadcaster(props) {
           title={props.broadcasterData.name}
         />
         <CardContent class="broadcaster-card-content">
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" >
             {props.broadcasterData.name}
           </Typography>
-          <Typography style={{marginBottom:"15px"}} variant="body2" component="p">
+          <Typography style={{marginBottom:"15px"}} variant="body2" component="p" >
             {props.broadcasterData.description}
           </Typography>
           {props.isLoggedIn && (

@@ -99,7 +99,7 @@ export default function BroadcasterForm(props) {
       <Button
         variant="outlined"
         size="large"
-        color="secondary"
+        color="primary"
         onClick={handleClickOpen}
       >
         {props.text || "Create My Site"}

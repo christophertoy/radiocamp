@@ -7,7 +7,8 @@ import {
   green,
   red,
   brown,
-  teal
+  teal,
+  white
 } from "@material-ui/core/colors";
 import { black } from "material-ui/styles/colors";
 
@@ -108,6 +109,11 @@ themeTeal.overrides = {
       fontWeight: 700,
     },
   },
+  MuiPaper: {
+    root: {
+      backgroundColor: 'white'
+    }
+  }
 };
 
 const themeOrangeGrey = createMuiTheme({
@@ -116,7 +122,7 @@ const themeOrangeGrey = createMuiTheme({
       main: red[500]
     },
     secondary: {
-      main: grey[300],
+      main: '#FFFFFF',
       contrastText: red[900],
     },
   },
@@ -216,14 +222,16 @@ const useThemeOrange = makeStyles(() => ({
 const useThemeTeal = makeStyles(() => ({
   root: {
     width: "100%",
+    // background: '#009688'
     background: 'linear-gradient(to bottom, #272c2f 0%, #009688 100%)'
+
   },
 }));
 
 const useThemeWelcome = makeStyles(() => ({
   root: {
     width: "100%",
-    background: 'linear-gradient(to bottom, #272c2f 0%, #212121 100%)'
+    background: '#272c2f'
   },
 }));
 

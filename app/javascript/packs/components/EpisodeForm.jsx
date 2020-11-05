@@ -140,7 +140,7 @@ export default function EpisodeForm(props) {
 
   return (
     <ThemeProvider>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         {props.text || "Add Episode"}
       </Button>
       <Dialog

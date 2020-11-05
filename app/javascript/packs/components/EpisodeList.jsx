@@ -14,7 +14,7 @@ export default function episodeList(props) {
       <div id="episode-list-container">
         <div id="episode-list-header">
           <div>
-            <Typography variant="h4">Episodes</Typography>
+            <Typography variant="h4" color="secondary">Episodes</Typography>
           </div>
           <div>
             {props.currentUser === props.broadcasterData.handle && (

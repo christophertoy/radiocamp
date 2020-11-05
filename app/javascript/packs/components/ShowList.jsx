@@ -14,7 +14,7 @@ export default function showList(props) {
       <div id="show-list-container">
         <div id="show-list-header">
           <div>
-            <Typography variant="h4">Shows</Typography>
+            <Typography variant="h4" color="secondary">Shows</Typography>
           </div>
           <div>
             {props.currentUser === props.broadcasterData.handle && (
