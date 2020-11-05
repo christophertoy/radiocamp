@@ -36,8 +36,8 @@
   margin-left: 5%;
   margin-right: 5%;
   min-height: 66px;
-  background-color: #272c2F;
-  color:#edeef0
+  /* background-color: #272c2F; */
+  /* color:#edeef0 */
 }
 
 .episode-title {
@@ -54,7 +54,7 @@
 
 .episode-description {
   width: 80%;
-  color: #edeef0;
+  /* color: #edeef0; */
   margin-left: 20px;
 }
 
@@ -65,15 +65,15 @@
 
 .show-description {
   width: 50%;
-  color: #edeef0;
+  /* color: #edeef0; */
 }
 
 #show-list-container{
   padding:15px;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #272c2F;
-  color:#edeef0;
+  /* background-color: #272c2F; */
+  /* color:#edeef0; */
   min-height: 105px;
 
 }
@@ -82,45 +82,45 @@
   padding:15px;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #272c2F;
-  color:#edeef0;
+  /* background-color: #272c2F; */
+  /* color:#edeef0; */
   margin-top: 55px;
 }
 
 #broadcaster-card{
-  background-color: #272c2F;
+  /* background-color: #272c2F; */
 }
 #show-card{
-  background-color: #272c2F;
+  /* background-color: #272c2F; */
 }
 
 .broadcaster-card-content{
-  background-color: #272c2F;
-  color:#edeef0;
+  /* background-color: #272c2F; */
+  /* color:#edeef0; */
   padding: 8px;
   margin: 20px;
 }
 .show-card-content{
-  background-color: #272c2F;
-  color:#edeef0;
+  /* background-color: #272c2F; */
+  /* color:#edeef0; */
   padding: 8px;
   margin: 20px;
 }
 
 #spotify-player {
-  background-color: #2e2e2e;
+  /* background-color: #2e2e2e; */
 }
 
 .episode-card-content{
-  background-color: #272c2F;
-  color:#edeef0;
+  /* background-color: #272c2F; */
+  /* color:#edeef0; */
   padding: 8px;
   margin: 20px;
 }
 
 
 body {
-  background-color: #272c2F;
+  /* background-color: #272c2F; */
 }
 
 .show-text-container {

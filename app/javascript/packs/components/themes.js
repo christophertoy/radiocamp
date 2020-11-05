@@ -6,8 +6,10 @@ import {
   grey,
   green,
   red,
-  teal,
+  brown,
+  teal
 } from "@material-ui/core/colors";
+import { black } from "material-ui/styles/colors";
 
 // if you add a new theme, it will need to be added to this array
 export const themeNames = [
@@ -81,14 +83,6 @@ const themeTeal = createMuiTheme({
       main: grey[200],
       contrastText: teal[900],
     },
-  }, 
-  typography: {
-    fontFamily: "'Georgia', 'Times New Roman', serif",
-    fontSize: 14,
-    fontWeightLight: 300, // Work Sans
-    fontWeightRegular: 400, // Work Sans
-    fontWeightMedium: 700, // Roboto Condensed
-    fontFamilySecondary: "'Roboto Condensed', sans-serif",
   }
 });
 
@@ -119,12 +113,20 @@ themeTeal.overrides = {
 const themeOrangeGrey = createMuiTheme({
   palette: {
     primary: {
-      main: deepOrange[500],
+      main: red[500]
     },
     secondary: {
       main: grey[300],
-      contrastText: deepOrange[900],
+      contrastText: red[900],
     },
+  },
+  typography: {
+    fontFamily: "'Georgia', 'Times New Roman', serif",
+    fontSize: 14,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Roboto Condensed', sans-serif",
   }  
 });
 
@@ -138,18 +140,23 @@ themeOrangeGrey.overrides = {
   MuiButton: {
     root: {
       borderRadius: 0,
-      textTransform: "none",
+      textTransform: "none"
     },
     containedPrimary: {
       "&:hover": {
         backgroundColor: grey[300],
-        color: deepOrange[900],
+        color: red[900],
       },
     },
     containedSecondary: {
       fontWeight: 700,
     },
   },
+  MuiTypography: {
+    root: {
+      color: black
+    }
+  }
 };
 
 const themeWelcome = createMuiTheme({
@@ -201,7 +208,8 @@ const useThemePurple = makeStyles(() => ({
 const useThemeOrange = makeStyles(() => ({
   root: {
     width: "100%",
-    background: 'linear-gradient(to bottom, #272c2f 0%, #FF5722 100%)'
+    background: 'white'
+    // background: 'linear-gradient(to bottom, #272c2f 0%, #FF0000 100%)'
   },
 }));
 
