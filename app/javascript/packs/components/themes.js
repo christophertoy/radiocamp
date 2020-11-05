@@ -15,11 +15,11 @@ import { black } from "material-ui/styles/colors";
 // if you add a new theme, it will need to be added to this array
 export const themeNames = [
   {
-    text: "Lakers", 
+    text: "Purple Rain", 
     name: "themePurpleYellow"
   },
   {
-    text: "Orange Juice",
+    text: "Tomato Soup",
     name: "themeOrangeGrey"
   },
   {
@@ -84,6 +84,14 @@ const themeTeal = createMuiTheme({
       main: grey[200],
       contrastText: teal[900],
     },
+  },
+  typography: {
+    fontFamily: "Verdana, Arial, sans-serif",
+    fontSize: 14,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Verdana', sans-serif",
   }
 });
 
@@ -122,7 +130,7 @@ const themeOrangeGrey = createMuiTheme({
       main: red[500]
     },
     secondary: {
-      main: '#FFFFFF',
+      main: '#000000',
       contrastText: red[900],
     },
   },
@@ -168,10 +176,11 @@ themeOrangeGrey.overrides = {
 const themeWelcome = createMuiTheme({
   palette: {
     primary: {
+      // this line affects top nav bar on welcome page and create my site button
       main: grey[900]
     },
     secondary: {
-      main: grey[200],
+      main: '#FFFFFF',
       contrastText: teal[900],
     },
   },

@@ -120,7 +120,7 @@
 
 
 body {
-  /* background-color: #272c2F; */
+  background-color: #272c2F; 
 }
 
 .show-text-container {
@@ -140,4 +140,8 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+#body-welcome {
+  background-color: #272c2f
 }
