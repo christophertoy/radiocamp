@@ -116,7 +116,7 @@ export default function ShowForm(props) {
 
   return (
     <ThemeProvider>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         {props.text || "Add a Show"}
       </Button>
 
