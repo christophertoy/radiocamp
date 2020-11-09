@@ -1,24 +1,10 @@
-# README
+# RadioCamp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Radiocamp aims to provide up-and-coming broadcasters with an easy way to create a public-facing single-page app where listeners can browse and search a broadcaster’s archives, or find information about current shows and individual episodes. Listeners can search for episodes by fields such as genre, topic, host, date, and so on. Broadcasters have an intuitive interface for data entry, and options for customizing their page to keep it in line with their brand.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Install dependencies with `yarn install`.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Screenshots
