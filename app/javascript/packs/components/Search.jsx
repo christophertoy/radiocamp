@@ -38,7 +38,7 @@ export default function Search(props) {
         <div id="show-list-header">
           <div>
             {searchResults.length === 0 ? <Typography variant="h4">No Search Results Found</Typography> :
-            <Typography variant="h4">Search Results</Typography>
+            <Typography variant="h4" color="secondary">Search Results</Typography>
             }
           </div>
         </div>

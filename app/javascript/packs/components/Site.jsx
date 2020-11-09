@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
-import { themeOrangeGrey, themePurpleYellow, themeTeal, themeWelcome } from "./themes";
+import { themeC, themeA, themeB, themeWelcome } from "./themes";
 import NavBar from "./NavBar";
 import Episode from "./Episode";
 import Broadcaster from "./Broadcaster";
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 export default function Site(props) {
   const classes = useStyles();
-  const themes = { themeOrangeGrey, themePurpleYellow, themeTeal, themeWelcome };
+  const themes = { themeC, themeA, themeB, themeWelcome };
 
   let { broadcasterHandle } = useParams();
 

@@ -6,13 +6,11 @@ import {
   FormHelperText,
   Input,
   Button,
-  ThemeProvider,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
-import { themeOrangeGrey } from "./themes";
 
 
 export default function login(props) {

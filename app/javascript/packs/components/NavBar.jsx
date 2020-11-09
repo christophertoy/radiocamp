@@ -98,7 +98,7 @@ export default function NavBar(props) {
               to={`/${
                 props.broadcasterData ? props.broadcasterData.handle : ""
               }`}
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{ textDecoration: "none", color: "secondary" }}
             >
               {props.title}
             </Link>

@@ -96,14 +96,26 @@ export default function BroadcasterForm(props) {
 
   return (
     <div>
+      {props.text ? (
       <Button
         variant="outlined"
         size="large"
-        color="secondary"
+        color="primary"
         onClick={handleClickOpen}
       >
-        {props.text || "Create My Site"}
+        {props.text}
       </Button>
+      ) : (
+      <Button
+        variant="outlined"
+        size="large"
+        style={{color: '#FFFFFF'}}
+        onClick={handleClickOpen}
+      >
+        Create My Site
+      </Button>
+
+      )}
 
       <Dialog
         open={open}

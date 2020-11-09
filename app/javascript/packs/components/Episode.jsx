@@ -17,7 +17,7 @@ import { getEmbedCode } from "./helpers";
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
-    backgroundColor: "#272C2F",
+    // backgroundColor: "#272C2F",
   },
 });
 

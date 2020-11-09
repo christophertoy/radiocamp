@@ -6,29 +6,32 @@ import {
   grey,
   green,
   red,
+  brown,
   teal,
+  white
 } from "@material-ui/core/colors";
+import { black } from "material-ui/styles/colors";
 
 // if you add a new theme, it will need to be added to this array
 export const themeNames = [
   {
-    text: "Lakers", 
-    name: "themePurpleYellow"
-  },
-  {
-    text: "Orange Juice",
-    name: "themeOrangeGrey"
+    text: "Purple Rain", 
+    name: "themeA"
   },
   {
     text: "Under the Sea", 
-    name: "themeTeal"
+    name: "themeB"
   },
+  {
+    text: "Tomato Soup",
+    name: "themeC"
+  }
 ];
 
 // import { createMuiTheme } from '@material-ui/core/styles';
 // import { green, grey, red } from '@material-ui/core/colors';
 
-const themePurpleYellow = createMuiTheme({
+const themeA = createMuiTheme({
   palette: {
     primary: {
       main: deepPurple[500],
@@ -48,13 +51,13 @@ const themePurpleYellow = createMuiTheme({
   }
 });
 
-themePurpleYellow.props = {
+themeA.props = {
   MuiButton: {
     disableElevation: true,
   },
 };
 
-themePurpleYellow.overrides = {
+themeA.overrides = {
   MuiButton: {
     root: {
       borderRadius: 0,
@@ -72,7 +75,7 @@ themePurpleYellow.overrides = {
   },
 };
 
-const themeTeal = createMuiTheme({
+const themeB = createMuiTheme({
   palette: {
     primary: {
       main: teal[500],
@@ -81,16 +84,24 @@ const themeTeal = createMuiTheme({
       main: grey[200],
       contrastText: teal[900],
     },
+  },
+  typography: {
+    fontFamily: "Verdana, Arial, sans-serif",
+    fontSize: 14,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Verdana', sans-serif",
   }
 });
 
-themeTeal.props = {
+themeB.props = {
   MuiButton: {
     disableElevation: true,
   },
 };
 
-themeTeal.overrides = {
+themeB.overrides = {
   MuiButton: {
     root: {
       borderRadius: 0,
@@ -106,51 +117,70 @@ themeTeal.overrides = {
       fontWeight: 700,
     },
   },
+  MuiPaper: {
+    root: {
+      backgroundColor: 'white'
+    }
+  }
 };
 
-const themeOrangeGrey = createMuiTheme({
+const themeC = createMuiTheme({
   palette: {
     primary: {
-      main: deepOrange[500],
+      main: red[500]
     },
     secondary: {
-      main: grey[300],
-      contrastText: deepOrange[900],
+      main: '#000000',
+      contrastText: red[900],
     },
+  },
+  typography: {
+    fontFamily: "'Georgia', 'Times New Roman', serif",
+    fontSize: 14,
+    fontWeightLight: 300, // Work Sans
+    fontWeightRegular: 400, // Work Sans
+    fontWeightMedium: 700, // Roboto Condensed
+    fontFamilySecondary: "'Roboto Condensed', sans-serif",
   }  
 });
 
-themeOrangeGrey.props = {
+themeC.props = {
   MuiButton: {
     disableElevation: true,
   },
 };
 
-themeOrangeGrey.overrides = {
+themeC.overrides = {
   MuiButton: {
     root: {
       borderRadius: 0,
-      textTransform: "none",
+      textTransform: "none"
     },
     containedPrimary: {
       "&:hover": {
         backgroundColor: grey[300],
-        color: deepOrange[900],
+        color: red[900],
       },
     },
     containedSecondary: {
       fontWeight: 700,
     },
   },
+  MuiTypography: {
+    root: {
+      color: black
+    }
+  }
 };
 
 const themeWelcome = createMuiTheme({
   palette: {
     primary: {
+      // this line affects top nav bar on welcome page and create my site button
       main: grey[900]
     },
     secondary: {
-      main: grey[200],
+      main: '#FFFFFF',
       contrastText: teal[900],
     },
   },
@@ -183,152 +213,49 @@ themeWelcome.overrides = {
 
 // these functions allow further definition of styles where the overrides for createMuiTheme (defined above) are not sufficient
 
-const useThemePurple = makeStyles(() => ({
+const useThemeA = makeStyles(() => ({
   root: {
     width: "100%",
     background: 'linear-gradient(to bottom, #272c2F 0%, #673AB7 100%)',
   },
 }));
 
-const useThemeOrange = makeStyles(() => ({
+const useThemeB = makeStyles(() => ({
   root: {
     width: "100%",
-    background: 'linear-gradient(to bottom, #272c2f 0%, #FF5722 100%)'
+    // background: '#009688'
+    background: 'linear-gradient(to bottom, #272c2f 0%, #009688 100%)'
+
   },
 }));
 
-const useThemeTeal = makeStyles(() => ({
+const useThemeC = makeStyles(() => ({
   root: {
     width: "100%",
-    background: 'linear-gradient(to bottom, #272c2f 0%, #009688 100%)'
+    background: 'white'
+    // background: 'linear-gradient(to bottom, #272c2f 0%, #FF0000 100%)'
   },
 }));
 
 const useThemeWelcome = makeStyles(() => ({
   root: {
     width: "100%",
-    background: 'linear-gradient(to bottom, #272c2f 0%, #212121 100%)'
+    background: '#272c2f'
   },
 }));
 
 // this is the only function you need to import and call for components where classes are being used to style
 
 const applyTheme = (broadcasterTheme) => {
-  if (broadcasterTheme === 'themePurpleYellow') {
-    return useThemePurple();
-  } else if (broadcasterTheme === 'themeOrangeGrey') {
-    return useThemeOrange();
-  } else if (broadcasterTheme === 'themeTeal'){
-    return useThemeTeal();
+  if (broadcasterTheme === 'themeA') {
+    return useThemeA();
+  } else if (broadcasterTheme === 'themeB') {
+    return useThemeB();
+  } else if (broadcasterTheme === 'themeC'){
+    return useThemeC();
   } else {
     return useThemeWelcome();
   };
 }
 
-// all the code below was copied from https://github.com/mui-org/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/modules/theme.js
-
-// const rawTheme = createMuiTheme({
-//   palette: {
-//     primary: {
-//       light: "#69696a",
-//       main: "#28282a",
-//       dark: "#1e1e1f",
-//     },
-//     secondary: {
-//       light: "#fff5f8",
-//       main: "#ff3366",
-//       dark: "#e62958",
-//     },
-//     warning: {
-//       main: "#ffc071",
-//       dark: "#ffb25e",
-//     },
-//     error: {
-//       xLight: red[50],
-//       main: red[500],
-//       dark: red[700],
-//     },
-//     success: {
-//       xLight: green[50],
-//       main: green[500],
-//       dark: green[700],
-//     },
-//   },
-//   typography: {
-//     fontFamily: "'Work Sans', sans-serif",
-//     fontSize: 14,
-//     fontWeightLight: 300, // Work Sans
-//     fontWeightRegular: 400, // Work Sans
-//     fontWeightMedium: 700, // Roboto Condensed
-//     fontFamilySecondary: "'Roboto Condensed', sans-serif",
-//   },
-// });
-
-// const fontHeader = {
-//   color: rawTheme.palette.text.primary,
-//   fontWeight: rawTheme.typography.fontWeightMedium,
-//   fontFamily: rawTheme.typography.fontFamilySecondary,
-//   textTransform: "uppercase",
-// };
-
-// const theme = {
-//   ...rawTheme,
-//   palette: {
-//     ...rawTheme.palette,
-//     background: {
-//       ...rawTheme.palette.background,
-//       default: rawTheme.palette.common.white,
-//       placeholder: grey[200],
-//     },
-//   },
-//   typography: {
-//     ...rawTheme.typography,
-//     fontHeader,
-//     h1: {
-//       ...rawTheme.typography.h1,
-//       ...fontHeader,
-//       letterSpacing: 0,
-//       fontSize: 60,
-//     },
-//     h2: {
-//       ...rawTheme.typography.h2,
-//       ...fontHeader,
-//       fontSize: 48,
-//     },
-//     h3: {
-//       ...rawTheme.typography.h3,
-//       ...fontHeader,
-//       fontSize: 42,
-//     },
-//     h4: {
-//       ...rawTheme.typography.h4,
-//       ...fontHeader,
-//       fontSize: 36,
-//     },
-//     h5: {
-//       ...rawTheme.typography.h5,
-//       fontSize: 20,
-//       fontWeight: rawTheme.typography.fontWeightLight,
-//     },
-//     h6: {
-//       ...rawTheme.typography.h6,
-//       ...fontHeader,
-//       fontSize: 18,
-//     },
-//     subtitle1: {
-//       ...rawTheme.typography.subtitle1,
-//       fontSize: 18,
-//     },
-//     body1: {
-//       ...rawTheme.typography.body2,
-//       fontWeight: rawTheme.typography.fontWeightRegular,
-//       fontSize: 16,
-//     },
-//     body2: {
-//       ...rawTheme.typography.body1,
-//       fontSize: 14,
-//     },
-//   },
-// };
-
-export { themePurpleYellow, themeOrangeGrey, themeTeal, themeWelcome, applyTheme };
+export { themeA, themeC, themeB, themeWelcome, applyTheme };
