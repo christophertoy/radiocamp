@@ -10,5 +10,5 @@ Install dependencies with `yarn install`.
 ## Screenshots
 !['Welcome!'](https://github.com/christophertoy/radiocamp/blob/main/docs/Welcome.png?raw=true)
 !['Broadcaster Form'](https://github.com/christophertoy/radiocamp/blob/main/docs/Broadcaster%20Form.png?raw=true)
-!['Broadcaster Shows'](hhttps://github.com/christophertoy/radiocamp/blob/main/docs/Broadcaster%20Shows.png?raw=true)
+!['Broadcaster Shows'](https://github.com/christophertoy/radiocamp/blob/main/docs/Broadcaster%20Shows.png?raw=true)
 !['Search Results'](https://github.com/christophertoy/radiocamp/blob/main/docs/Search%20Results.png?raw=true)
